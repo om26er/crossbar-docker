@@ -28,7 +28,7 @@ test_pypy2:
 
 publish:
 	sudo docker push crossbario/autobahn-python:cpy2
-	sudo docker push crossbario/autobahn-python:cyp3
+	sudo docker push crossbario/autobahn-python:cpy3
 	sudo docker push crossbario/autobahn-python:pypy2
 
 list:
