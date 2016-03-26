@@ -11,15 +11,17 @@ Obviously, [install Docker](https://docs.docker.com/linux/).
 To test the end user experience, open a first terminal and type
 
 ```console
-make crossbar
+sudo docker run -it -p 8080:8080 crossbario/crossbar
 ```
 
-> This will run a single Docker command to download and start a Crossbar.io container.
+> This will run a single Docker command to download and start a Crossbar.io container. You can also type `make crossbar` if you are lazy (there is a Makefile with the former command).
 
 In a second terminal, type
 
 ```console
-make autobahnjs
+sudo docker run -it crossbario/autobahn-js node /root/client.js ws://192.168.1.100:8080/ws realm1
 ```
 
-> This will run a single Docker command to download and start a AutobahnJS container with an example client connecting to the former Crossbar.io running container.
+Here, you will need to replace the IP address `192.168.1.100` with that of your box (and it needs to be one visible from within the container - NOT `127.0.0.1`).
+
+> This will run a single Docker command to download and start a AutobahnJS container with an example client connecting to the former Crossbar.io running container. You can also type `make autobahnjs` if you are lazy (there is a Makefile with the former command).
