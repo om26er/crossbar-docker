@@ -1,0 +1,12 @@
+FROM python:2
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV HOME /root
+ENV DEBIAN_FRONTEND noninteractive
+
+# install AutobahnPython from PyPI https://pypi.python.org/pypi/autobahn
+RUN pip install -U pip && pip install autobahn[all]
+
+# add an example client
+ADD client.py /root/client.py
