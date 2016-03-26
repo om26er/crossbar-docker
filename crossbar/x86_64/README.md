@@ -7,7 +7,7 @@ To build and deploy the Crossbar.io Docker image to DockerHub, do:
 ```console
 make build
 make test
-make push
+make publish
 ```
 
 ## End-user Experience
