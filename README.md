@@ -1,7 +1,5 @@
-# Crossbar.io for Docker
+# Crossbar.io and Autobahn for Docker
 
-Official Docker support files for both [Crossbar.io](https://github.com/crossbario/crossbar) and Autobahn
+The official Docker repository of the Crossbar.io Project can be found on DockerHub [here](https://hub.docker.com/r/crossbario/crossbar/).
 
-This repository is maintained by the [Crossbar.io Project](http://crossbar.io) and contains Crossbar.io and Autobahn support files for Docker.
-
-https://hub.docker.com/r/crossbario/crossbar/
+The images there are built from the Docker files in this Git repository.
