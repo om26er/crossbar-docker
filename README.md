@@ -57,12 +57,12 @@ Again, replace the IP address according to your network setup.
 
 Standard Ubuntu Linux based x84-64 image download sizes:
 
-* Crossbar.io: 367 MB
+* **Crossbar.io: 367 MB**
 
 Images based on Alpine Linux download sizes:
 
-* AutobahnJS (alpine): 28 MB
-* AutobahnPython (cpy3-alpine): 91 MB
+* **AutobahnJS (alpine): 28 MB**
+* **AutobahnPython (cpy3-alpine): 91 MB**
 * AutobahnPython (cpy2-alpine): 93 MB
 
 Images based on  the respective language standard image download sizes:
