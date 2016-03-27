@@ -55,6 +55,8 @@ Again, replace the IP address according to your network setup.
 
 ## Image Sizes
 
+**Please note, that mere image download size [isn't that relevant anyway](https://insights.ubuntu.com/2016/02/10/docker-alpine-ubuntu-and-you/), but here are numbers.**
+
 Standard Ubuntu Linux based x84-64 image download sizes:
 
 * **Crossbar.io: 111 MB**
