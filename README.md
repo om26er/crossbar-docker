@@ -1,11 +1,11 @@
 # Crossbar.io and Autobahn for Docker
 
-## tldr;
+**[Official DockerHub Repositories](https://hub.docker.com/r/crossbario/crossbar/)**
 
 Images:
 
 * [Crossbar.io](https://hub.docker.com/r/crossbario/crossbar/tags/)
-* [Autobahn|Python](https://hub.docker.com/r/crossbario/autobahn-python/tags/))
+* [Autobahn|Python](https://hub.docker.com/r/crossbario/autobahn-python/tags/)
 * [Autobahn|JS](https://hub.docker.com/r/crossbario/autobahn-js/tags/)
 
 Installation:
@@ -20,7 +20,7 @@ sudo docker pull crossbario/autobahn-python:cpy2-alpine
 sudo docker pull crossbario/autobahn-python:cpy3-alpine
 ```
 
-## Introduction
+---
 
 The official Docker repository of the Crossbar.io Project can be found on DockerHub [here](https://hub.docker.com/r/crossbario/crossbar/).
 
