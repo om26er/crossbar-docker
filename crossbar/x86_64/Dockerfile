@@ -9,9 +9,8 @@ ENV PYTHONUNBUFFERED 1
 # install Crossbar.io from the official Crossbar.io binary package repositories
 RUN apt-key adv --keyserver hkps.pool.sks-keyservers.net --recv D58C6920 \
     && echo 'deb http://package.crossbar.io/ubuntu trusty main' > /etc/apt/sources.list.d/crossbar.list \
-    && apt-get update -y \
-    && apt-get dist-upgrade -y \
-    && apt-get install crossbar
+    && apt-get update \
+    && apt-get install -y crossbar
 
 # create a new Crossbar.io node directory from the default template
 RUN /opt/crossbar/bin/crossbar init --template default --appdir /var/crossbar
