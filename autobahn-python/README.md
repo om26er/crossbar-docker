@@ -9,6 +9,8 @@ make build
 make test_cpy2
 make test_cpy3
 make test_pypy2
+make test_cpy2_alpine
+make test_cpy3_alpine
 make publish
 ```
 

@@ -1,14 +1,15 @@
-FROM python:2
+FROM python:3-alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 
+# we need this for Python extension packages to build
+RUN apk add --no-cache --update libffi-dev gcc musl-dev build-base
+
 # install AutobahnPython from PyPI https://pypi.python.org/pypi/autobahn
 RUN pip install -U pip && pip install autobahn[all]
 
 # add an example client
 ADD client.py /root/client.py
-
-CMD ["python"]

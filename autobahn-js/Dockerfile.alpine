@@ -1,10 +1,12 @@
-FROM node
+FROM alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
-ENV NODE_PATH /usr/local/lib/node_modules/
+ENV NODE_PATH /usr/lib/node_modules/
+
+RUN apk add --update nodejs
 
 # install AutobahnJS globally from https://www.npmjs.com/package/autobahn
 RUN npm install -g autobahn

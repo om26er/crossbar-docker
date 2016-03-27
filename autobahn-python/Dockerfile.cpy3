@@ -10,3 +10,5 @@ RUN pip install -U pip && pip install autobahn[all]
 
 # add an example client
 ADD client.py /root/client.py
+
+CMD ["python"]

@@ -7,6 +7,7 @@ To build and deploy the AutobahnJS image to DockerHub, do:
 ```console
 make build
 make test
+make test_alpine
 make publish
 ```
 
