@@ -52,3 +52,47 @@ sudo docker run -it crossbario/autobahn-python:cpy2 python /root/client.py --url
 ```
 
 Again, replace the IP address according to your network setup.
+
+## Image Sizes
+
+Standard Ubuntu Linux based x84-64 image download sizes:
+
+* Crossbar.io: 367 MB
+
+Images based on Alpine Linux download sizes:
+
+* AutobahnJS (alpine): 28 MB
+* AutobahnPython (cpy3-alpine): 91 MB
+* AutobahnPython (cpy2-alpine): 93 MB
+
+Images based on  the respective language standard image download sizes:
+
+* AutobahnJS: 647 MB
+* AutobahnPython (pypy2): 290 MB
+* AutobahnPython (cpy3): 282 MB
+* AutobahnPython (cpy2): 286 MB
+
+Installed sizes:
+
+```console
+oberstet@thinkpad-t430s:~$ sudo docker images
+REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
+crossbario/autobahn-js       alpine-node-only    fe818df130ec        22 minutes ago      24.55 MB
+crossbario/autobahn-js       alpine              1958d8775956        22 minutes ago      27.57 MB
+crossbario/autobahn-js       latest              6ca4f28def85        23 minutes ago      646.9 MB
+crossbario/autobahn-python   cpy3-alpine         30d6d39532c9        About an hour ago   279.5 MB
+crossbario/autobahn-python   cpy2                b328e97b854c        About an hour ago   726.3 MB
+crossbario/autobahn-python   cpy2-alpine         faadcaee210a        About an hour ago   274.8 MB
+crossbario/crossbar          latest              2e558aee8405        2 hours ago         366.9 MB
+crossbario/autobahn-python   pypy2               cd49fb36ab64        22 hours ago        766.4 MB
+crossbario/autobahn-python   cpy3                d8a61e17d280        22 hours ago        730.4 MB
+python                       3                   70c16d34e4c8        3 days ago          689.6 MB
+python                       2                   e4a554df875e        3 days ago          676.8 MB
+pypy                         2                   d45ac503524a        3 days ago          725 MB
+node                         latest              86cbce15c689        3 days ago          644.3 MB
+python                       3-alpine            769e9328f383        8 days ago          89.74 MB
+python                       2-alpine            dd22f748f304        8 days ago          72.59 MB
+ubuntu                       latest              97434d46f197        9 days ago          188 MB
+ubuntu                       trusty              97434d46f197        9 days ago          188 MB
+alpine                       latest              70c557e50ed6        3 weeks ago         4.798 MB
+```
