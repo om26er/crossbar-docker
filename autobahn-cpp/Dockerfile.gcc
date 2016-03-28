@@ -12,7 +12,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
-# get and build boost from source
+# get and build Boost from upstream
 RUN cd /tmp \
     && wget http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.bz2 \
     && tar xvjf boost_1_60_0.tar.bz2 \
@@ -24,5 +24,12 @@ RUN cd /tmp \
 
 # create user app dir
 RUN mkdir -p /usr/local/app
+
+# get and build msgpack-c from upstream
+RUN cd /tmp \
+    && wget https://github.com/msgpack/msgpack-c/archive/cpp-1.4.1.zip \
+    && unzip cpp-1.4.1.zip \
+    && export CXXFLAGS="$CXXFLAGS -std=c++11" \
+    && ./bootstrap && ./configure && make install
 
 CMD ["bash"]

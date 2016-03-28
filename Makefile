@@ -56,3 +56,11 @@ docker:
 	sudo apt-cache policy docker-engine
 	sudo apt-get install -y linux-image-extra-$$(uname -r)
 	sudo apt-get install -y docker-engine
+
+# http://jimhoskins.com/2013/07/27/remove-untagged-docker-images.html
+clean:
+	sudo docker rm $(sudo docker ps -a -q)
+	sudo docker rmi -f $(sudo docker images | grep "^<none>" | awk "{print $3}")
+
+list:
+	sudo docker images
