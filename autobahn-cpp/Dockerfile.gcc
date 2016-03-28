@@ -27,8 +27,9 @@ RUN mkdir -p /usr/local/app
 
 # get and build msgpack-c from upstream
 RUN cd /tmp \
+    && apt-get update && apt-get install -y unzip autotools-dev autoconf libtool \
     && wget https://github.com/msgpack/msgpack-c/archive/cpp-1.4.1.zip \
-    && unzip cpp-1.4.1.zip \
+    && unzip cpp-1.4.1.zip && cd msgpack-c-cpp-1.4.1 \
     && export CXXFLAGS="$CXXFLAGS -std=c++11" \
     && ./bootstrap && ./configure && make install
 
