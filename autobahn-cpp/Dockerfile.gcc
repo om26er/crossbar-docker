@@ -19,8 +19,11 @@ RUN cd /tmp \
     && cd boost_1_60_0 \
     && ./bootstrap.sh --with-toolset=gcc \
     && ./b2 toolset=gcc --without-python -j 4
-#     install \
-#    && cd ~ \
-#    && rm -rf /tmp/boost*
+
+RUN cd /tmp \
+    ./b2 toolset=gcc --without-python install \
+    && cd / \
+    && rm -rf /tmp/boost* \
+    && mkdir -p /usr/local/app
 
 CMD ["bash"]
