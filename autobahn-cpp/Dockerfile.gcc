@@ -7,19 +7,11 @@ ENV DEBIAN_FRONTEND noninteractive
 # user env
 ENV HOME /usr/local/app
 ENV PATH /usr/local/app:$PATH
+ENV LD_LIBRARY_PATH /usr/local/lib
 RUN mkdir -p /usr/local/app
-
 
 # env vars to configure websocketpp
 ENV WSPP_ENABLE_CPP11 1
-
-# env vars for autobahn-cpp to find boost
-ENV BOOST_INCLUDES /usr/local/include/boost
-ENV BOOST_LIBS /usr/local/lib
-
-# env vars for autobahn-cpp to find msgpack-c
-ENV MSGPACK_INCLUDES /usr/local/include/msgpack
-ENV MSGPACK_LIBS /usr/local/lib
 
 
 # update system, get dev tools and libs
@@ -58,7 +50,9 @@ RUN cd /tmp \
     && wget https://github.com/crossbario/autobahn-cpp/archive/master.zip -O autobahn-cpp.zip \
     && unzip autobahn-cpp.zip \
     && cp -r /tmp/autobahn-cpp-master/autobahn/ /usr/local/include/ \
-    && cd / && rm -rf /tmp/autobahn*
+    && cp -r /tmp/autobahn-cpp-master/examples/ /usr/local/app/ \
+    && cd / && rm -rf /tmp/autobahn* \
+    && cd /usr/local/app/ && scons
 
 
 # drop into shell by default
