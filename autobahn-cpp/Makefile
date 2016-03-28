@@ -3,7 +3,7 @@
 HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 
 build:
-	time sudo docker build -t crossbario/autobahn-cpp -f Dockerfile.gcc .
+	time sudo docker build --no-cache -t crossbario/autobahn-cpp -f Dockerfile.gcc .
 
 shell:
 	sudo docker run -it crossbario/autobahn-cpp bash
