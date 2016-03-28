@@ -15,11 +15,11 @@ ENV WSPP_ENABLE_CPP11 1
 
 # env vars for autobahn-cpp to find boost
 ENV BOOST_INCLUDES /usr/include/boost
-ENV BOOST_LIBS /usr/lib
+ENV BOOST_LIBS /usr/local/lib
 
 # env vars for autobahn-cpp to find msgpack-c
 ENV MSGPACK_INCLUDES /usr/include/msgpack
-ENV MSGPACK_LIBS /usr/lib
+ENV MSGPACK_LIBS /usr/local/lib
 
 
 # update system, get dev tools and libs
@@ -35,7 +35,7 @@ RUN cd /tmp \
     && wget http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.bz2 \
     && tar xvjf boost_1_60_0.tar.bz2 && cd boost_1_60_0 \
     && ./bootstrap.sh --with-toolset=gcc \
-    && ./b2 toolset=gcc --without-python -j 8 install \
+    && ./b2 toolset=gcc link=shared threading=multi --layout=tagged --with-thread --without-python -j 8 install \
     && cd / && rm -rf /tmp/boost*
 
 # get, build and install msgpack-c from upstream
@@ -63,4 +63,3 @@ RUN cd /tmp \
 
 # drop into shell by default
 CMD ["bash"]
-
