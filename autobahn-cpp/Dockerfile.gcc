@@ -52,7 +52,7 @@ RUN cd /tmp \
     && cp -r /tmp/autobahn-cpp-master/autobahn/ /usr/local/include/ \
     && cp -r /tmp/autobahn-cpp-master/examples/ /usr/local/app/ \
     && cd / && rm -rf /tmp/autobahn* \
-    && cd /usr/local/app/ && scons
+    && cd /usr/local/app/examples/ && scons
 
 
 # drop into shell by default
