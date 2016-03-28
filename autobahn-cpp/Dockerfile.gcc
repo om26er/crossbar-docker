@@ -1,0 +1,26 @@
+FROM ubuntu:trusty
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV HOME /usr/local/app
+ENV DEBIAN_FRONTEND noninteractive
+ENV PATH /usr/local/app:$PATH
+
+# get dev tools and libs
+RUN apt-get update \
+    && apt-get install -y wget build-essential cmake scons libbz2-dev libssl-dev \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# get and build boost from source
+RUN cd /tmp \
+    && wget http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.bz2 \
+    && tar xvjf boost_1_60_0.tar.bz2 \
+    && cd boost_1_60_0 \
+    && ./bootstrap.sh --with-toolset=gcc \
+    && ./b2 toolset=gcc --without-python -j 4
+#     install \
+#    && cd ~ \
+#    && rm -rf /tmp/boost*
+
+CMD ["bash"]
