@@ -50,7 +50,7 @@ RUN cd /tmp \
 RUN cd /tmp \
     && wget https://github.com/zaphoyd/websocketpp/archive/0.7.0.zip -O websocketpp.zip \
     && unzip websocketpp.zip \
-    && cp -r /tmp/websocketpp-0.7.0/websocketpp /usr/local/incude/ \
+    && cp -r /tmp/websocketpp-0.7.0/websocketpp/ /usr/local/include/ \
     && cd / && rm -rf /tmp/websocketpp*
 
 # get and install autobahn-cpp from upstream
