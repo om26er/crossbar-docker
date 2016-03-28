@@ -56,10 +56,11 @@ RUN cd /tmp \
 # get and install autobahn-cpp from upstream
 RUN cd /tmp \
     && wget https://github.com/crossbario/autobahn-cpp/archive/master.zip -O autobahn-cpp.zip \
-    && unzip autobahn-cpp.zip && cd autobahn-cpp-master \
-    && cp -R autobahn /usr/local/incude/ \
+    && unzip autobahn-cpp.zip \
+    && cp -r /tmp/autobahn-cpp-master/autobahn/ /usr/local/include/ \
     && cd / && rm -rf /tmp/autobahn*
 
 
 # drop into shell by default
 CMD ["bash"]
+

@@ -6,10 +6,10 @@ build:
 	time sudo docker build -t crossbario/autobahn-cpp -f Dockerfile.gcc .
 
 shell:
-	sudo docker run -it crossbario/autobahn-cpp bash
+	sudo docker run -it --rm crossbario/autobahn-cpp bash
 
 test:
-	sudo docker run -it crossbario/autobahn-cpp bash -c "cd /usr/local/app && make && ./client ws://$(HOSTIP):8080/ws realm1"
+	sudo docker run -it --rm crossbario/autobahn-cpp bash -c "cd /usr/local/app && make && ./client ws://$(HOSTIP):8080/ws realm1"
 
 publish:
 	sudo docker push crossbario/autobahn-cpp
