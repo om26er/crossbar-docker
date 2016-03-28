@@ -14,9 +14,9 @@ RUN apt-key adv --keyserver hkps.pool.sks-keyservers.net --recv D58C6920 \
     && apt-get install -y crossbar \
     && rm -rf /var/lib/apt/lists/*
 
-# create a new Crossbar.io node directory from the default template
-RUN crossbar init --template default --appdir /var/crossbar \
-    && chown -R daemon:daemon /var/crossbar
+# initialize a Crossbar.io node
+COPY ./node /var/crossbar
+RUN chown -R daemon:daemon /var/crossbar
 
 # run under this user, and expose default port
 USER daemon

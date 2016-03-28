@@ -1,4 +1,10 @@
+.PHONY: crossbar crossbar_dev client client_dev
+
+HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
+REPOS=../..
+
 build:
+	rm -f .crossbar/node.key
 	time sudo docker build --no-cache -t crossbario/crossbar .
 
 test:
@@ -15,3 +21,11 @@ version:
 
 list:
 	sudo docker images
+
+crossbar:
+	# FIXME: the Docker image runs Crossbar.io under user "daemon" - make sure it can write
+	sudo chown -R daemon:daemon node
+	sudo docker run \
+		-v ${PWD}/node:/var/crossbar \
+		-p 8080:8080 \
+		-it crossbario/crossbar
