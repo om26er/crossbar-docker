@@ -20,7 +20,7 @@ RUN chown -R daemon:daemon /var/crossbar
 
 # run under this user, and expose default port
 USER daemon
-EXPOSE 8080
+EXPOSE 8080 8000
 
 # entrypoint for the Docker image is the Crossbar.io executable
 ENTRYPOINT ["crossbar", "start", "--cbdir", "/var/crossbar/.crossbar"]
