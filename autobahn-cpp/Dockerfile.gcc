@@ -8,29 +8,43 @@ ENV PATH /usr/local/app:$PATH
 
 # update system, get dev tools and libs
 RUN apt-get update \
-    && apt-get install -y wget build-essential cmake scons libbz2-dev libssl-dev \
+    && apt-get install -y wget unzip \
+                          build-essential autotools-dev autoconf libtool cmake scons \
+                          libbz2-dev libssl-dev \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
-# get and build Boost from upstream
+# get, build and install Boost from upstream
 RUN cd /tmp \
     && wget http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.bz2 \
-    && tar xvjf boost_1_60_0.tar.bz2 \
-    && cd boost_1_60_0 \
+    && tar xvjf boost_1_60_0.tar.bz2 && cd boost_1_60_0 \
     && ./bootstrap.sh --with-toolset=gcc \
     && ./b2 toolset=gcc --without-python -j 8 install \
-    && cd / \
-    && rm -rf /tmp/boost*
+    && cd / && rm -rf /tmp/boost*
+
+# get, build and install msgpack-c from upstream
+RUN cd /tmp \
+    && wget https://github.com/msgpack/msgpack-c/archive/cpp-1.4.1.zip -O msgpack-c.zip \
+    && unzip msgpack-c.zip && cd msgpack-c-cpp-1.4.1 \
+    && export CXXFLAGS="$CXXFLAGS -std=c++11" \
+    && ./bootstrap && ./configure && make install \
+    && cd / && rm -rf /tmp/msgpack*
+
+# get and install websocketpp from upstream
+RUN cd /tmp \
+    && wget https://github.com/zaphoyd/websocketpp/archive/0.7.0.zip -O websocketpp.zip \
+    && unzip websocketpp.zip && cd websocketpp-0.7.0 \
+    && cp -R websocketpp /usr/local/incude/ \
+    && cd / && rm -rf /tmp/websocketpp*
+
+# get and install autobahn-cpp from upstream
+RUN cd /tmp \
+    && wget https://github.com/crossbario/autobahn-cpp/archive/master.zip -O autobahn-cpp.zip \
+    && unzip autobahn-cpp.zip && cd autobahn-cpp-master \
+    && cp -R autobahn /usr/local/incude/ \
+    && cd / && rm -rf /tmp/autobahn*
 
 # create user app dir
 RUN mkdir -p /usr/local/app
-
-# get and build msgpack-c from upstream
-RUN cd /tmp \
-    && apt-get update && apt-get install -y unzip autotools-dev autoconf libtool \
-    && wget https://github.com/msgpack/msgpack-c/archive/cpp-1.4.1.zip \
-    && unzip cpp-1.4.1.zip && cd msgpack-c-cpp-1.4.1 \
-    && export CXXFLAGS="$CXXFLAGS -std=c++11" \
-    && ./bootstrap && ./configure && make install
 
 CMD ["bash"]
