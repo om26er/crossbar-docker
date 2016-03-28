@@ -15,5 +15,5 @@ docker:
 	sudo apt-get update
 	sudo apt-get purge lxc-docker
 	sudo apt-cache policy docker-engine
-	sudo apt-get install linux-image-extra-$(uname -r)
+	sudo apt-get install linux-image-extra-$$(uname -r)
 	sudo apt-get install docker-engine
