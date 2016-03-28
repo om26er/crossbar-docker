@@ -2,13 +2,29 @@ FROM ubuntu:trusty
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
-ENV HOME /usr/local/app
 ENV DEBIAN_FRONTEND noninteractive
+
+# user env
+ENV HOME /usr/local/app
 ENV PATH /usr/local/app:$PATH
+RUN mkdir -p /usr/local/app
+
+
+# env vars to configure websocketpp
+ENV WSPP_ENABLE_CPP11 1
+
+# env vars for autobahn-cpp to find boost
+ENV BOOST_INCLUDES /usr/include/boost
+ENV BOOST_LIBS /usr/lib
+
+# env vars for autobahn-cpp to find msgpack-c
+ENV MSGPACK_INCLUDES /usr/include/msgpack
+ENV MSGPACK_LIBS /usr/lib
+
 
 # update system, get dev tools and libs
 RUN apt-get update \
-    && apt-get install -y wget unzip \
+    && apt-get install -y wget curl unzip git-core \
                           build-essential autotools-dev autoconf libtool cmake scons \
                           libbz2-dev libssl-dev \
     && rm -rf /var/lib/apt/lists/* \
@@ -44,7 +60,6 @@ RUN cd /tmp \
     && cp -R autobahn /usr/local/incude/ \
     && cd / && rm -rf /tmp/autobahn*
 
-# create user app dir
-RUN mkdir -p /usr/local/app
 
+# drop into shell by default
 CMD ["bash"]
