@@ -31,7 +31,7 @@ RUN cd /tmp \
     && wget http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.bz2 \
     && tar xvjf boost_1_60_0.tar.bz2 && cd boost_1_60_0 \
     && ./bootstrap.sh --with-toolset=clang \
-    && ./b2 toolset=gcc link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
+    && ./b2 toolset=clang link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
     && cd / && rm -rf /tmp/boost*
 
 # get, build and install msgpack-c from upstream
