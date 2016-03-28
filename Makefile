@@ -10,6 +10,9 @@ crossbar:
 autobahn: autobahnjs autobahnjs_alpine \
 	      autobahnpython_cpy2 autobahnpython_cpy3 autobahnpython_pypy2 autobahnpython_cpy2_alpine autobahnpython_cpy3_alpine
 
+autobahncpp:
+	sudo docker run -it sh -c "cd /usr/local/app/ && make && crossbario/autobahn-cpp /usr/local/app/client ws://$(HOSTIP):8080/ws realm1"
+
 autobahnjs:
 	sudo docker run -it crossbario/autobahn-js node /root/client.js ws://$(HOSTIP):8080/ws realm1
 
@@ -34,6 +37,7 @@ autobahnpython_cpy3_alpine:
 # pull all our images
 pull:
 	sudo docker pull crossbario/crossbar
+	sudo docker pull crossbario/autobahn-cpp
 	sudo docker pull crossbario/autobahn-js
 	sudo docker pull crossbario/autobahn-js:alpine
 	sudo docker pull crossbario/autobahn-python:cpy2

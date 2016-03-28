@@ -1,0 +1,20 @@
+FROM ubuntu:trusty
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV HOME /usr/local/app
+ENV DEBIAN_FRONTEND noninteractive
+ENV PATH /usr/local/app:$PATH
+
+# update system, get dev tools and libs
+RUN apt-get -qq update \
+    && apt-get -qqy install \
+    libboost-all-dev \
+    g++ \
+    vim \
+    && rm -rf /var/lib/apt/lists/*
+
+# create user app dir
+RUN mkdir -p /usr/local/app
+
+CMD ["bash"]

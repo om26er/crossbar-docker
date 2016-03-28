@@ -6,7 +6,7 @@ ENV HOME /usr/local/app
 ENV DEBIAN_FRONTEND noninteractive
 ENV PATH /usr/local/app:$PATH
 
-# get dev tools and libs
+# update system, get dev tools and libs
 RUN apt-get update \
     && apt-get install -y wget build-essential cmake scons libbz2-dev libssl-dev \
     && rm -rf /var/lib/apt/lists/* \
