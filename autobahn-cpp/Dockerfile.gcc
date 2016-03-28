@@ -14,11 +14,11 @@ RUN mkdir -p /usr/local/app
 ENV WSPP_ENABLE_CPP11 1
 
 # env vars for autobahn-cpp to find boost
-ENV BOOST_INCLUDES /usr/include/boost
+ENV BOOST_INCLUDES /usr/local/include/boost
 ENV BOOST_LIBS /usr/local/lib
 
 # env vars for autobahn-cpp to find msgpack-c
-ENV MSGPACK_INCLUDES /usr/include/msgpack
+ENV MSGPACK_INCLUDES /usr/local/include/msgpack
 ENV MSGPACK_LIBS /usr/local/lib
 
 
