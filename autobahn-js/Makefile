@@ -3,9 +3,9 @@
 HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 
 build:
-	time sudo docker build --no-cache -t crossbario/autobahn-js -f Dockerfile .
-	time sudo docker build --no-cache -t crossbario/autobahn-js:alpine -f Dockerfile.alpine .
-	time sudo docker build --no-cache -t crossbario/autobahn-js:alpine-node-only -f Dockerfile.alpine.node-only .
+	time sudo docker build -t crossbario/autobahn-js -f Dockerfile .
+	time sudo docker build -t crossbario/autobahn-js:alpine -f Dockerfile.alpine .
+	time sudo docker build -t crossbario/autobahn-js:alpine-node-only -f Dockerfile.alpine.node-only .
 
 version: node_version autobahn_version
 

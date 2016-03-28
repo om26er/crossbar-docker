@@ -5,7 +5,7 @@ REPOS=../..
 
 build:
 	rm -f .crossbar/node.key
-	time sudo docker build --no-cache -t crossbario/crossbar .
+	time sudo docker build -t crossbario/crossbar .
 
 test:
 	sudo docker run -it -p 8080:8080 crossbario/crossbar
