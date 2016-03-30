@@ -6,8 +6,8 @@ build:
 	time sudo docker build -t crossbario/autobahn-python:cpy2 -f Dockerfile.cpy2 .
 	time sudo docker build -t crossbario/autobahn-python:cpy3 -f Dockerfile.cpy3 .
 	time sudo docker build -t crossbario/autobahn-python:pypy2 -f Dockerfile.pypy2 .
-	#time sudo docker build -t crossbario/autobahn-python:cpy2-alpine -f Dockerfile.cpy2-alpine .
-	#time sudo docker build -t crossbario/autobahn-python:cpy3-alpine -f Dockerfile.cpy3-alpine .
+	time sudo docker build -t crossbario/autobahn-python:cpy2-alpine -f Dockerfile.cpy2-alpine .
+	time sudo docker build -t crossbario/autobahn-python:cpy3-alpine -f Dockerfile.cpy3-alpine .
 	time sudo docker build -t crossbario/autobahn-python:cpy3-minimal -t crossbario/autobahn-python:latest -f Dockerfile.cpy3-minimal .
 
 version:

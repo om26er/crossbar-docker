@@ -1,0 +1,14 @@
+{
+    "name": "crossbarclient",
+    "version": "0.0.0",
+    "description": "AutobahnJS demo client connecting to Crossbar.io",
+    "dependencies": {
+        "autobahn": ">=0.9.9"
+    },
+    "main": "client.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "The Crossbar.io Project",
+  " license": "BSD-2-Clause"
+}

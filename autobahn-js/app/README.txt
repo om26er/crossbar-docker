@@ -1,12 +1,10 @@
 Put your microservice code and assets in here.
 
-The container will automatically start the script:
+The container will automatically start the script client.js in this folder.
 
-    node client.js
+The environment of the script will have these variables set:
 
-The environment will have these variables set:
+* CBURL = ws://crossbar:8080/ws
+* CBREALM = realm1
 
-    CBURL = ws://crossbar:8080/ws
-    CBREALM = realm1
-
-where the host `crossbar` resolves to a linked Docker container running Crossbar.io.
+where the host crossbar resolves to a linked Docker container running Crossbar.io.

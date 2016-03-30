@@ -1,62 +1,28 @@
-This contains the build stuff for AutobahnJS-Node / Docker.
+# AutobahnJS for Docker
 
-## Build and Deploy
+Here you find the Dockerfiles for creating the [AutobahnJS for Docker images](https://hub.docker.com/r/crossbario/autobahn-js/) maintained by the Crossbar.io Project.
 
-To build and deploy the AutobahnJS image to DockerHub, do:
+These images come with NodeJS and AutobahnJS preinstalled and are intended to base application service containers on. The images
+
+* derive of `node` and `alpine` images
+* install AutobahnJS via npm
+* copy over the `app` folder to `/app` in the container
+* run `npm init && node client.js` in `/app` by default
+
+## Images
+
+1. `autobahnjs`: Default variant, deriving of standard Node image.
+2. `autobahnjs:alpine`: Alpine Linux based variant.
+
+## Build, test and deploy
+
+**Note: this only relevant for Crossbar.io Project members which deploy images to our Dockerhub presence.**
+
+To build, test and deploy the AutobahnJS images to DockerHub, do:
 
 ```console
 make build
 make test
 make test_alpine
 make publish
-```
-
-## End-user Experience
-
-The end user experience of a user with only Docker installed is one command to download the AutobahnJS image and start a new container with a AutobahnJS client connecting to a Crossbar.io router:
-
-```console
-sudo docker run -it crossbario/autobahn-js node /root/client.js ws://192.168.1.144:8080/ws realm1
-```
-
-> Note: replace the URL `ws://192.168.1.144:8080/ws` with the WAMP listening transport URL of your Crossbar.io node, and replace `realm1` with the realm to connect to.
-
-This will log something like:
-
-```console
-oberstet@thinkpad-t430s:~$ sudo docker pull crossbario/autobahn-js
-[sudo] password for oberstet:
-Using default tag: latest
-latest: Pulling from crossbario/autobahn-js
-
-fdd5d7827f33: Pull complete
-a3ed95caeb02: Pull complete
-0f35d0fe50cc: Pull complete
-7b40647e93b7: Pull complete
-ce5207842c4c: Pull complete
-5a3b05f77d24: Pull complete
-2109bd3acb97: Pull complete
-3e0f42890cc0: Pull complete
-027acc4ac430: Pull complete
-Digest: sha256:5332528d5b1cf886db4e00ea8d2dcc190c69379ce7206ca092293f81e283a0c0
-Status: Downloaded newer image for crossbario/autobahn-js:latest
-oberstet@thinkpad-t430s:~$ sudo docker run -it crossbario/autobahn-js ws://192.168.1.142:8080/ws realm1
-exec: "ws://192.168.1.142:8080/ws": stat ws://192.168.1.142:8080/ws: no such file or directory
-docker: Error response from daemon: Container command not found or does not exist..
-oberstet@thinkpad-t430s:~$ sudo docker run -it crossbario/autobahn-js node /root/client.js ws://192.168.1.142:8080/ws realm1
-session open! { x_cb_node_id: '60ef04fa6b73',
-  realm: 'realm1',
-  authid: '5TQF-7U6A-GPF9-M474-C9XH-EMJ9',
-  authrole: 'anonymous',
-  authmethod: 'anonymous',
-  authprovider: 'static',
-  roles:
-   { broker: { features: [Object] },
-     dealer: { features: [Object] } } }
-session closed: closed { reason: 'wamp.close.normal',
-  message: '',
-  retry_delay: null,
-  retry_count: null,
-  will_retry: false }
-oberstet@thinkpad-t430s:~$
 ```
