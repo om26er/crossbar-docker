@@ -1,6 +1,18 @@
-.PHONY: crossbar autobahnjs
-
 HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
+
+SUBDIRS = crossbar/x86_64 autobahn-js autobahn-python
+
+subdirs: $(SUBDIRS)
+
+BUILDDIRS = $(SUBDIRS:%=build-%)
+
+build: $(BUILDDIRS)
+
+$(BUILDDIRS):
+	$(MAKE) -C $(@:build-%=%) build
+
+.PHONY: subdirs $(BUILDDIRS)
+.PHONY: build
 
 # run this to start a test Crossbar.io container
 crossbar:
