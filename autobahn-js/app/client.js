@@ -4,8 +4,8 @@
 var autobahn = require('autobahn');
 
 // We read the connection parameters from the command line in this example:
-const url = process.argv[2];
-const realm = process.argv[3];
+const url = process.env.CBURL;
+const realm = process.env.CBREALM;
 
 // Make us a new connection ..
 var connection = new autobahn.Connection({url: url, realm: realm});

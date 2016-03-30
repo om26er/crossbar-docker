@@ -25,4 +25,4 @@ COPY ./app/* /app/
 
 # run service entry script by default
 WORKDIR /app
-CMD ["node", "client.js"]
+CMD ["sh", "/app/run"]

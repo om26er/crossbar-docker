@@ -7,7 +7,7 @@ default:
 
 build:
 	time sudo docker build -t crossbario/autobahn-js:full -f Dockerfile.full .
-	time sudo docker build -t crossbario/autobahn-js:alpine crossbario/autobahn-js:latest -f Dockerfile.alpine .
+	time sudo docker build -t crossbario/autobahn-js:alpine -t crossbario/autobahn-js:latest -f Dockerfile.alpine .
 
 version: node_version autobahn_version
 
