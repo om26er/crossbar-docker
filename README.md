@@ -30,7 +30,21 @@ sudo docker pull crossbario/autobahn-cpp:clang
 
 ## Usage
 
-Obviously, [install Docker](https://docs.docker.com/linux/).
+Obviously, [install Docker](https://docs.docker.com/linux/). The `Makefile` has two targets to install Docker and Docker Compose:
+
+```console
+make requirements
+```
+
+This should give you
+
+```console
+oberstet@thinkpad-t430s:~$ docker --version
+Docker version 1.10.3, build 20f81dd
+oberstet@thinkpad-t430s:~$ docker-compose --version
+docker-compose version 1.7.0rc1, build 1ad8866
+oberstet@thinkpad-t430s:~$
+```
 
 To test the end user experience, open a first terminal and type
 
