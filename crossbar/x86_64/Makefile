@@ -4,7 +4,8 @@ HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 REPOS=../..
 
 build:
-	rm -f .crossbar/node.key
+	# enforce auto-generating a new key when using the images
+	sudo rm -f node/.crossbar/node.key
 	time sudo docker build -t crossbario/crossbar:plus -f Dockerfile.plus .
 	time sudo docker build -t crossbario/crossbar:community -t crossbario/crossbar:latest -f Dockerfile.community .
 
@@ -15,6 +16,7 @@ test_community:
 	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar:community
 
 publish: build
+	sudo docker push crossbario/crossbar:latest
 	sudo docker push crossbario/crossbar:plus
 	sudo docker push crossbario/crossbar:community
 

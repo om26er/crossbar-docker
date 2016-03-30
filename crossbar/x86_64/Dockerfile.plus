@@ -2,7 +2,7 @@ FROM ubuntu:trusty
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
-ENV HOME /var/crossbar
+ENV HOME /node
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
 ENV PATH /opt/crossbar/bin:$PATH
@@ -14,13 +14,17 @@ RUN apt-key adv --keyserver hkps.pool.sks-keyservers.net --recv D58C6920 \
     && apt-get install -y crossbar \
     && rm -rf /var/lib/apt/lists/*
 
+# add (non-root) service user to run Crossbar.io
+RUN adduser --home /node --disabled-password --gecos "Crossbar.io Service" crossbar
+
 # initialize a Crossbar.io node
-COPY ./node /var/crossbar
-RUN chown -R daemon:daemon /var/crossbar
+COPY ./node/ /node/
+RUN chown -R crossbar:crossbar /node
 
 # run under this user, and expose default port
-USER daemon
+USER crossbar
 EXPOSE 8080 8000
 
 # entrypoint for the Docker image is the Crossbar.io executable
-ENTRYPOINT ["crossbar", "start", "--cbdir", "/var/crossbar/.crossbar"]
+WORKDIR /node
+ENTRYPOINT ["crossbar", "start", "--cbdir", "/node/.crossbar"]
