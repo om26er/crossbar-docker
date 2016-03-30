@@ -1,0 +1,25 @@
+FROM python:3-alpine
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV HOME /app
+ENV DEBIAN_FRONTEND noninteractive
+
+# Crossbar.io connection defaults
+ENV CBURL ws://crossbar:8080/ws
+ENV CBREALM realm1
+
+# until Twisted has fully migrated to CFFI, we need a toolchain =(
+RUN apk add --update build-base \
+    && rm -rf /var/cache/apk/*
+
+# install Autobahn|Python
+RUN pip install -U pip && pip install autobahn[twisted]
+
+# add example service
+COPY ./app /app
+
+# run service entry script by default
+WORKDIR /app
+RUN ln -s /app/client_tx.py /app/client.py
+CMD ["sh", "/app/run"]

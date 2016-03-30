@@ -29,7 +29,8 @@ COPY ./node/ /node/
 RUN chown -R crossbar:crossbar /node
 
 # run under this user, and expose default port
-USER crossbar
+# FIXME: running under "crossbar" breaks!
+#USER crossbar
 EXPOSE 8080 8000
 
 # entrypoint for the Docker image is the Crossbar.io executable
