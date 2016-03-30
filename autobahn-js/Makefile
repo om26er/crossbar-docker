@@ -33,9 +33,10 @@ test_full:
 test_alpine:
 	sudo docker run -it --rm --link crossbar crossbario/autobahn-js:alpine
 
-publish:
-	sudo docker push crossbario/autobahn-js:full
+publish: build
+	sudo docker push crossbario/autobahn-js:latest
 	sudo docker push crossbario/autobahn-js:alpine
+	sudo docker push crossbario/autobahn-js:full
 
 list:
 	sudo docker images

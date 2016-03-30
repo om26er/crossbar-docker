@@ -20,4 +20,4 @@ COPY ./app /app
 
 # run service entry script by default
 WORKDIR /app
-CMD ["python", "-u", "client.py"]
+CMD ["sh", "/app/run"]

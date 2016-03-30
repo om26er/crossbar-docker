@@ -11,40 +11,43 @@ build:
 	time sudo docker build -t crossbario/autobahn-python:cpy3-minimal -t crossbario/autobahn-python:latest -f Dockerfile.cpy3-minimal .
 
 version:
-	sudo docker run -it crossbario/autobahn-python:cpy2 python -V
-	sudo docker run -it crossbario/autobahn-python:cpy3 python -V
-	sudo docker run -it crossbario/autobahn-python:pypy2 pypy -V
-	sudo docker run -it crossbario/autobahn-python:cpy2-alpine python -V
-	sudo docker run -it crossbario/autobahn-python:cpy3-alpine python -V
-	sudo docker run -it crossbario/autobahn-python:cpy3-minimal python -V
+	sudo docker run -it --rm crossbario/autobahn-python:cpy2 python -V
+	sudo docker run -it --rm crossbario/autobahn-python:cpy3 python -V
+	sudo docker run -it --rm crossbario/autobahn-python:pypy2 python -V
+	sudo docker run -it --rm crossbario/autobahn-python:cpy2-alpine python -V
+	sudo docker run -it --rm crossbario/autobahn-python:cpy3-alpine python -V
+	sudo docker run -it --rm crossbario/autobahn-python:cpy3-minimal python -V
 
 autobahn_version:
-	sudo docker run -it crossbario/autobahn-python:cpy2 python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
-	sudo docker run -it crossbario/autobahn-python:cpy3 python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
-	sudo docker run -it crossbario/autobahn-python:pypy2 pypy -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
-	sudo docker run -it crossbario/autobahn-python:cpy2-alpine python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
-	sudo docker run -it crossbario/autobahn-python:cpy3-alpine python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
-	sudo docker run -it crossbario/autobahn-python:cpy3-minimal python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
+	sudo docker run -it --rm crossbario/autobahn-python:cpy2 python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
+	sudo docker run -it --rm crossbario/autobahn-python:cpy3 python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
+	sudo docker run -it --rm crossbario/autobahn-python:pypy2 python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
+	sudo docker run -it --rm crossbario/autobahn-python:cpy2-alpine python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
+	sudo docker run -it --rm crossbario/autobahn-python:cpy3-alpine python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
+	sudo docker run -it --rm crossbario/autobahn-python:cpy3-minimal python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
+
+test: test_cpy2 test_cpy3 test_pypy2 test_cpy2_alpine test_cpy3_alpine test_cpy3_minimal
 
 test_cpy2:
-	sudo docker run -it crossbario/autobahn-python:cpy2 python /app/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2 python
 
 test_cpy3:
-	sudo docker run -it crossbario/autobahn-python:cpy3 python /app/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3 python
 
 test_pypy2:
-	sudo docker run -it crossbario/autobahn-python:pypy2 pypy /app/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:pypy2 python
 
 test_cpy2_alpine:
-	sudo docker run -it crossbario/autobahn-python:cpy2-alpine python /app/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2-alpine python
 
 test_cpy3_alpine:
-	sudo docker run -it crossbario/autobahn-python:cpy3-alpine python /app/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3-alpine python
 
 test_cpy3_minimal:
-	sudo docker run -it crossbario/autobahn-python:cpy3-minimal python /app/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3-minimal python
 
-publish:
+publish: build
+	sudo docker push crossbario/autobahn-python:latest
 	sudo docker push crossbario/autobahn-python:cpy2
 	sudo docker push crossbario/autobahn-python:cpy3
 	sudo docker push crossbario/autobahn-python:pypy2

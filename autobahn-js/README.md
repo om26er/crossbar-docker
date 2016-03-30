@@ -9,11 +9,11 @@ The images
 * derive of `node` and `alpine` images
 * install AutobahnJS via npm
 * copy over the `app` folder to `/app` in the container
-* run `npm init && node client.js` in `/app` by default
+* run `npm install && node client.js` in `/app` by default
 
 ## Images
 
-1. `autobahnjs:latest`, `autobahnjs:alpine`: Alpine Linux based variant, the default (<30MB container size)
+1. **`autobahnjs:latest`, `autobahnjs:alpine`: Alpine Linux based variant, the default (<27MB container size)**
 2. `autobahnjs:full`: Variant based on full Node image (650MB container size)
 
 ## Build, test and deploy

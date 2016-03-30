@@ -17,4 +17,4 @@ COPY ./app /app
 
 # run service entry script by default
 WORKDIR /app
-CMD ["pypy", "-u", "client.py"]
+CMD ["sh", "/app/run"]
