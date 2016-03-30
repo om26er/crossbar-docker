@@ -5,13 +5,18 @@ REPOS=../..
 
 build:
 	rm -f .crossbar/node.key
-	time sudo docker build -t crossbario/crossbar .
+	time sudo docker build -t crossbario/crossbar:plus -f Dockerfile.plus .
+	time sudo docker build -t crossbario/crossbar:community -t crossbario/crossbar:latest -f Dockerfile.community .
 
-test:
-	sudo docker run -it -p 8080:8080 crossbario/crossbar
+test_plus:
+	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar:plus
 
-publish:
-	sudo docker push crossbario/crossbar
+test_community:
+	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar:community
+
+publish: build
+	sudo docker push crossbario/crossbar:plus
+	sudo docker push crossbario/crossbar:community
 
 start:
 	sudo docker run --entrypoint=/opt/crossbar/bin/crossbar -it -p 8080:8080 crossbario/crossbar start --cbdir /var/crossbar/.crossbar
@@ -28,5 +33,6 @@ crossbar:
 	sudo docker run \
 		-v ${PWD}/node:/var/crossbar \
 		--name crossbar \
+		--rm \
 		-p 8080:8080 \
 		-it crossbario/crossbar

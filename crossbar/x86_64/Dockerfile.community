@@ -1,0 +1,32 @@
+FROM python:3-alpine
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV HOME /var/crossbar
+ENV DEBIAN_FRONTEND noninteractive
+ENV PYTHONUNBUFFERED 1
+ENV PATH /opt/crossbar/bin:$PATH
+
+# we need a toolchain for binary extensions used by Crossbar.io
+RUN apk add --update build-base linux-headers libffi-dev openssl-dev python-dev py-pip \
+    && pip install -U pip \
+    && rm -rf /var/cache/apk/*
+
+# https://github.com/dvarrazzo/py-setproctitle/issues/44
+RUN apk add --update git \
+    && pip install git+https://github.com/dvarrazzo/py-setproctitle.git@fix-44 \
+    && rm -rf /var/cache/apk/*
+
+# install Crossbar.io from PyPI
+RUN pip install crossbar
+
+# initialize a Crossbar.io node
+COPY ./node /var/crossbar
+#RUN chown -R daemon:daemon /var/crossbar
+
+# run under this user, and expose default port
+#USER daemon
+EXPOSE 8080 8000
+
+# entrypoint for the Docker image is the Crossbar.io executable
+ENTRYPOINT ["crossbar", "start", "--cbdir", "/var/crossbar/.crossbar"]

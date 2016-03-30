@@ -1,0 +1,21 @@
+FROM python:2-alpine
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV HOME /app
+ENV DEBIAN_FRONTEND noninteractive
+
+# Crossbar.io connection defaults
+ENV CBURL ws://crossbar:8080/ws
+ENV CBREALM realm1
+
+# install Autobahn|Python
+RUN pip install -U pip && pip install autobahn[asyncio]
+
+# add example service
+COPY ./app /app
+
+# run service entry script by default
+WORKDIR /app
+RUN ln -s /app/client_aio.py /app/client.py
+CMD ["sh", "/app/run"]

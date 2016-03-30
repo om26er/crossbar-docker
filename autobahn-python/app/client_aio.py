@@ -2,7 +2,11 @@ import os
 import argparse
 import six
 import txaio
-import asyncio
+
+try:
+    import asyncio
+except ImportError:
+    import trollius as asyncio
 
 from autobahn.asyncio.wamp import ApplicationSession, ApplicationRunner
 
