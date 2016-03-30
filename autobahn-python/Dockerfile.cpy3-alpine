@@ -2,14 +2,19 @@ FROM python:3-alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
-ENV HOME /root
+ENV HOME /app
 ENV DEBIAN_FRONTEND noninteractive
 
-# we need this for Python extension packages to build
-RUN apk add --no-cache --update libffi-dev gcc musl-dev build-base
+# Crossbar.io connection defaults
+ENV CBURL ws://crossbar:8080/ws
+ENV CBREALM realm1
 
-# install AutobahnPython from PyPI https://pypi.python.org/pypi/autobahn
+# install Autobahn|Python
 RUN pip install -U pip && pip install autobahn[all]
 
-# add an example client
-ADD client.py /root/client.py
+# add example service
+COPY ./app /app
+
+# run service entry script by default
+WORKDIR /app
+CMD ["python", "-u", "client.py"]

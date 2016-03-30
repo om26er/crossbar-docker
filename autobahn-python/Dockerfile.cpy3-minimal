@@ -1,4 +1,4 @@
-FROM pypy:2
+FROM python:3-alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
@@ -10,11 +10,11 @@ ENV CBURL ws://crossbar:8080/ws
 ENV CBREALM realm1
 
 # install Autobahn|Python
-RUN pip install -U pip && pip install autobahn[all]
+RUN pip install -U pip && pip install autobahn[asyncio]
 
 # add example service
 COPY ./app /app
 
 # run service entry script by default
 WORKDIR /app
-CMD ["pypy", "-u", "client.py"]
+CMD ["python", "-u", "client.py"]

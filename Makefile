@@ -50,6 +50,8 @@ pull:
 	sudo docker pull crossbario/autobahn-python:cpy2-alpine
 	sudo docker pull crossbario/autobahn-python:cpy3-alpine
 
+requirements: docker docker_compose
+
 # install docker
 docker:
 	sudo apt-get install -y apt-transport-https ca-certificates
@@ -61,10 +63,15 @@ docker:
 	sudo apt-get install -y linux-image-extra-$$(uname -r)
 	sudo apt-get install -y docker-engine
 
+# install docker compose (see: https://github.com/docker/compose/releases)
+docker_compose:
+	sudo sh -c "curl -L https://github.com/docker/compose/releases/download/1.7.0-rc1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+	sudo chmod +x /usr/local/bin/docker-compose
+
 # http://jimhoskins.com/2013/07/27/remove-untagged-docker-images.html
 clean:
-	sudo docker rm $(sudo docker ps -a -q)
-	sudo docker rmi -f $(sudo docker images | grep "^<none>" | awk "{print $3}")
+	#sudo docker rm $(sudo docker ps -a -q)
+	sudo docker rmi -f $$(sudo docker images | grep "^<none>" | awk "{print $$3}")
 
 list:
 	sudo docker images
