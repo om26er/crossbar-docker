@@ -27,5 +27,6 @@ crossbar:
 	sudo chown -R daemon:daemon node
 	sudo docker run \
 		-v ${PWD}/node:/var/crossbar \
+		--name crossbar \
 		-p 8080:8080 \
 		-it crossbario/crossbar

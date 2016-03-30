@@ -29,22 +29,22 @@ autobahn_version:
 test: test_cpy2 test_cpy3 test_pypy2 test_cpy2_alpine test_cpy3_alpine test_cpy3_minimal
 
 test_cpy2:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2 python
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2
 
 test_cpy3:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3 python
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3
 
 test_pypy2:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:pypy2 python
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:pypy2
 
 test_cpy2_alpine:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2-alpine python
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2-alpine
 
 test_cpy3_alpine:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3-alpine python
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3-alpine
 
 test_cpy3_minimal:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3-minimal python
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3-minimal
 
 publish: build
 	sudo docker push crossbario/autobahn-python:latest

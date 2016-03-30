@@ -43,17 +43,20 @@ autobahnpython_cpy3_minimal:
 
 # pull all our images
 pull:
-	sudo docker pull crossbario/crossbar
-	sudo docker pull crossbario/autobahn-cpp:gcc
+	sudo docker pull crossbario/crossbar:latest
+	sudo docker pull crossbario/autobahn-cpp:latest
+	#sudo docker pull crossbario/autobahn-cpp:gcc
 	#sudo docker pull crossbario/autobahn-cpp:clang
+	sudo docker pull crossbario/autobahn-js:latest
 	sudo docker pull crossbario/autobahn-js:full
 	sudo docker pull crossbario/autobahn-js:alpine
+	#sudo docker pull crossbario/autobahn-python:latest
 	sudo docker pull crossbario/autobahn-python:cpy2
 	sudo docker pull crossbario/autobahn-python:cpy3
 	sudo docker pull crossbario/autobahn-python:pypy2
 	sudo docker pull crossbario/autobahn-python:cpy2-alpine
 	#sudo docker pull crossbario/autobahn-python:cpy3-alpine
-	sudo docker pull crossbario/autobahn-python:cpy3-minimal
+	#sudo docker pull crossbario/autobahn-python:cpy3-minimal
 
 requirements: docker docker_compose
 
