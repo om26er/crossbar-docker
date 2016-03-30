@@ -4,7 +4,7 @@ HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 
 build:
 	time sudo docker build -t crossbario/autobahn-cpp:gcc -f Dockerfile.gcc .
-	time sudo docker build -t crossbario/autobahn-cpp:clang -f Dockerfile.clang .
+	#time sudo docker build -t crossbario/autobahn-cpp:clang -f Dockerfile.clang .
 
 shell_gcc:
 	sudo docker run -it --rm crossbario/autobahn-cpp:gcc bash
@@ -17,7 +17,7 @@ test_gcc:
 
 publish:
 	sudo docker push crossbario/autobahn-cpp:gcc
-	sudo docker push crossbario/autobahn-cpp:clang
+	#sudo docker push crossbario/autobahn-cpp:clang
 
 list:
 	sudo docker images
