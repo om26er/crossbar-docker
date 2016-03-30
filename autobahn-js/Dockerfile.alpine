@@ -2,16 +2,22 @@ FROM alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
-ENV HOME /root
+ENV HOME /app
 ENV DEBIAN_FRONTEND noninteractive
+
 ENV NODE_PATH /usr/lib/node_modules/
+
+# make sure HOME exists!
+RUN mkdir /app
 
 RUN apk add --update nodejs
 
-# install AutobahnJS globally from https://www.npmjs.com/package/autobahn
+# install AutobahnJS globallycom/package/autobahn
 RUN npm install -g autobahn
 
-# add an example client
-ADD client.js /root/client.js
+# add example service
+COPY ./app/* /app/
 
-CMD ["node"]
+# run service entry script by default
+WORKDIR /app
+CMD ["node", "client.js"]

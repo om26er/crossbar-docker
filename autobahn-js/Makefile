@@ -5,7 +5,6 @@ HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 build:
 	time sudo docker build -t crossbario/autobahn-js -f Dockerfile .
 	time sudo docker build -t crossbario/autobahn-js:alpine -f Dockerfile.alpine .
-	time sudo docker build -t crossbario/autobahn-js:alpine-node-only -f Dockerfile.alpine.node-only .
 
 version: node_version autobahn_version
 
@@ -24,10 +23,10 @@ ping_alpine:
 	sudo docker run --add-host=crossbar:$(HOSTIP) -it crossbario/autobahn-js:alpine ping crossbar
 
 test:
-	sudo docker run -it crossbario/autobahn-js node /root/client.js ws://$(HOSTIP):8080/ws realm1
+	sudo docker run -it crossbario/autobahn-js node /app/client.js ws://$(HOSTIP):8080/ws realm1
 
 test_alpine:
-	sudo docker run -it crossbario/autobahn-js:alpine node /root/client.js ws://$(HOSTIP):8080/ws realm1
+	sudo docker run -it crossbario/autobahn-js:alpine node /app/client.js ws://$(HOSTIP):8080/ws realm1
 
 publish:
 	sudo docker push crossbario/autobahn-js

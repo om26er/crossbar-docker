@@ -1,8 +1,0 @@
-FROM alpine
-
-ENV DEBIAN_FRONTEND noninteractive
-ENV NODE_PATH /usr/lib/node_modules/
-
-RUN apk add --update nodejs
-
-CMD ["node"]
