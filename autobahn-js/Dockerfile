@@ -7,6 +7,10 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ENV NODE_PATH /usr/local/lib/node_modules/
 
+# Crossbar.io connection defaults
+ENV CBURL ws://crossbar:8080/ws
+ENV CBREALM realm1
+
 # make sure HOME exists!
 RUN mkdir /app
 
