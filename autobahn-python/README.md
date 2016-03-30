@@ -6,26 +6,26 @@ These images come with Python, Twisted/asyncio and AutobahnPython preinstalled a
 
 ## Images
 
-Variants based on CPython (Alpine Linux base image, both Twisted and asyncio):
+Variants based on CPython (full base image, both Twisted and asyncio, all Autobahn optional dependencies):
 
-* **`crossbario/autobahn-python:latest`, `crossbario/autobahn-python:cpy3-alpine` (330.9 MB container size)** RECOMMENDED FOR GENERAL USE
+* `crossbario/autobahn-python:cpy3` (730.5 MB container size)
+* `crossbario/autobahn-python:cpy2` (726.3 MB container size)
+
+Variants based on PyPy (full base image, both Twisted and asyncio, all Autobahn optional dependencies):
+
+* `crossbario/autobahn-python:pypy2` (766.5 MB container size)
+
+Variants based on CPython (Alpine Linux base image, both Twisted and asyncio, all Autobahn optional dependencies):
+
+* **`crossbario/autobahn-python:latest` == `crossbario/autobahn-python:cpy3-alpine` (330.9 MB container size)** RECOMMENDED FOR GENERAL USE
 * `crossbario/autobahn-python:cpy2-alpine` (326.3 MB container size)
 
-Variants based on CPython (Alpine Linux base image, either Twisted or asyncio):
+Variants based on CPython (Alpine Linux base image, either Twisted or asyncio, only minimum dependencies):
 
 * `crossbario/autobahn-python:cpy3-minimal-aio` (103.1 MB container size)
 * `crossbario/autobahn-python:cpy2-minimal-aio` (81.56 MB container size)
 * `crossbario/autobahn-python:cpy3-minimal-tx`  (269.8 MB container size)
 * `crossbario/autobahn-python:cpy2-minimal-tx`  (262.5 MB container size)
-
-Variants based on CPython (full base image):
-
-* `crossbario/autobahn-python:cpy3` (730.5 MB container size)
-* `crossbario/autobahn-python:cpy2` (726.3 MB container size)
-
-Variants based on PyPy:
-
-* `crossbario/autobahn-python:pypy2` (766.5 MB container size)
 
 ## Build, test and deploy
 

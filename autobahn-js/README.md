@@ -4,16 +4,9 @@ Here you find the Dockerfiles for creating the [AutobahnJS for Docker images](ht
 
 These images come with NodeJS and AutobahnJS preinstalled and are intended to base application service containers on.
 
-The images
-
-* derive of `node` and `alpine` images
-* install AutobahnJS via npm
-* copy over the `app` folder to `/app` in the container
-* run `npm install && node client.js` in `/app` by default
-
 ## Images
 
-1. **`crossbario/autobahn-js:latest`, `crossbario/autobahnjs:alpine`: Alpine Linux based variant, the default (<27MB container size)**
+1. **`crossbario/autobahn-js:latest` == `crossbario/autobahnjs:alpine`: Alpine Linux based variant, the default (<27MB container size)** RECOMMENDED FOR GENERAL USE
 2. `crossbario/autobahn-js:full`: Variant based on full Node image (650MB container size)
 
 ## Build, test and deploy
