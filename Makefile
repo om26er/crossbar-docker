@@ -4,7 +4,7 @@ HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 
 # run this to start a test Crossbar.io container
 crossbar:
-	sudo docker run -it -p 8080:8080 crossbario/crossbar
+	sudo docker run -it -p 8080:8080 --name crossbar --rm crossbario/crossbar
 
 # run this to test all Autobahn flavors against above Crossbar.io sequentially
 autobahn: autobahnjs autobahnjs_alpine \
@@ -24,24 +24,28 @@ autobahnjs_alpine:
 	sudo docker run -it crossbario/autobahn-js:alpine node /root/client.js ws://$(HOSTIP):8080/ws realm1
 
 autobahnpython_cpy2:
-	sudo docker run -it crossbario/autobahn-python:cpy2 python /root/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2
 
 autobahnpython_cpy3:
-	sudo docker run -it crossbario/autobahn-python:cpy3 python /root/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3
 
 autobahnpython_pypy2:
-	sudo docker run -it crossbario/autobahn-python:pypy2 pypy /root/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:pypy2
 
 autobahnpython_cpy2_alpine:
-	sudo docker run -it crossbario/autobahn-python:cpy2-alpine python /root/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2-alpine
 
 autobahnpython_cpy3_alpine:
-	sudo docker run -it crossbario/autobahn-python:cpy3-alpine python /root/client.py --url ws://$(HOSTIP):8080/ws --realm realm1
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2-alpine
+
+autobahnpython_cpy3_minimal:
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3-minimal
 
 # pull all our images
 pull:
 	sudo docker pull crossbario/crossbar
-	sudo docker pull crossbario/autobahn-cpp
+	sudo docker pull crossbario/autobahn-cpp:gcc
+	sudo docker pull crossbario/autobahn-cpp:clang
 	sudo docker pull crossbario/autobahn-js
 	sudo docker pull crossbario/autobahn-js:alpine
 	sudo docker pull crossbario/autobahn-python:cpy2
@@ -49,6 +53,8 @@ pull:
 	sudo docker pull crossbario/autobahn-python:pypy2
 	sudo docker pull crossbario/autobahn-python:cpy2-alpine
 	sudo docker pull crossbario/autobahn-python:cpy3-alpine
+	sudo docker pull crossbario/autobahn-python:cpy3-alpine
+	sudo docker pull crossbario/autobahn-python:cpy3-minimal
 
 requirements: docker docker_compose
 

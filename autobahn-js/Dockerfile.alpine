@@ -14,7 +14,8 @@ ENV CBREALM realm1
 # make sure HOME exists!
 RUN mkdir /app
 
-RUN apk add --update nodejs
+RUN apk add --update nodejs \
+    && rm -rf /var/cache/apk/*
 
 # install AutobahnJS globallycom/package/autobahn
 RUN npm install -g autobahn
