@@ -6,33 +6,42 @@ ENV HOME /node
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
 ENV PATH /usr/local/bin:$PATH
+ENV CROSSBAR_VERSION 0.13.0
 
-# we need a toolchain for binary extensions used by Crossbar.io
-RUN apk add --update build-base linux-headers libffi-dev openssl-dev python-dev py-pip \
-    && pip install -U pip \
-    && rm -rf /var/cache/apk/*
+RUN apk --update upgrade && \
+    apk add --virtual runtime-dependencies \
+                            py-pip && \
+    apk add --virtual build-dependencies \
+                            git \
+                            build-base \
+                            python-dev \
+                            libffi-dev \
+                            openssl-dev \
+                            linux-headers && \
+     pip install -U pip && \
+     pip install git+https://github.com/dvarrazzo/py-setproctitle.git@fix-44 && \
+     pip install crossbar==${CROSSBAR_VERSION} && \
 
-# https://github.com/dvarrazzo/py-setproctitle/issues/44
-RUN apk add --update git \
-    && pip install git+https://github.com/dvarrazzo/py-setproctitle.git@fix-44 \
-    && rm -rf /var/cache/apk/*
+     #add our user and group
+     addgroup crossbar && \
+     adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar && \
 
-# install Crossbar.io from PyPI
-RUN pip install crossbar
+     #clean up and shrink the image size
+     apk del build-dependencies && \
+            rm -rf /var/cache/* && \
+            rm -rf /tmp/* && \
+     crossbar version
 
-# add (non-root) service user to run Crossbar.io
-RUN addgroup crossbar \
-    && adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar
 
 # initialize a Crossbar.io node
 COPY ./node/ /node/
 RUN chown -R crossbar:crossbar /node
 
+# entrypoint for the Docker image is the Crossbar.io executable
+WORKDIR /node
+
 # run under this user, and expose default port
 # FIXME: running under "crossbar" breaks!
 #USER crossbar
 EXPOSE 8080 8000
-
-# entrypoint for the Docker image is the Crossbar.io executable
-WORKDIR /node
 ENTRYPOINT ["crossbar", "start", "--cbdir", "/node/.crossbar"]
