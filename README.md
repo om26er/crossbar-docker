@@ -23,7 +23,6 @@ sudo docker pull crossbario/crossbar
 sudo docker pull crossbario/autobahn-js
 sudo docker pull crossbario/autobahn-js:alpine
 sudo docker pull crossbario/autobahn-cpp:gcc
-sudo docker pull crossbario/autobahn-cpp:clang
 ```
 
 ---
