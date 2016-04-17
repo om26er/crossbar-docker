@@ -6,7 +6,7 @@ ENV HOME /node
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
 ENV PATH /usr/local/bin:$PATH
-ENV CROSSBAR_VERSION 0.13.0
+ENV CROSSBAR_VERSION 0.13.2
 
 RUN apk --update upgrade && \
     apk add --virtual runtime-dependencies \
