@@ -22,11 +22,11 @@ RUN apk --update upgrade && \
      pip install git+https://github.com/dvarrazzo/py-setproctitle.git@fix-44 && \
      pip install crossbar==${CROSSBAR_VERSION} && \
 
-     #add our user and group
+     # add our user and group
      addgroup crossbar && \
      adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar && \
 
-     #clean up and shrink the image size
+     # clean up and shrink the image size
      apk del build-dependencies && \
             rm -rf /var/cache/* && \
             rm -rf /tmp/* && \
