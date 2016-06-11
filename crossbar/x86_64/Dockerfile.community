@@ -8,29 +8,40 @@ ENV PYTHONUNBUFFERED 1
 ENV PATH /usr/local/bin:$PATH
 ENV CROSSBAR_VERSION 0.13.2
 
-RUN apk --update upgrade && \
-    apk add --virtual runtime-dependencies \
+RUN    apk --update upgrade \
+    && apk add --virtual runtime-dependencies \
                             py-pip && \
-    apk add --virtual build-dependencies \
+    && apk add --virtual build-dependencies \
                             git \
                             build-base \
                             python-dev \
                             libffi-dev \
                             openssl-dev \
                             linux-headers && \
-     pip install -U pip && \
-     pip install git+https://github.com/dvarrazzo/py-setproctitle.git@fix-44 && \
-     pip install crossbar==${CROSSBAR_VERSION} && \
+    && pip install -U pip \
+    && pip install git+https://github.com/dvarrazzo/py-setproctitle.git@fix-44 \
+    && pip install crossbar==${CROSSBAR_VERSION} \
 
-     #add our user and group
-     addgroup crossbar && \
-     adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar && \
+    # clean up and shrink the image size
+    && apk del build-dependencies \
+    && rm -rf   /var/cache/* \
+                /tmp/* \
+                /etc/ssl \
+                /usr/share/man \
+                /var/cache/apk/* \
+                /root/.npm \
+                /root/.node-gyp \
+                /root/.gnupg \
+                /usr/lib/node_modules/npm/man \
+                /usr/lib/node_modules/npm/doc \
+                /usr/lib/node_modules/npm/html \
 
-     #clean up and shrink the image size
-     apk del build-dependencies && \
-            rm -rf /var/cache/* && \
-            rm -rf /tmp/* && \
-     crossbar version
+    # add our user and group
+    && addgroup crossbar \
+    && adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar \
+
+    # test if everything installed properly
+    && crossbar version
 
 
 # initialize a Crossbar.io node
