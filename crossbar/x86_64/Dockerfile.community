@@ -9,15 +9,14 @@ ENV PATH /usr/local/bin:$PATH
 ENV CROSSBAR_VERSION 0.13.2
 
 RUN    apk --update upgrade \
-    && apk add --virtual runtime-dependencies \
-                            py-pip && \
     && apk add --virtual build-dependencies \
                             git \
                             build-base \
                             python-dev \
+                            py-pip \
                             libffi-dev \
                             openssl-dev \
-                            linux-headers && \
+                            linux-headers \
 
     && pip install -U pip \
     && pip install git+https://github.com/dvarrazzo/py-setproctitle.git@fix-44 \
@@ -40,11 +39,6 @@ RUN    apk --update upgrade \
     # add our user and group
     && addgroup crossbar \
     && adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar \
-
-     # clean up and shrink the image size
-    && apk del build-dependencies \
-    && rm -rf /var/cache/* \
-              /tmp/* \
 
     # test if everything installed properly
     && crossbar version
