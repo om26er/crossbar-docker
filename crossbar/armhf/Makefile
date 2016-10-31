@@ -22,7 +22,7 @@ default:
 
 wheel_community:
 	docker build -t community-wheel -f Dockerfile.community.base .
-	docker run --rm -d --name community-wheel-builder -v "$(shell pwd)/wheelhouse:/wheelhouse" community-wheel
+	docker run -d --name community-wheel-builder -v "$(shell pwd)/wheelhouse:/wheelhouse" community-wheel
 
 
 build: build_plus build_community
@@ -39,6 +39,7 @@ build_community:
 
 teardown_community:
 	docker stop community-wheel-builder
+	docker rm community-wheel-builder
 
 
 test: test_plus test_community
