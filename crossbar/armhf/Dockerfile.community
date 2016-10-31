@@ -24,7 +24,7 @@ RUN chown -R crossbar:crossbar /node
 # Install Crossbar from the built wheels
 ADD wheelhouse /wheelhouse
 RUN . /appenv/bin/activate; \
-    pip install --no-index -f wheelhouse crossbar==${CROSSBAR_VERSION}
+    pip install -U --no-index -f wheelhouse crossbar==${CROSSBAR_VERSION}
 
 # test if everything installed properly
 RUN crossbar version
