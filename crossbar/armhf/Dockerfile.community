@@ -23,7 +23,9 @@ RUN chown -R crossbar:crossbar /node
 
 # Install Crossbar from the built wheels
 RUN . /appenv/bin/activate; \
-    pip install -U --index-url http://172.17.0.1:8081 crossbar==${CROSSBAR_VERSION}
+    pip install -U \
+    --index-url http://172.17.0.1:8081 --trusted-host 172.17.0.1 \
+    crossbar==${CROSSBAR_VERSION}
 
 # test if everything installed properly
 RUN /appenv/bin/crossbar version
