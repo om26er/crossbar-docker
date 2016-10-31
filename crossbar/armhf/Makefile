@@ -21,7 +21,7 @@ default:
 	@echo ""
 
 wheel_community:
-	docker build -t community-wheel -f Dockerfile.community.base
+	docker build -t community-wheel -f Dockerfile.community.base .
 	docker run --rm -d --name community-wheel-builder -v "$(shell pwd)/wheelhouse:/wheelhouse" community-wheel
 
 
