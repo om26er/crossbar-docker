@@ -27,7 +27,7 @@ RUN . /appenv/bin/activate; \
     pip install -U --no-index -f wheelhouse crossbar==${CROSSBAR_VERSION}
 
 # test if everything installed properly
-RUN crossbar version
+RUN /appenv/bin/crossbar version
 
 # entrypoint for the Docker image is the Crossbar.io executable
 WORKDIR /node
