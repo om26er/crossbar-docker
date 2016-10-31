@@ -35,20 +35,19 @@ build_plus:
 build_community:
 	# enforce auto-generating a new key when using the images
 	sudo rm -f node/.crossbar/node.key
-	time sudo docker build -t crossbario/crossbar-armhf:community -t crossbario/crossbar-armhf:latest -f Dockerfile.community .
+	time sudo docker build -t crossbario/crossbar-armhf:community "$(shell pwd)/node:/node" -t crossbario/crossbar-armhf:latest -f Dockerfile.community .
 
 teardown_community:
-	docker stop community-wheel-builder
-	docker rm community-wheel-builder
+	docker rm -f community-wheel-builder
 
 
 test: test_plus test_community
 
 test_plus:
-	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar-armhf:plus
+	sudo docker run --rm -it -p 8080:8080 -v $(pwd)/node:/node --name crossbar crossbario/crossbar-armhf:plus
 
 test_community:
-	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar-armhf:community
+	sudo docker run --rm -it -p 8080:8080 -v $(pwd)/node:/node --name crossbar crossbario/crossbar-armhf:community
 
 
 version: version_plus version_community
