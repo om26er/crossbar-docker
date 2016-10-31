@@ -13,13 +13,13 @@ RUN apk --update upgrade && apk add libffi
 RUN python3 -m venv /appenv
 RUN . /appenv/bin/activate; pip install -U pip
 
-# initialize a Crossbar.io node
-VOLUME /node
-RUN chown -R crossbar:crossbar /node
-
 # add our user and group
 RUN addgroup crossbar
 RUN adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar
+
+# initialize a Crossbar.io node
+VOLUME /node
+RUN chown -R crossbar:crossbar /node
 
 # Install Crossbar from the built wheels
 ADD wheelhouse /wheelhouse
