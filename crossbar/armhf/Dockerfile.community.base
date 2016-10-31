@@ -23,6 +23,9 @@ ENV PIP_FIND_LINKS=/wheelhouse
 
 VOLUME /wheelhouse
 
+RUN pip install twisted
+
+EXPOSE 8081 8081
 ENTRYPOINT . /appenv/bin/activate; \
            pip wheel crossbar==${CROSSBAR_VERSION}; \
-           pip install twisted; twist web --path=/wheelhouse --port=tcp:8081
+           twist web --path=/wheelhouse --port=tcp:8081
