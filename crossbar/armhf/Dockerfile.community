@@ -8,13 +8,13 @@ ENV PYTHONUNBUFFERED 1
 ENV PATH /usr/local/bin:$PATH
 ENV CROSSBAR_VERSION 0.15.0
 
-RUN apk --update upgrade \
+RUN apk --update upgrade
 RUN apk add --virtual build-dependencies \
-                            git \
-                            build-base \
-                            libffi-dev \
-                            openssl-dev \
-                            linux-headers
+            git \
+            build-base \
+            libffi-dev \
+            openssl-dev \
+            linux-headers
 
 # Install Crossbar
 RUN pip install -U pip
