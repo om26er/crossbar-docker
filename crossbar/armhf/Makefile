@@ -20,6 +20,11 @@ default:
 	@echo "  publish_community      Publish community image"
 	@echo ""
 
+wheel_community:
+	docker build -t community-wheel -f Dockerfile.community.base .
+	docker run --rm -it --name community-wheel
+
+
 build: build_plus build_community
 
 build_plus:
