@@ -33,6 +33,9 @@ RUN    apk --update upgrade \
                 /usr/lib/node_modules/npm/doc \
                 /usr/lib/node_modules/npm/html \
 
+    # Install some runtime deps
+    && apk add libffi \
+
     # add our user and group
     && addgroup crossbar \
     && adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar \
