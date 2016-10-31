@@ -22,7 +22,7 @@ default:
 
 wheel_community:
 	docker build -t community-wheel -f Dockerfile.community.base .
-	docker run --rm -it --name community-wheel-builder -v "$(shell pwd)"/wheelhouse:/wheelhouse community-wheel
+	docker run --rm -it --name community-wheel-builder -v "$(shell pwd)/wheelhouse:/wheelhouse" community-wheel
 
 
 build: build_plus build_community
