@@ -25,4 +25,4 @@ VOLUME /wheelhouse
 
 ENTRYPOINT . /appenv/bin/activate; \
            pip wheel crossbar==${CROSSBAR_VERSION}; \
-           pip install twisted; twistd web --path=/wheelhouse --port=tcp:8081
+           pip install twisted; twist web --path=/wheelhouse --port=tcp:8081
