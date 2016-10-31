@@ -21,7 +21,8 @@ default:
 	@echo ""
 
 wheel_community:
-	docker build -t community-wheel -f Dockerfile.community.base .
+	docker build -t community-wheel -f Dockerfile.community.base
+	docker run --rm -d --name community-wheel-builder -v "$(shell pwd)/wheelhouse:/wheelhouse" community-wheel
 
 
 build: build_plus build_community
@@ -34,8 +35,9 @@ build_plus:
 build_community:
 	# enforce auto-generating a new key when using the images
 	sudo rm -f node/.crossbar/node.key
-	docker run --rm --name community-wheel-builder -v "$(shell pwd)/wheelhouse:/wheelhouse" community-wheel
 	time sudo docker build -t crossbario/crossbar-armhf:community -t crossbario/crossbar-armhf:latest -f Dockerfile.community .
+
+teardown_community:
 	docker stop community-wheel-builder
 
 
