@@ -9,7 +9,7 @@
             console.log("Running AutobahnJS " + autobahn.version);
 
             var connection = new autobahn.Connection({
-                url: "ws://127.0.0.1:8080/ws",
+                url: "ws://" + document.location.host + "/ws",
                 realm: "realm1"
             });
 
