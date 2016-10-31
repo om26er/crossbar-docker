@@ -49,6 +49,6 @@ WORKDIR /node
 
 # run under this user, and expose default port
 # FIXME: running under "crossbar" breaks!
-#USER crossbar
+USER crossbar
 EXPOSE 8080 8000
 ENTRYPOINT ["crossbar", "start", "--cbdir", "/node/.crossbar"]
