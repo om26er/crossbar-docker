@@ -1,2 +1,4 @@
 *.pid
 *.key
+.DS_Store
+*~
