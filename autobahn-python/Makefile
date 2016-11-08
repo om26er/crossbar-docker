@@ -6,6 +6,7 @@ build:
 	time sudo docker build -t crossbario/autobahn-python:cpy2 -f Dockerfile.cpy2 .
 	time sudo docker build -t crossbario/autobahn-python:cpy3 -f Dockerfile.cpy3 .
 	time sudo docker build -t crossbario/autobahn-python:pypy2 -f Dockerfile.pypy2 .
+	time sudo docker build -t crossbario/autobahn-python:pypy3 -f Dockerfile.pypy3 .
 	time sudo docker build -t crossbario/autobahn-python:cpy2-alpine -f Dockerfile.cpy2-alpine .
 	time sudo docker build -t crossbario/autobahn-python:cpy3-alpine -t crossbario/autobahn-python:latest -f Dockerfile.cpy3-alpine .
 	time sudo docker build -t crossbario/autobahn-python:cpy2-minimal-aio -f Dockerfile.cpy2-minimal-aio .
@@ -19,6 +20,7 @@ python_version:
 	sudo docker run -it --rm crossbario/autobahn-python:cpy2 python -V
 	sudo docker run -it --rm crossbario/autobahn-python:cpy3 python -V
 	sudo docker run -it --rm crossbario/autobahn-python:pypy2 python -V
+	sudo docker run -it --rm crossbario/autobahn-python:pypy3 python -V
 	sudo docker run -it --rm crossbario/autobahn-python:cpy2-alpine python -V
 	sudo docker run -it --rm crossbario/autobahn-python:cpy3-alpine python -V
 	sudo docker run -it --rm crossbario/autobahn-python:cpy2-minimal-aio python -V
@@ -30,6 +32,7 @@ autobahn_version:
 	sudo docker run -it --rm crossbario/autobahn-python:cpy2 python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
 	sudo docker run -it --rm crossbario/autobahn-python:cpy3 python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
 	sudo docker run -it --rm crossbario/autobahn-python:pypy2 python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
+	sudo docker run -it --rm crossbario/autobahn-python:pypy3 python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
 	sudo docker run -it --rm crossbario/autobahn-python:cpy2-alpine python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
 	sudo docker run -it --rm crossbario/autobahn-python:cpy3-alpine python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
 	sudo docker run -it --rm crossbario/autobahn-python:cpy2-minimal-aio python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
@@ -37,7 +40,7 @@ autobahn_version:
 	sudo docker run -it --rm crossbario/autobahn-python:cpy2-minimal-tx python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
 	sudo docker run -it --rm crossbario/autobahn-python:cpy3-minimal-tx python -c "import autobahn; print('running autobahn-{}'.format(autobahn.__version__))"
 
-test: test_cpy2 test_cpy3 test_pypy2 test_cpy2_alpine test_cpy3_alpine test_cpy2_minimal_aio test_cpy3_minimal_aio test_cpy2_minimal_tx test_cpy3_minimal_tx
+test: test_cpy2 test_cpy3 test_pypy2 test_pypy3 test_cpy2_alpine test_cpy3_alpine test_cpy2_minimal_aio test_cpy3_minimal_aio test_cpy2_minimal_tx test_cpy3_minimal_tx
 
 test_cpy2:
 	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2
@@ -47,6 +50,9 @@ test_cpy3:
 
 test_pypy2:
 	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:pypy2
+
+test_pypy3:
+	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:pypy3
 
 test_cpy2_alpine:
 	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2-alpine
@@ -71,6 +77,7 @@ publish: build
 	sudo docker push crossbario/autobahn-python:cpy2
 	sudo docker push crossbario/autobahn-python:cpy3
 	sudo docker push crossbario/autobahn-python:pypy2
+	sudo docker push crossbario/autobahn-python:pypy3
 	sudo docker push crossbario/autobahn-python:cpy2-alpine
 	sudo docker push crossbario/autobahn-python:cpy3-alpine
 	sudo docker push crossbario/autobahn-python:cpy2-minimal-aio
