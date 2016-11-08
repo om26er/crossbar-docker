@@ -67,4 +67,4 @@ if __name__ == '__main__':
 
     # now actually run a WAMP client using our session class ClientSession
     runner = ApplicationRunner(url=args.url, realm=args.realm, extra=extra)
-    runner.run(ClientSession)
+    runner.run(ClientSession, auto_reconnect=True)

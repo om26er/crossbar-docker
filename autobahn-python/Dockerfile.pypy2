@@ -13,7 +13,7 @@ ENV CBREALM realm1
 RUN ln -s /usr/local/bin/pypy /usr/local/bin/python
 
 # install Autobahn|Python
-RUN pip install -U pip && pip install autobahn[all]
+RUN pip install -U pip && pip install autobahn[twisted,asyncio,serialization,encryption]
 
 # add example service
 COPY ./app /app
