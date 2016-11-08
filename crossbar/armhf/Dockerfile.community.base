@@ -1,0 +1,30 @@
+FROM armhf/python:3.5-alpine
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV PYTHONUNBUFFERED 1
+ENV PATH /usr/local/bin:$PATH
+ENV CROSSBAR_VERSION 0.15.0
+
+RUN apk --update upgrade
+RUN apk add git \
+            build-base \
+            libffi-dev \
+            openssl-dev \
+            linux-headers
+
+RUN python3 -m venv /appenv
+RUN . /appenv/bin/activate; pip install -U pip wheel
+
+ENV WHEELHOUSE=/wheelhouse
+ENV PIP_WHEEL_DIR=/wheelhouse
+ENV PIP_FIND_LINKS=/wheelhouse
+
+VOLUME /wheelhouse
+
+RUN pip install twisted
+
+ENTRYPOINT . /appenv/bin/activate; \
+           pip wheel crossbar==${CROSSBAR_VERSION}; \
+           twist web --path=/wheelhouse --port=tcp:8081
