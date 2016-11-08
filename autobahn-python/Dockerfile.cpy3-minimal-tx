@@ -18,8 +18,13 @@ RUN pip install -U pip && pip install autobahn[twisted]
 
 # add example service
 COPY ./app /app
+RUN ln -s /app/client_tx.py /app/client.py
+
+# make /app a volume to allow external configuration
+VOLUME /app
+
+# set the app component directory as working directory
+WORKDIR /app
 
 # run service entry script by default
-WORKDIR /app
-RUN ln -s /app/client_tx.py /app/client.py
 CMD ["sh", "/app/run"]
