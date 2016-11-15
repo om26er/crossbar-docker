@@ -20,7 +20,7 @@ ENV CXX /usr/bin/clang++
 # update system, get dev tools and libs
 RUN apt-get update \
     && apt-get install -y wget curl unzip git-core \
-                          clang libc++1 libc++-dev \
+                          clang libc++1 libc++-dev libc++abi-dev \
                           build-essential autotools-dev autoconf libtool cmake scons \
                           libbz2-dev libssl-dev \
     && rm -rf /var/lib/apt/lists/* \
