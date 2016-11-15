@@ -13,7 +13,6 @@ RUN mkdir -p /usr/local/app
 # env vars to configure websocketpp
 ENV WSPP_ENABLE_CPP11 1
 
-
 # update system, get dev tools and libs
 RUN apt-get update \
     && apt-get install -y wget curl unzip git-core \

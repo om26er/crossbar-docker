@@ -13,10 +13,6 @@ RUN mkdir -p /usr/local/app
 # env vars to configure websocketpp
 ENV WSPP_ENABLE_CPP11 1
 
-# use clang, not gcc
-ENV CC /usr/bin/clang
-ENV CXX /usr/bin/clang++
-
 # update system, get dev tools and libs
 RUN apt-get update \
     && apt-get install -y wget curl unzip git-core \
@@ -25,6 +21,14 @@ RUN apt-get update \
                           libbz2-dev libssl-dev \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
+
+# use clang, not gcc
+ENV CC /usr/bin/clang
+ENV CXX /usr/bin/clang++
+RUN    update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100 \
+    && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 100 \
+    && update-alternatives --query c++ \
+    && update-alternatives --query cc
 
 # get, build and install Boost from upstream
 RUN cd /tmp \
