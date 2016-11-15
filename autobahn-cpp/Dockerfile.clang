@@ -19,7 +19,7 @@ ENV CXX /usr/bin/clang++
 
 # https://github.com/crossbario/crossbar-docker/issues/25
 # http://lists.alioth.debian.org/pipermail/pkg-llvm-team/2015-September/005208.html
-ENV CXXFLAGS=/usr/include/libcxxabi
+ENV CXXFLAGS /usr/include/libcxxabi
 
 # update system, get dev tools and libs
 RUN apt-get update \
