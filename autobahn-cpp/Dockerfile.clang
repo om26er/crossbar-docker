@@ -53,8 +53,8 @@ RUN cd /tmp \
 RUN cd /tmp \
     && wget https://github.com/crossbario/autobahn-cpp/archive/0.2.1.zip -O autobahn-cpp.zip \
     && unzip autobahn-cpp.zip \
-    && cp -r /tmp/autobahn-cpp-master/autobahn/ /usr/local/include/ \
-    && cp -r /tmp/autobahn-cpp-master/examples/ /usr/local/app/ \
+    && cp -r /tmp/autobahn-cpp-0.2.1/autobahn/ /usr/local/include/ \
+    && cp -r /tmp/autobahn-cpp-0.2.1/examples/ /usr/local/app/ \
     && cd / && rm -rf /tmp/autobahn* \
     && cd /usr/local/app/examples/ && CXXFLAGS=/usr/include/libcxxabi scons
 
