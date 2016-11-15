@@ -17,10 +17,6 @@ ENV WSPP_ENABLE_CPP11 1
 ENV CC /usr/bin/clang
 ENV CXX /usr/bin/clang++
 
-# https://github.com/crossbario/crossbar-docker/issues/25
-# http://lists.alioth.debian.org/pipermail/pkg-llvm-team/2015-September/005208.html
-ENV CXXFLAGS /usr/include/libcxxabi
-
 # update system, get dev tools and libs
 RUN apt-get update \
     && apt-get install -y wget curl unzip git-core \
@@ -31,11 +27,14 @@ RUN apt-get update \
     && apt-get clean
 
 # get, build and install Boost from upstream
+# regarding the flags given to b2, in particular "/usr/include/libcxxabi":
+# https://github.com/crossbario/crossbar-docker/issues/25
+# http://lists.alioth.debian.org/pipermail/pkg-llvm-team/2015-September/005208.html
 RUN cd /tmp \
     && wget http://downloads.sourceforge.net/project/boost/boost/1.62.0/boost_1_62_0.tar.bz2 \
     && tar xvjf boost_1_62_0.tar.bz2 && cd boost_1_62_0 \
     && ./bootstrap.sh --with-toolset=clang \
-    && ./b2 toolset=clang link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
+    && ./b2 toolset=clang cxxflags="-std=c++11 -stdlib=libc++ -I/usr/include/libcxxabi" linkflags="-stdlib=libc++" link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
     && cd / && rm -rf /tmp/boost*
 
 # get, build and install msgpack-c from upstream
