@@ -14,12 +14,17 @@ ENV CBREALM realm1
 # make sure HOME exists!
 RUN mkdir /app
 
-# install AutobahnJS globally
+# install Autobahn|JS
 RUN npm install -g autobahn
 
 # add example service
 COPY ./app/* /app/
 
-# run service entry script by default
+# make /app a volume to allow external configuration
+VOLUME /app
+
+# set the app component directory as working directory
 WORKDIR /app
+
+# run service entry script by default
 CMD ["sh", "/app/run"]
