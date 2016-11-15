@@ -9,15 +9,15 @@ build: build_gcc
 build_gcc:
 	time sudo docker build \
 		-t crossbario/autobahn-cpp \
-		-t crossbario/autobahn-cpp:0.2.0 \
+		-t crossbario/autobahn-cpp:0.2.1 \
 		-t crossbario/autobahn-cpp-gcc \
-		-t crossbario/autobahn-cpp-gcc:0.2.0 \
+		-t crossbario/autobahn-cpp-gcc:0.2.1 \
 		-f Dockerfile.gcc .
 
 build_clang:
 	time sudo docker build \
 		-t crossbario/autobahn-cpp-clang \
-		-t crossbario/autobahn-cpp-clang:0.2.0 \
+		-t crossbario/autobahn-cpp-clang:0.2.1 \
 		-f Dockerfile.clang .
 
 shell_gcc:
