@@ -28,16 +28,16 @@ RUN apt-get update \
 
 # get, build and install Boost from upstream
 RUN cd /tmp \
-    && wget http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.bz2 \
-    && tar xvjf boost_1_60_0.tar.bz2 && cd boost_1_60_0 \
+    && wget http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_62_0.tar.bz2 \
+    && tar xvjf boost_1_62_0.tar.bz2 && cd boost_1_62_0 \
     && ./bootstrap.sh --with-toolset=clang \
     && ./b2 toolset=clang link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
     && cd / && rm -rf /tmp/boost*
 
 # get, build and install msgpack-c from upstream
 RUN cd /tmp \
-    && wget https://github.com/msgpack/msgpack-c/archive/cpp-1.4.1.zip -O msgpack-c.zip \
-    && unzip msgpack-c.zip && cd msgpack-c-cpp-1.4.1 \
+    && wget https://github.com/msgpack/msgpack-c/archive/cpp-1.4.2.zip -O msgpack-c.zip \
+    && unzip msgpack-c.zip && cd msgpack-c-cpp-1.4.2 \
     && export CXXFLAGS="$CXXFLAGS -std=c++11" \
     && ./bootstrap && ./configure && make install \
     && cd / && rm -rf /tmp/msgpack*
