@@ -3,16 +3,56 @@
 HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 
 build:
-	time sudo docker build -t crossbario/autobahn-python:cpy2 -f Dockerfile.cpy2 .
-	time sudo docker build -t crossbario/autobahn-python:cpy3 -f Dockerfile.cpy3 .
-	time sudo docker build -t crossbario/autobahn-python:pypy2 -f Dockerfile.pypy2 .
-	time sudo docker build -t crossbario/autobahn-python:pypy3 -f Dockerfile.pypy3 .
-	time sudo docker build -t crossbario/autobahn-python:cpy2-alpine -f Dockerfile.cpy2-alpine .
-	time sudo docker build -t crossbario/autobahn-python:cpy3-alpine -t crossbario/autobahn-python:latest -f Dockerfile.cpy3-alpine .
-	time sudo docker build -t crossbario/autobahn-python:cpy2-minimal-aio -f Dockerfile.cpy2-minimal-aio .
-	time sudo docker build -t crossbario/autobahn-python:cpy3-minimal-aio -f Dockerfile.cpy3-minimal-aio .
-	time sudo docker build -t crossbario/autobahn-python:cpy2-minimal-tx -f Dockerfile.cpy2-minimal-tx .
-	time sudo docker build -t crossbario/autobahn-python:cpy3-minimal-tx -f Dockerfile.cpy3-minimal-tx .
+	time sudo docker build \
+		-t crossbario/autobahn-python:cpy2 \
+		-t crossbario/autobahn-python:cpy2-0.16.1 \
+		-f Dockerfile.cpy2 .
+
+	time sudo docker build \
+		-t crossbario/autobahn-python:cpy3 \
+		-t crossbario/autobahn-python:cpy3-0.16.1 \
+		-f Dockerfile.cpy3 .
+
+	time sudo docker build \
+		-t crossbario/autobahn-python:pypy2 \
+		-t crossbario/autobahn-python:pypy2-0.16.1 \
+		-f Dockerfile.pypy2 .
+
+	time sudo docker build \
+		-t crossbario/autobahn-python:pypy3 \
+		-t crossbario/autobahn-python:pypy3-0.16.1 \
+		-f Dockerfile.pypy3 .
+
+	time sudo docker build \
+		-t crossbario/autobahn-python:cpy2-alpine \
+		-t crossbario/autobahn-python:cpy2-alpine-0.16.1 \
+		-f Dockerfile.cpy2-alpine .
+
+	time sudo docker build \
+		-t crossbario/autobahn-python:latest \
+		-t crossbario/autobahn-python:cpy3-alpine \
+		-t crossbario/autobahn-python:cpy3-alpine-0.16.1 \
+		-f Dockerfile.cpy3-alpine .
+
+	time sudo docker build \
+		-t crossbario/autobahn-python:cpy2-minimal-aio \
+		-t crossbario/autobahn-python:cpy2-minimal-aio-0.16.1 \
+		-f Dockerfile.cpy2-minimal-aio .
+
+	time sudo docker build \
+		-t crossbario/autobahn-python:cpy3-minimal-aio \
+		-t crossbario/autobahn-python:cpy3-minimal-aio-0.16.1 \
+		-f Dockerfile.cpy3-minimal-aio .
+
+	time sudo docker build \
+		-t crossbario/autobahn-python:cpy2-minimal-tx \
+		-t crossbario/autobahn-python:cpy2-minimal-tx-0.16.1 \
+		-f Dockerfile.cpy2-minimal-tx .
+
+	time sudo docker build \
+		-t crossbario/autobahn-python:cpy3-minimal-tx \
+		-t crossbario/autobahn-python:cpy3-minimal-tx-0.16.1 \
+		-f Dockerfile.cpy3-minimal-tx .
 
 version: python_version autobahn_version
 
@@ -75,15 +115,25 @@ test_cpy3_minimal_tx:
 publish: build
 	sudo docker push crossbario/autobahn-python:latest
 	sudo docker push crossbario/autobahn-python:cpy2
+	sudo docker push crossbario/autobahn-python:cpy2-0.16.1
 	sudo docker push crossbario/autobahn-python:cpy3
+	sudo docker push crossbario/autobahn-python:cpy3-0.16.1
 	sudo docker push crossbario/autobahn-python:pypy2
+	sudo docker push crossbario/autobahn-python:pypy2-0.16.1
 	sudo docker push crossbario/autobahn-python:pypy3
+	sudo docker push crossbario/autobahn-python:pypy3-0.16.1
 	sudo docker push crossbario/autobahn-python:cpy2-alpine
+	sudo docker push crossbario/autobahn-python:cpy2-alpine-0.16.1
 	sudo docker push crossbario/autobahn-python:cpy3-alpine
+	sudo docker push crossbario/autobahn-python:cpy3-alpine-0.16.1
 	sudo docker push crossbario/autobahn-python:cpy2-minimal-aio
+	sudo docker push crossbario/autobahn-python:cpy2-minimal-aio-0.16.1
 	sudo docker push crossbario/autobahn-python:cpy3-minimal-aio
+	sudo docker push crossbario/autobahn-python:cpy3-minimal-aio-0.16.1
 	sudo docker push crossbario/autobahn-python:cpy2-minimal-tx
+	sudo docker push crossbario/autobahn-python:cpy2-minimal-tx-0.16.1
 	sudo docker push crossbario/autobahn-python:cpy3-minimal-tx
+	sudo docker push crossbario/autobahn-python:cpy3-minimal-tx-0.16.1
 
 list:
 	sudo docker images
