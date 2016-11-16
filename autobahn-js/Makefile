@@ -6,8 +6,15 @@ default:
 	@echo "Targets: build, test, publish, .."
 
 build:
-	time sudo docker build -t crossbario/autobahn-js:full -f Dockerfile.full .
-	time sudo docker build -t crossbario/autobahn-js:alpine -t crossbario/autobahn-js:latest -f Dockerfile.alpine .
+	time sudo docker build \
+		-t crossbario/autobahn-js:full \
+		-t crossbario/autobahn-js:full-0.16.1 \
+		-f Dockerfile.full .
+	time sudo docker build \
+		-t crossbario/autobahn-js \
+		-t crossbario/autobahn-js:alpine \
+		-t crossbario/autobahn-js:alpine-0.16.1 \
+		-f Dockerfile.alpine .
 
 version: node_version autobahn_version
 
@@ -34,17 +41,14 @@ test_alpine:
 	sudo docker run -it --rm --link crossbar crossbario/autobahn-js:alpine
 
 publish: build
-	sudo docker push crossbario/autobahn-js:latest
+	sudo docker push crossbario/autobahn-js
 	sudo docker push crossbario/autobahn-js:alpine
+	sudo docker push crossbario/autobahn-js:alpine-0.16.1
 	sudo docker push crossbario/autobahn-js:full
+	sudo docker push crossbario/autobahn-js:full-0.16.1
 
 list:
 	sudo docker images
 
 clean:
-	-sudo docker rmi -f crossbario/autobahn-js:latest
-	-sudo docker rmi -f crossbario/autobahn-js:alpine
-	-sudo docker rmi -f crossbario/autobahn-js:full
-
-clean_all:
-	-sudo docker rmi $(docker images -q)
+	-sudo docker rmi -f crossbario/autobahn-js*
