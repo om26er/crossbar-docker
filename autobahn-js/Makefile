@@ -40,3 +40,11 @@ publish: build
 
 list:
 	sudo docker images
+
+clean:
+	-sudo docker rmi -f crossbario/autobahn-js:latest
+	-sudo docker rmi -f crossbario/autobahn-js:alpine
+	-sudo docker rmi -f crossbario/autobahn-js:full
+
+clean_all:
+	-sudo docker rmi $(docker images -q)

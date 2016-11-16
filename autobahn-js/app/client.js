@@ -3,6 +3,8 @@
 // AutobahnJS, the WAMP client library to connect and talk to Crossbar.io:
 var autobahn = require('autobahn');
 
+console.log("Running AutobahnJS " + autobahn.version);
+
 // We read the connection parameters from the command line in this example:
 const url = process.env.CBURL;
 const realm = process.env.CBREALM;
