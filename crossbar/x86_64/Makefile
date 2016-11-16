@@ -25,12 +25,19 @@ build: build_plus build_community
 build_plus:
 	# enforce auto-generating a new key when using the images
 	sudo rm -f node/.crossbar/node.key
-	time sudo docker build -t crossbario/crossbar:plus -f Dockerfile.plus .
+	time sudo docker build \
+		-t crossbario/crossbar:plus \
+		-t crossbario/crossbar:plus-16.10.1 \
+		-f Dockerfile.plus .
 
 build_community:
 	# enforce auto-generating a new key when using the images
 	sudo rm -f node/.crossbar/node.key
-	time sudo docker build -t crossbario/crossbar:community -t crossbario/crossbar:latest -f Dockerfile.community .
+	time sudo docker build \
+		-t crossbario/crossbar:latest \
+		-t crossbario/crossbar:community \
+		-t crossbario/crossbar:community-16.10.1 \
+		-f Dockerfile.community .
 
 
 test: test_plus test_community
@@ -59,6 +66,7 @@ publish_plus: build_plus
 publish_community: build_community
 	sudo docker push crossbario/crossbar:latest
 	sudo docker push crossbario/crossbar:community
+	sudo docker push crossbario/crossbar:community-16.10.1
 
 
 list:
