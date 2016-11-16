@@ -7,7 +7,7 @@ build: build_gcc build_clang
 build_gcc:
 	time sudo docker build \
 		-t crossbario/autobahn-cpp \
-		-t crossbario/autobahn-cpp:gcc
+		-t crossbario/autobahn-cpp:gcc \
 		-t crossbario/autobahn-cpp:gcc-0.2.1 \
 		-f Dockerfile.gcc .
 
