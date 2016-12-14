@@ -1,4 +1,4 @@
-FROM alpine
+FROM armhf/alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
