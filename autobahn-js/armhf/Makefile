@@ -5,12 +5,16 @@ HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 default:
 	@echo "Targets: build, test, publish, .."
 
-build:
-	time sudo docker build \
+build: build_full build_alpine
+
+build_full:
+	sudo docker build \
 		-t crossbario/autobahn-js-armhf:full \
 		-t crossbario/autobahn-js-armhf:full-0.16.1 \
 		-f Dockerfile.full .
-	time sudo docker build \
+
+build_alpine:
+	sudo docker build \
 		-t crossbario/autobahn-js \
 		-t crossbario/autobahn-js-armhf:alpine \
 		-t crossbario/autobahn-js-armhf:alpine-0.16.1 \
