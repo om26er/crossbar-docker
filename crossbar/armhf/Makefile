@@ -25,7 +25,7 @@ build: build_plus build_community
 build_plus:
 	# enforce auto-generating a new key when using the images
 	sudo rm -f node/.crossbar/node.key
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/crossbar-armhf:plus \
 		-t crossbario/crossbar-armhf:plus-16.10.1 \
 		-f Dockerfile.plus .
@@ -33,7 +33,7 @@ build_plus:
 build_community:
 	# enforce auto-generating a new key when using the images
 	sudo rm -f node/.crossbar/node.key
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/crossbar-armhf:latest \
 		-t crossbario/crossbar-armhf:community \
 		-t crossbario/crossbar-armhf:community-16.10.1 \
