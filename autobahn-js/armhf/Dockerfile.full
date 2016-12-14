@@ -1,0 +1,30 @@
+FROM armhf/node
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV HOME /app
+ENV DEBIAN_FRONTEND noninteractive
+
+ENV NODE_PATH /usr/local/lib/node_modules/
+
+# Crossbar.io connection defaults
+ENV CBURL ws://crossbar:8080/ws
+ENV CBREALM realm1
+
+# make sure HOME exists!
+RUN mkdir /app
+
+# install Autobahn|JS
+RUN npm install -g autobahn
+
+# add example service
+COPY ./app/* /app/
+
+# make /app a volume to allow external configuration
+VOLUME /app
+
+# set the app component directory as working directory
+WORKDIR /app
+
+# run service entry script by default
+CMD ["sh", "/app/run"]
