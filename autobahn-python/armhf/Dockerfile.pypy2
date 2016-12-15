@@ -1,0 +1,29 @@
+FROM armhf/pypy:2
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV HOME /app
+ENV DEBIAN_FRONTEND noninteractive
+
+# Crossbar.io connection defaults
+ENV CBURL ws://crossbar:8080/ws
+ENV CBREALM realm1
+
+# make "pypy" available as "python"
+RUN ln -s /usr/local/bin/pypy /usr/local/bin/python
+
+# install Autobahn|Python
+RUN pip install -U pip && pip install autobahn[twisted,asyncio,serialization,encryption]
+
+# add example service
+COPY ./app /app
+RUN ln -s /app/client_tx.py /app/client.py
+
+# make /app a volume to allow external configuration
+VOLUME /app
+
+# set the app component directory as working directory
+WORKDIR /app
+
+# run service entry script by default
+CMD ["sh", "/app/run"]
