@@ -1,4 +1,4 @@
-FROM armhf/python:2-alpine
+FROM armhf/python:2.7-alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 

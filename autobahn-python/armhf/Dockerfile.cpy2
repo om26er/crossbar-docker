@@ -1,4 +1,4 @@
-FROM armhf/python:2
+FROM armhf/python:2.7
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
