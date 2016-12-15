@@ -20,7 +20,7 @@ RUN crossbar version
 
 # add our user and group
 RUN    addgroup crossbar \
-    && adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar
+    && adduser --system --no-create-home --home /node --ingroup crossbar --gecos "Crossbar.io Service" crossbar
 
 # initialize a Crossbar.io node
 COPY ./node/ /node/
