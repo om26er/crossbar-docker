@@ -5,14 +5,14 @@ HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 build: build_gcc build_clang
 
 build_gcc:
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-cpp-armhf \
 		-t crossbario/autobahn-cpp-armhf:gcc \
 		-t crossbario/autobahn-cpp-armhf:gcc-0.2.1 \
 		-f Dockerfile.gcc .
 
 build_clang:
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-cpp-armhf:clang \
 		-t crossbario/autobahn-cpp-armhf:clang-0.2.1 \
 		-f Dockerfile.clang .
