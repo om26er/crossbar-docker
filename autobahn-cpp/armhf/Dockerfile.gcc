@@ -1,0 +1,58 @@
+FROM armhf/debian:stretch
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV DEBIAN_FRONTEND noninteractive
+
+# user env
+ENV HOME /usr/local/app
+ENV PATH /usr/local/app:$PATH
+ENV LD_LIBRARY_PATH /usr/local/lib
+RUN mkdir -p /usr/local/app
+
+# env vars to configure websocketpp
+ENV WSPP_ENABLE_CPP11 1
+
+# update system, get dev tools and libs
+RUN apt-get update \
+    && apt-get install -y wget curl unzip git-core \
+                          build-essential autotools-dev autoconf libtool cmake scons \
+                          libbz2-dev libssl-dev \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# get, build and install Boost from upstream
+RUN cd /tmp \
+    && wget http://downloads.sourceforge.net/project/boost/boost/1.62.0/boost_1_62_0.tar.bz2 \
+    && tar xvjf boost_1_62_0.tar.bz2 && cd boost_1_62_0 \
+    && ./bootstrap.sh --with-toolset=gcc \
+    && ./b2 toolset=gcc link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
+    && cd / && rm -rf /tmp/boost*
+
+# get, build and install msgpack-c from upstream
+RUN cd /tmp \
+    && wget https://github.com/msgpack/msgpack-c/archive/cpp-1.4.2.zip -O msgpack-c.zip \
+    && unzip msgpack-c.zip && cd msgpack-c-cpp-1.4.2 \
+    && export CXXFLAGS="$CXXFLAGS -std=c++11" \
+    && ./bootstrap && ./configure && make install \
+    && cd / && rm -rf /tmp/msgpack*
+
+# get and install websocketpp from upstream
+RUN cd /tmp \
+    && wget https://github.com/zaphoyd/websocketpp/archive/0.7.0.zip -O websocketpp.zip \
+    && unzip websocketpp.zip \
+    && cp -r /tmp/websocketpp-0.7.0/websocketpp/ /usr/local/include/ \
+    && cd / && rm -rf /tmp/websocketpp*
+
+# get and install autobahn-cpp from upstream
+RUN cd /tmp \
+    && wget https://github.com/crossbario/autobahn-cpp/archive/0.2.1.zip -O autobahn-cpp.zip \
+    && unzip autobahn-cpp.zip \
+    && cp -r /tmp/autobahn-cpp-0.2.1/autobahn/ /usr/local/include/ \
+    && cp -r /tmp/autobahn-cpp-0.2.1/examples/ /usr/local/app/ \
+    && cd / && rm -rf /tmp/autobahn* \
+    && cd /usr/local/app/examples/ && scons
+
+
+# drop into shell by default
+CMD ["bash"]

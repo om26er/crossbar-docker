@@ -15,7 +15,7 @@ build_full:
 
 build_alpine:
 	sudo docker build \
-		-t crossbario/autobahn-js \
+		-t crossbario/autobahn-js-armhf \
 		-t crossbario/autobahn-js-armhf:alpine \
 		-t crossbario/autobahn-js-armhf:alpine-0.16.1 \
 		-f Dockerfile.alpine .
@@ -45,7 +45,7 @@ test_alpine:
 	sudo docker run -it --rm --link crossbar crossbario/autobahn-js-armhf:alpine
 
 publish_alpine: build_alpine
-	sudo docker push crossbario/autobahn-js
+	sudo docker push crossbario/autobahn-js-armhf
 	sudo docker push crossbario/autobahn-js-armhf:alpine
 	sudo docker push crossbario/autobahn-js-armhf:alpine-0.16.1
 
@@ -59,4 +59,4 @@ list:
 	sudo docker images
 
 clean:
-	-sudo docker rmi -f crossbario/autobahn-js*
+	-sudo docker rmi -f crossbario/autobahn-js-armhf*
