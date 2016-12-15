@@ -1,0 +1,40 @@
+FROM armhf/pypy:2
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ENV HOME /node
+ENV DEBIAN_FRONTEND noninteractive
+ENV PYTHONUNBUFFERED 1
+ENV PATH /usr/local/bin:$PATH
+ENV CROSSBAR_VERSION 16.10.1
+
+# make "pypy" available as "python"
+RUN ln -s /usr/local/bin/pypy /usr/local/bin/python
+
+# install Crossbar.io
+RUN    pip install -U pip \
+    && pip install crossbar==${CROSSBAR_VERSION}
+
+# test if everything installed properly
+RUN crossbar version
+
+# add our user and group
+RUN    addgroup crossbar \
+    && adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar
+
+# initialize a Crossbar.io node
+COPY ./node/ /node/
+RUN chown -R crossbar:crossbar /node
+
+# make /node a volume to allow external configuration
+VOLUME /node
+
+# set the Crossbar.io node directory as working directory
+WORKDIR /node
+
+# run under this user, and expose default port
+USER crossbar
+EXPOSE 8080 8000
+
+# entrypoint for the Docker image is the Crossbar.io executable
+ENTRYPOINT ["crossbar", "start", "--cbdir", "/node/.crossbar"]

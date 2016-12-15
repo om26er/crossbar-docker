@@ -20,7 +20,7 @@ default:
 	@echo "  publish_community      Publish community image"
 	@echo ""
 
-build: build_plus build_community
+build: build_plus build_community build_community_pypy
 
 build_plus:
 	# enforce auto-generating a new key when using the images
@@ -39,8 +39,16 @@ build_community:
 		-t crossbario/crossbar-armhf:community-16.10.1 \
 		-f Dockerfile.community .
 
+build_community_pypy:
+	# enforce auto-generating a new key when using the images
+	sudo rm -f node/.crossbar/node.key
+	sudo docker build \
+		-t crossbario/crossbar-armhf:community-pypy \
+		-t crossbario/crossbar-armhf:community-pypy-16.10.1 \
+		-f Dockerfile.community.pypy .
 
-test: test_plus test_community
+
+test: test_plus test_community test_community_pypy
 
 test_plus:
 	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar-armhf:plus
@@ -48,14 +56,20 @@ test_plus:
 test_community:
 	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar-armhf:community
 
+test_community_pypy:
+	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar-armhf:community-pypy
 
-version: version_plus version_community
+
+version: version_plus version_community version_community_pypy
 
 version_plus:
 	sudo docker run --rm --entrypoint=/opt/crossbar/bin/crossbar -it crossbario/crossbar-armhf:plus version
 
 version_community:
 	sudo docker run --rm --entrypoint=/usr/local/bin/crossbar -it crossbario/crossbar-armhf:community version
+
+version_community_pypy:
+	sudo docker run --rm --entrypoint=/usr/local/bin/crossbar -it crossbario/crossbar-armhf:community-pypy version
 
 
 publish: publish_plus publish_community
@@ -68,6 +82,9 @@ publish_community: build_community
 	sudo docker push crossbario/crossbar-armhf:community
 	sudo docker push crossbario/crossbar-armhf:community-16.10.1
 
+publish_community_pypy: build_community_pypy
+	sudo docker push crossbario/crossbar-armhf:community-pypy
+	sudo docker push crossbario/crossbar-armhf:community-pypy-16.10.1
 
 list:
 	sudo docker images
