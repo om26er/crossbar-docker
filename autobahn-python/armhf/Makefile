@@ -3,53 +3,53 @@
 HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 
 build:
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-python-armhf:cpy2 \
 		-t crossbario/autobahn-python-armhf:cpy2-0.16.1 \
 		-f Dockerfile.cpy2 .
 
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-python-armhf:cpy3 \
 		-t crossbario/autobahn-python-armhf:cpy3-0.16.1 \
 		-f Dockerfile.cpy3 .
 
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-python-armhf:pypy2 \
 		-t crossbario/autobahn-python-armhf:pypy2-0.16.1 \
 		-f Dockerfile.pypy2 .
 
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-python-armhf:pypy3 \
 		-t crossbario/autobahn-python-armhf:pypy3-0.16.1 \
 		-f Dockerfile.pypy3 .
 
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-python-armhf:cpy2-alpine \
 		-t crossbario/autobahn-python-armhf:cpy2-alpine-0.16.1 \
 		-f Dockerfile.cpy2-alpine .
 
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-python-armhf:latest \
 		-t crossbario/autobahn-python-armhf:cpy3-alpine \
 		-t crossbario/autobahn-python-armhf:cpy3-alpine-0.16.1 \
 		-f Dockerfile.cpy3-alpine .
 
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-python-armhf:cpy2-minimal-aio \
 		-t crossbario/autobahn-python-armhf:cpy2-minimal-aio-0.16.1 \
 		-f Dockerfile.cpy2-minimal-aio .
 
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-python-armhf:cpy3-minimal-aio \
 		-t crossbario/autobahn-python-armhf:cpy3-minimal-aio-0.16.1 \
 		-f Dockerfile.cpy3-minimal-aio .
 
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-python-armhf:cpy2-minimal-tx \
 		-t crossbario/autobahn-python-armhf:cpy2-minimal-tx-0.16.1 \
 		-f Dockerfile.cpy2-minimal-tx .
 
-	time sudo docker build \
+	sudo docker build \
 		-t crossbario/autobahn-python-armhf:cpy3-minimal-tx \
 		-t crossbario/autobahn-python-armhf:cpy3-minimal-tx-0.16.1 \
 		-f Dockerfile.cpy3-minimal-tx .
