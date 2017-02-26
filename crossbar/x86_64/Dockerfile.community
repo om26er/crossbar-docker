@@ -6,7 +6,7 @@ ENV HOME /node
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
 ENV PATH /usr/local/bin:$PATH
-ENV CROSSBAR_VERSION 16.10.1
+ENV CROSSBAR_VERSION 17.2.1
 
 # install deps
 RUN    apk --update upgrade \

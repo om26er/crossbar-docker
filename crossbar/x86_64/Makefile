@@ -27,7 +27,7 @@ build_plus:
 	sudo rm -f node/.crossbar/node.key
 	time sudo docker build \
 		-t crossbario/crossbar:plus \
-		-t crossbario/crossbar:plus-16.10.1 \
+		-t crossbario/crossbar:plus-17.2.1 \
 		-f Dockerfile.plus .
 
 build_community:
@@ -36,7 +36,7 @@ build_community:
 	time sudo docker build \
 		-t crossbario/crossbar:latest \
 		-t crossbario/crossbar:community \
-		-t crossbario/crossbar:community-16.10.1 \
+		-t crossbario/crossbar:community-17.2.1 \
 		-f Dockerfile.community .
 
 
@@ -66,7 +66,7 @@ publish_plus: build_plus
 publish_community: build_community
 	sudo docker push crossbario/crossbar:latest
 	sudo docker push crossbario/crossbar:community
-	sudo docker push crossbario/crossbar:community-16.10.1
+	sudo docker push crossbario/crossbar:community-17.2.1
 
 
 list:
