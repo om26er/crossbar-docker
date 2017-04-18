@@ -27,7 +27,7 @@ build_plus:
 	sudo rm -f node/.crossbar/node.key
 	sudo docker build \
 		-t crossbario/crossbar-armhf:plus \
-		-t crossbario/crossbar-armhf:plus-16.10.1 \
+		-t crossbario/crossbar-armhf:plus-17.3.1 \
 		-f Dockerfile.plus .
 
 build_community:
@@ -36,7 +36,7 @@ build_community:
 	sudo docker build \
 		-t crossbario/crossbar-armhf:latest \
 		-t crossbario/crossbar-armhf:community \
-		-t crossbario/crossbar-armhf:community-16.10.1 \
+		-t crossbario/crossbar-armhf:community-17.3.1 \
 		-f Dockerfile.community .
 
 build_community_pypy:
@@ -44,7 +44,7 @@ build_community_pypy:
 	sudo rm -f node/.crossbar/node.key
 	sudo docker build \
 		-t crossbario/crossbar-armhf:community-pypy \
-		-t crossbario/crossbar-armhf:community-pypy-16.10.1 \
+		-t crossbario/crossbar-armhf:community-pypy-17.3.1 \
 		-f Dockerfile.community.pypy .
 
 
@@ -80,11 +80,11 @@ publish_plus: build_plus
 publish_community: build_community
 	sudo docker push crossbario/crossbar-armhf:latest
 	sudo docker push crossbario/crossbar-armhf:community
-	sudo docker push crossbario/crossbar-armhf:community-16.10.1
+	sudo docker push crossbario/crossbar-armhf:community-17.3.1
 
 publish_community_pypy: build_community_pypy
 	sudo docker push crossbario/crossbar-armhf:community-pypy
-	sudo docker push crossbario/crossbar-armhf:community-pypy-16.10.1
+	sudo docker push crossbario/crossbar-armhf:community-pypy-17.3.1
 
 list:
 	sudo docker images
