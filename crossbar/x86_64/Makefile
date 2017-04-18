@@ -20,6 +20,11 @@ default:
 	@echo "  publish_community      Publish community image"
 	@echo ""
 
+autobahn:
+	cp ../../../autobahn-js-built/autobahn.* ./node/web/js/
+	cp ../../../autobahn-js-built/CHECKSUM.* ./node/web/js/
+	cp ../../../autobahn-js-built/LICENSE ./node/web/js/
+
 build: build_plus build_community
 
 build_plus:
