@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
 ENV CROSSBAR_VERSION 17.3.1
 
-# install deps, Crossbar and test if everything installed properly
+# install dependencies and Crossbar.io
 RUN    apk --update upgrade \
     && apk add libffi \
     && apk add --virtual .build-deps \

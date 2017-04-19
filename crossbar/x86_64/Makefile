@@ -6,73 +6,71 @@ default:
 	@echo ""
 	@echo "Targets:"
 	@echo ""
-	@echo "  build                  Build plus + community images"
-	@echo "  build_plus             Build plus image"
-	@echo "  build_community        Build community image"
-	@echo "  test                   Test plus + community images"
-	@echo "  test_plus              Test plus image"
-	@echo "  test_community         Test community image"
-	@echo "  version                Get CB version in plus + community images"
-	@echo "  version_plus           Get CB version in plus image"
-	@echo "  version_community      Get CB version in community image"
-	@echo "  publish                Publish plus + community images"
-	@echo "  publish_plus           Publish plus image"
-	@echo "  publish_community      Publish community image"
+	@echo "  build                  Build images"
+	@echo "  test                   Test images"
+	@echo "  version                Print CB version in images"
+	@echo "  publish                Publish images"
 	@echo ""
+
 
 autobahn:
 	cp ../../../autobahn-js-built/autobahn.* ./node/web/js/
 	cp ../../../autobahn-js-built/CHECKSUM.* ./node/web/js/
 	cp ../../../autobahn-js-built/LICENSE ./node/web/js/
 
-build: build_plus build_community
 
-build_plus:
-	# enforce auto-generating a new key when using the images
-	sudo rm -f node/.crossbar/node.key
-	time sudo docker build \
-		-t crossbario/crossbar:plus \
-		-t crossbario/crossbar:plus-17.3.1 \
-		-f Dockerfile.plus .
+build: build_community_cpy3 build_community_pypy3
 
-build_community:
+build_community_cpy3:
 	# enforce auto-generating a new key when using the images
 	sudo rm -f node/.crossbar/node.key
 	time sudo docker build \
 		-t crossbario/crossbar:latest \
-		-t crossbario/crossbar:community \
-		-t crossbario/crossbar:community-17.3.1 \
-		-f Dockerfile.community .
+		-t crossbario/crossbar:community-cpy3 \
+		-t crossbario/crossbar:community-cpy3-17.3.1 \
+		-f Dockerfile.community-cpy3 .
+
+build_community_pypy3:
+	# enforce auto-generating a new key when using the images
+	sudo rm -f node/.crossbar/node.key
+	time sudo docker build \
+		-t crossbario/crossbar:community-pypy3 \
+		-t crossbario/crossbar:community-pypy3-17.3.1 \
+		-f Dockerfile.community-pypy3 .
 
 
-test: test_plus test_community
+test: test_community_cpy3 test_community_pypy3
 
-test_plus:
-	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar:plus
+test_community_cpy3:
+	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar:community-cpy3
 
-test_community:
-	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar:community
+test_community_pypy3:
+	sudo docker run --rm -it -p 8080:8080 --name crossbar crossbario/crossbar:community-pypy3
 
 
-version: version_plus version_community
+version: version_community_cpy3 version_community_pypy3
 
-version_plus:
-	sudo docker run --rm --entrypoint=/opt/crossbar/bin/crossbar -it crossbario/crossbar:plus version
+version_community_cpy3:
+	sudo docker run --rm --entrypoint=/usr/local/bin/crossbar -it crossbario/crossbar:community-cpy3 version
 
-version_community:
-	sudo docker run --rm --entrypoint=/usr/local/bin/crossbar -it crossbario/crossbar:community version
+version_community_pypy3:
+	sudo docker run --rm --entrypoint=/usr/local/bin/crossbar -it crossbario/crossbar:community-pypy3 version
 
 
 publish: publish_plus publish_community
 
-publish_plus: build_plus
-	sudo docker push crossbario/crossbar:plus
-
-publish_community: build_community
+publish_community_cpy3: build_community_cpy3
 	sudo docker push crossbario/crossbar:latest
-	sudo docker push crossbario/crossbar:community
-	sudo docker push crossbario/crossbar:community-17.3.1
+	sudo docker push crossbario/crossbar:community-cpy3
+	sudo docker push crossbario/crossbar:community-cpy3-17.3.1
+
+publish_community_pypy3: build_community_pypy3
+	sudo docker push crossbario/crossbar:community-pypy3
+	sudo docker push crossbario/crossbar:community-pypy3-17.3.1
 
 
 list:
-	sudo docker images
+	sudo docker images crossbario/crossbar
+
+removeall:
+	./removeall.sh
