@@ -7,11 +7,13 @@ The repository here contains the tooling to build those images.
 
 ## Requirements
 
-### Qemu
+### OS
 
 Building is only tested on Ubuntu 16.04 LTS on x86-64. If you use something else, you are on your own.
 
-Further, you will need Qemu since we are cross building images for `armhf` and `aarch64` on an `amd64` host:
+### Qemu
+
+You will need Qemu since we are cross building images for `armhf` and `aarch64` on an `amd64` host:
 
 ```console
 make qemu_deps
@@ -26,7 +28,6 @@ To update the files here, you need a current `autobahn-js-built` repo as a sibli
 ```console
 make autobahn
 ```
-
 
 
 ## Building
@@ -61,10 +62,15 @@ Community | armhf | Debian/Jessie | CPy3 | `armhf/python:3.6` | [Dockerfile.armh
 Community | aarch64 | Debian/Jessie | CPy3 | `aarch64/python:3.6` | [Dockerfile.aarch64-community-cpy3](Dockerfile.aarch64-community-cpy3) | `crossbario/crossbar-aarch64:community-cpy3`
 Community | amd64 | Debian/jessie | PyPy3 | `debian:jessie` | [Dockerfile.amd64-community-pypy3](Dockerfile.amd64-community-pypy3) | `crossbario/crossbar:community-pypy3`
 
+
+## Limitations
+
+### PyPy3 on armhf/aarch64 flavors
+
 We currently don't have images for PyPy3 on `armhf` or `aarch64`, because:
 
 * PyPy does not yet support `aarch64`, see [here](https://bitbucket.org/pypy/pypy/issues/2331/armv8-aarch64-or-aarch32-support).
-* PyPy does not yet have automated builders for PyPy3 on `aarch64`, see [here](https://bitbucket.org/pypy/pypy/issues/2540/missing-pypy3-armhf-builder)
+* PyPy does not yet have automated builders for PyPy3 on `arm64`, see [here](https://bitbucket.org/pypy/pypy/issues/2540/missing-pypy3-armhf-builder)
 
 Once above issues are fixed, we will have these images (already listed here for showing the naming system):
 
@@ -73,10 +79,42 @@ Crossbar.io Edition | Architecture | Base OS | Python | Base Image | Dockerfile 
 Community | armhf | Debian/Jessie | PyPy3 | `armhf/debian` | [Dockerfile.armhf-community-cpy3](Dockerfile.armhf-community-cpy3) | `crossbario/crossbar-armhf:community-cpy3`
 Community | aarch64 | Debian/Jessie | PyPy3 | `aarch64/debian` | [Dockerfile.aarch64-community-cpy3](Dockerfile.aarch64-community-cpy3) | `crossbario/crossbar-aarch64:community-cpy3
 
+### Alpine on armhf/aarch64
 
----
+We currently use Debian as the base image on armhf/aarch64 because there is some weirdo issue with libsodium on [musl](https://www.musl-libc.org/), the C run-time library used by Alpine.
+
+During the libsodium build, a test case fails for [sodium_utils3.c](https://github.com/jedisct1/libsodium/blob/master/test/default/sodium_utils3.c):
+
+```
+FAIL: sodium_utils3
+```
+
+See [here](https://gist.github.com/oberstet/4b0f34b6765aa12ceee723def1f91e20#file-gistfile1-txt-L823).
+
+There also is a warning:
+
+```
+qemu: Unsupported syscall: 384
+```
+
+See [here](https://gist.github.com/oberstet/4b0f34b6765aa12ceee723def1f91e20#file-gistfile1-txt-L77). However, it seem [this can be ignored](https://docs.resin.io/troubleshooting/troubleshooting/#unsupported-syscall-384-from-qemu-on-builder).
+
+Above issue needs to be further analyzed:
+
+```
+See test/default/test-suite.log
+Please report to https://github.com/jedisct1/libsodium/issues
+```
+
+### Crossbar.io Fabric
+
+Images for Crossbar.io Fabric will follow soonish!
+
+
 
 ## Qemu crossbuilding
+
+The following are some general notes on cross building Docker images using Qemu.
 
 References:
 
@@ -167,27 +205,3 @@ should give you
 ```console
 Python 3.6.1
 ```
-
------
-
-https://github.com/jedisct1/libsodium/blob/master/test/default/sodium_utils3.c
-
-
-qemu: Unsupported syscall: 384
-https://gist.github.com/oberstet/4b0f34b6765aa12ceee723def1f91e20#file-gistfile1-txt-L77
-
-
-https://docs.resin.io/troubleshooting/troubleshooting/#unsupported-syscall-384-from-qemu-on-builder
-
-
-FAIL: sodium_utils3
-https://gist.github.com/oberstet/4b0f34b6765aa12ceee723def1f91e20#file-gistfile1-txt-L823
-
-
-
-    See test/default/test-suite.log
-    Please report to https://github.com/jedisct1/libsodium/issues
-
-
-
-sudo docker run --rm -it -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static armhf/python:3.6-alpine

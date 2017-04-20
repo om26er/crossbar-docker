@@ -99,13 +99,11 @@ version_amd64_community_cpy3:
 
 version_armhf_community_cpy3:
 	sudo docker run \
-		-v ./.qemu/qemu-arm-static:/usr/bin/qemu-arm-static \
 		--rm --entrypoint=/usr/local/bin/crossbar -it \
 		crossbario/crossbar-armhf:community-cpy3 version
 
 version_aarch64_community_cpy3:
 	sudo docker run \
-		-v ./.qemu/qemu-aarch64-static:/usr/bin/qemu-aarch64-static \
 		--rm --entrypoint=/usr/local/bin/crossbar -it \
 		crossbario/crossbar-aarch64:community-cpy3 version
 
@@ -139,13 +137,11 @@ test_amd64_community_cpy3:
 
 test_armhf_community_cpy3:
 	sudo docker run \
-		-v ./.qemu/qemu-arm-static:/usr/bin/qemu-arm-static \
 		--rm -it -p 8080:8080 --name crossbar \
 		crossbario/crossbar-armhf:community-cpy3
 
 test_aarch64_community_cpy3:
 	sudo docker run \
-		-v ./.qemu/qemu-aarch64-static:/usr/bin/qemu-aarch64-static \
 		--rm -it -p 8080:8080 --name crossbar \
 		crossbario/crossbar-aarch64:community-cpy3
 
@@ -161,16 +157,11 @@ test_amd64_community_pypy3:
 		crossbario/crossbar:community-pypy3
 
 test_armhf_community_pypy3:
-	sudo docker run \
-		-v ./.qemu/qemu-arm-static:/usr/bin/qemu-arm-static \
-		--rm -it -p 8080:8080 --name crossbar \
-		crossbario/crossbar-armhf:community-pypy3
+	@echo "PyPy3 isn't available for armhf yet"
 
 test_aarch64_community_pypy3:
-	sudo docker run \
-		-v ./.qemu/qemu-aarch64-static:/usr/bin/qemu-aarch64-static \
-		--rm -it -p 8080:8080 --name crossbar \
-		crossbario/crossbar-aarch64:community-pypy3
+	@echo "PyPy3 isn't available for aaarch64 yet"
+
 
 #
 # Install Qemu (this is needed for cross-building armhf/aarch64 on amd64)
