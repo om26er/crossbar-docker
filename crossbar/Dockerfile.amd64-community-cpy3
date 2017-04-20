@@ -1,6 +1,4 @@
-FROM aarch64/python:3.6
-
-COPY .qemu/qemu-aarch64-static /usr/bin/qemu-aarch64-static
+FROM python:3-alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
@@ -10,27 +8,23 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
 
 # install dependencies and Crossbar.io
-RUN    apt-get update \
-    && apt-get install -y --no-install-recommends \
-               ca-certificates \
-               expat \
-               build-essential \
-               libssl-dev \
-
-    # install Crossbar.io from PyPI
+RUN    apk --update upgrade \
+    && apk add libffi \
+    && apk add --virtual .build-deps \
+               build-base \
+               libffi-dev \
+               openssl-dev \
+               linux-headers \
     && pip install --no-cache-dir -U pip \
     && pip install --no-cache-dir crossbar==${CROSSBAR_VERSION} \
-
-    # minimize image
-    && apt-get remove -y build-essential \
-    && rm -rf ~/.cache \
-    && rm -rf /var/lib/apt/lists/*
+    && apk del .build-deps
 
 # test if everything installed properly
 RUN crossbar version
 
 # add our user and group
-RUN adduser --system --group --uid 242 --home /node crossbar
+RUN    addgroup -S -g 242 crossbar \
+    && adduser -S -u 242 -D -h /node -G crossbar -g "Crossbar.io Service" crossbar
 
 # initialize a Crossbar.io node
 COPY ./node/ /node/
