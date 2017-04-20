@@ -2,32 +2,76 @@
 
 Crossbar.io for Docker is available from the official Dockerhub repository [here](https://hub.docker.com/r/crossbario/crossbar/).
 
-The Docker images are built from a Debian Jessie base image and then simply install Crossbar.io from our own binary package repositories for Debian/Ubuntu.
+The repository here contains the tooling to build those images.
 
-> Because of the above approach, Docker images for Crossbar.io are always current, and hence only need republishing when the image build process steps change.
+
+## Requirements
+
+### Qemu
+
+Building is only tested on Ubuntu 16.04 LTS on x86-64. If you use something else, you are on your own.
+
+Further, you will need Qemu since we are cross building images for `armhf` and `aarch64` on an `amd64` host:
+
+```console
+make qemu_deps
+```
+
+### AutobahnJS
+
+The images here include an example Crossbar.io node directory [./node](./node), and within this directory, there is a copy of AutobahnJS.
+
+To update the files here, you need a current `autobahn-js-built` repo as a sibling to this repository, and then do:
+
+```console
+make autobahn
+```
+
+
+
+## Building
+
+Set the Crossbar.io (Community) version you are building for:
+
+```console
+export CROSSBAR_VERSION='17.3.1'
+```
+
+Start the build:
+
+```console
+make build_community
+```
+
+Check Crossbar.io versions by running the images:
+
+```console
+make version_community
+```
+
 
 ## Images
 
-Supported:
+Here is a current (2017/04/17) table of all Docker images we support for Crossbar.io:
 
 Crossbar.io Edition | Architecture | Base OS | Python | Base Image | Dockerfile | Image Tag
 ---|---|---|---|---|---|---
-C | amd64 | Alpine | CPy3 | `python:3-alpine` | [Dockerfile.amd64-community-cpy3](Dockerfile.amd64-community-cpy3) | `crossbario/crossbar:community-cpy3`
-C | armhf | Debian/Jessie | CPy3 | `armhf/python:3.6` | [Dockerfile.armhf-community-cpy3](Dockerfile.armhf-community-cpy3) | `crossbario/crossbar-armhf:community-cpy3`
-C | aarch64 | Debian/Jessie | CPy3 | `aarch64/python:3.6` | [Dockerfile.aarch64-community-cpy3](Dockerfile.aarch64-community-cpy3) | `crossbario/crossbar-aarch64:community-cpy3`
-C | amd64 | Debian/jessie | PyPy3 | `debian:jessie` | [Dockerfile.amd64-community-pypy3](Dockerfile.amd64-community-pypy3) | `crossbario/crossbar:community-pypy3`
+Community | amd64 | Alpine | CPy3 | `python:3-alpine` | [Dockerfile.amd64-community-cpy3](Dockerfile.amd64-community-cpy3) | `crossbario/crossbar:community-cpy3`
+Community | armhf | Debian/Jessie | CPy3 | `armhf/python:3.6` | [Dockerfile.armhf-community-cpy3](Dockerfile.armhf-community-cpy3) | `crossbario/crossbar-armhf:community-cpy3`
+Community | aarch64 | Debian/Jessie | CPy3 | `aarch64/python:3.6` | [Dockerfile.aarch64-community-cpy3](Dockerfile.aarch64-community-cpy3) | `crossbario/crossbar-aarch64:community-cpy3`
+Community | amd64 | Debian/jessie | PyPy3 | `debian:jessie` | [Dockerfile.amd64-community-pypy3](Dockerfile.amd64-community-pypy3) | `crossbario/crossbar:community-pypy3`
 
-Upcoming:
-
-We currently don't have images for PyPy3 on `armhf` or `aarch64`:
+We currently don't have images for PyPy3 on `armhf` or `aarch64`, because:
 
 * PyPy does not yet support `aarch64`, see [here](https://bitbucket.org/pypy/pypy/issues/2331/armv8-aarch64-or-aarch32-support).
 * PyPy does not yet have automated builders for PyPy3 on `aarch64`, see [here](https://bitbucket.org/pypy/pypy/issues/2540/missing-pypy3-armhf-builder)
 
+Once above issues are fixed, we will have these images (already listed here for showing the naming system):
+
 Crossbar.io Edition | Architecture | Base OS | Python | Base Image | Dockerfile | Image Tag
 ---|---|---|---|---|---|---
-C | armhf | Debian/Jessie | PyPy3 | `armhf/debian` | [Dockerfile.armhf-community-cpy3](Dockerfile.armhf-community-cpy3) | `crossbario/crossbar-armhf:community-cpy3`
-C | aarch64 | Debian/Jessie | PyPy3 | `aarch64/debian` | [Dockerfile.aarch64-community-cpy3](Dockerfile.aarch64-community-cpy3) | `crossbario/crossbar-aarch64:community-cpy3
+Community | armhf | Debian/Jessie | PyPy3 | `armhf/debian` | [Dockerfile.armhf-community-cpy3](Dockerfile.armhf-community-cpy3) | `crossbario/crossbar-armhf:community-cpy3`
+Community | aarch64 | Debian/Jessie | PyPy3 | `aarch64/debian` | [Dockerfile.aarch64-community-cpy3](Dockerfile.aarch64-community-cpy3) | `crossbario/crossbar-aarch64:community-cpy3
 
 
 ---
