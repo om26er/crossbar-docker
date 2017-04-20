@@ -1,13 +1,30 @@
 # Crossbar.io for Docker
 
-Crossbar.io for Docker is available from the official Dockerhub repository:
+Crossbar.io for Docker is available from the official Dockerhub repository for currently 3 CPU architectures:
 
-* [amd64](https://hub.docker.com/r/crossbario/crossbar/tags/).
-* [armhf](https://hub.docker.com/r/crossbario/crossbar-armhf/tags/).
-* [aarch64](https://hub.docker.com/r/crossbario/crossbar-aarch64/tags/).
+* [amd64](https://hub.docker.com/r/crossbario/crossbar/tags/)
+* [armhf](https://hub.docker.com/r/crossbario/crossbar-armhf/tags/)
+* [aarch64](https://hub.docker.com/r/crossbario/crossbar-aarch64/tags/)
 
-The repository here contains the tooling to build those images.
+The repository here contains the tooling we use to build those images. If you are only _using_ this stuff, then you should be fine with:
 
+**amd64** (eg your usual server):
+
+```console
+docker pull crossbario/crossbar
+```
+
+**armhf** (eg for the RaspberryPi):
+
+```console
+docker pull crossbario/crossbar-armhf
+```
+
+**aarch64** (eg on Cavium Thunder X):
+
+```console
+docker pull crossbario/crossbar-aarch64
+```
 
 ## Requirements
 
