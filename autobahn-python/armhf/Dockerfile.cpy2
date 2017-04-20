@@ -1,5 +1,7 @@
 FROM armhf/python:2.7
 
+COPY .qemu/qemu-arm-static /usr/bin/qemu-arm-static
+
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
 ARG AUTOBAHN_PYTHON_VERSION
@@ -11,7 +13,9 @@ ENV CBURL ws://crossbar:8080/ws
 ENV CBREALM realm1
 
 # install Autobahn|Python
-RUN pip install -U pip && pip install autobahn[twisted,asyncio,accelerate,serialization,encryption]==${AUTOBAHN_PYTHON_VERSION}
+RUN    pip install -U pip \
+    && pip install trollius \
+    && pip install autobahn[twisted,asyncio,accelerate,serialization,encryption]==${AUTOBAHN_PYTHON_VERSION}
 
 # add example service
 COPY ./app /app

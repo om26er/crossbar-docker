@@ -17,7 +17,7 @@ $(PUBLISHDIRS):
 	$(MAKE) -C $(@:publish-%=%) publish
 
 .PHONY: subdirs $(BUILDDIRS) $(PUBLISHDIRS)
-.PHONY: build publish
+.PHONY: build publish crossbar
 
 # run this to start a test Crossbar.io container
 crossbar:

@@ -1,5 +1,7 @@
 FROM armhf/python:2.7-alpine
 
+COPY .qemu/qemu-arm-static /usr/bin/qemu-arm-static
+
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
 ARG AUTOBAHN_PYTHON_VERSION
@@ -15,7 +17,8 @@ RUN apk add --update build-base \
     && rm -rf /var/cache/apk/*
 
 # install Autobahn|Python
-RUN pip install -U pip && pip install autobahn[twisted]==${AUTOBAHN_PYTHON_VERSION}
+RUN    pip install -U pip \
+    && pip install autobahn[twisted]==${AUTOBAHN_PYTHON_VERSION}
 
 # add example service
 COPY ./app /app
