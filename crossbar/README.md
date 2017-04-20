@@ -1,6 +1,10 @@
 # Crossbar.io for Docker
 
-Crossbar.io for Docker is available from the official Dockerhub repository [here](https://hub.docker.com/r/crossbario/crossbar/).
+Crossbar.io for Docker is available from the official Dockerhub repository:
+
+* [amd64](https://hub.docker.com/r/crossbario/crossbar/tags/).
+* [armhf](https://hub.docker.com/r/crossbario/crossbar-armhf/tags/).
+* [aarch64](https://hub.docker.com/r/crossbario/crossbar-aarch64/tags/).
 
 The repository here contains the tooling to build those images.
 
