@@ -4,6 +4,11 @@ Here you find the Dockerfiles for creating the [AutobahnPython for Docker images
 
 These images come with Python, Twisted/asyncio and AutobahnPython preinstalled and are intended to base application service containers on.
 
+## Building
+
+export AUTOBAHN_PYTHON_VERSION='18.2.0'
+
+
 ## Images
 
 Variants based on CPython (full base image, both Twisted and asyncio, all Autobahn optional dependencies):

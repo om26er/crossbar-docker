@@ -4,54 +4,64 @@ HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 
 build:
 	sudo docker build \
+		--build-arg AUTOBAHN_PYTHON_VERSION=${AUTOBAHN_PYTHON_VERSION} \
 		-t crossbario/autobahn-python-armhf:cpy2 \
-		-t crossbario/autobahn-python-armhf:cpy2-0.17.2 \
+		-t crossbario/autobahn-python-armhf:cpy2-${AUTOBAHN_PYTHON_VERSION} \
 		-f Dockerfile.cpy2 .
 
 	sudo docker build \
+		--build-arg AUTOBAHN_PYTHON_VERSION=${AUTOBAHN_PYTHON_VERSION} \
 		-t crossbario/autobahn-python-armhf:cpy3 \
-		-t crossbario/autobahn-python-armhf:cpy3-0.17.2 \
+		-t crossbario/autobahn-python-armhf:cpy3-${AUTOBAHN_PYTHON_VERSION} \
 		-f Dockerfile.cpy3 .
 
 	sudo docker build \
+		--build-arg AUTOBAHN_PYTHON_VERSION=${AUTOBAHN_PYTHON_VERSION} \
 		-t crossbario/autobahn-python-armhf:pypy2 \
-		-t crossbario/autobahn-python-armhf:pypy2-0.17.2 \
+		-t crossbario/autobahn-python-armhf:pypy2-${AUTOBAHN_PYTHON_VERSION} \
 		-f Dockerfile.pypy2 .
 
 	sudo docker build \
+		--build-arg AUTOBAHN_PYTHON_VERSION=${AUTOBAHN_PYTHON_VERSION} \
 		-t crossbario/autobahn-python-armhf:pypy3 \
-		-t crossbario/autobahn-python-armhf:pypy3-0.17.2 \
+		-t crossbario/autobahn-python-armhf:pypy3-${AUTOBAHN_PYTHON_VERSION} \
 		-f Dockerfile.pypy3 .
 
 	sudo docker build \
+		--build-arg AUTOBAHN_PYTHON_VERSION=${AUTOBAHN_PYTHON_VERSION} \
 		-t crossbario/autobahn-python-armhf:cpy2-alpine \
-		-t crossbario/autobahn-python-armhf:cpy2-alpine-0.17.2 \
+		-t crossbario/autobahn-python-armhf:cpy2-alpine-${AUTOBAHN_PYTHON_VERSION} \
 		-f Dockerfile.cpy2-alpine .
 
 	sudo docker build \
+		--build-arg AUTOBAHN_PYTHON_VERSION=${AUTOBAHN_PYTHON_VERSION} \
 		-t crossbario/autobahn-python-armhf:latest \
 		-t crossbario/autobahn-python-armhf:cpy3-alpine \
-		-t crossbario/autobahn-python-armhf:cpy3-alpine-0.17.2 \
+		-t crossbario/autobahn-python-armhf:cpy3-alpine-${AUTOBAHN_PYTHON_VERSION} \
 		-f Dockerfile.cpy3-alpine .
 
 	sudo docker build \
+		--build-arg AUTOBAHN_PYTHON_VERSION=${AUTOBAHN_PYTHON_VERSION} \
 		-t crossbario/autobahn-python-armhf:cpy2-minimal-aio \
-		-t crossbario/autobahn-python-armhf:cpy2-minimal-aio-0.17.2 \
+		-t crossbario/autobahn-python-armhf:cpy2-minimal-aio-${AUTOBAHN_PYTHON_VERSION} \
 		-f Dockerfile.cpy2-minimal-aio .
 
 	sudo docker build \
+		--build-arg AUTOBAHN_PYTHON_VERSION=${AUTOBAHN_PYTHON_VERSION} \
 		-t crossbario/autobahn-python-armhf:cpy3-minimal-aio \
-		-t crossbario/autobahn-python-armhf:cpy3-minimal-aio-0.17.2 \
+		-t crossbario/autobahn-python-armhf:cpy3-minimal-aio-${AUTOBAHN_PYTHON_VERSION} \
 		-f Dockerfile.cpy3-minimal-aio .
 
 	sudo docker build \
+		--build-arg AUTOBAHN_PYTHON_VERSION=${AUTOBAHN_PYTHON_VERSION} \
 		-t crossbario/autobahn-python-armhf:cpy2-minimal-tx \
-		-t crossbario/autobahn-python-armhf:cpy2-minimal-tx-0.17.2 \
+		-t crossbario/autobahn-python-armhf:cpy2-minimal-tx-${AUTOBAHN_PYTHON_VERSION} \
 		-f Dockerfile.cpy2-minimal-tx .
 
 	sudo docker build \
+		--build-arg AUTOBAHN_PYTHON_VERSION=${AUTOBAHN_PYTHON_VERSION} \
 		-t crossbario/autobahn-python-armhf:cpy3-minimal-tx \
-		-t crossbario/autobahn-python-armhf:cpy3-minimal-tx-0.17.2 \
+		-t crossbario/autobahn-python-armhf:cpy3-minimal-tx-${AUTOBAHN_PYTHON_VERSION} \
 		-f Dockerfile.cpy3-minimal-tx .
 
 version: python_version autobahn_version
@@ -115,25 +125,25 @@ test_cpy3_minimal_tx:
 publish: build
 	sudo docker push crossbario/autobahn-python-armhf:latest
 	sudo docker push crossbario/autobahn-python-armhf:cpy2
-	sudo docker push crossbario/autobahn-python-armhf:cpy2-0.17.2
+	sudo docker push crossbario/autobahn-python-armhf:cpy2-${AUTOBAHN_PYTHON_VERSION}
 	sudo docker push crossbario/autobahn-python-armhf:cpy3
-	sudo docker push crossbario/autobahn-python-armhf:cpy3-0.17.2
+	sudo docker push crossbario/autobahn-python-armhf:cpy3-${AUTOBAHN_PYTHON_VERSION}
 	sudo docker push crossbario/autobahn-python-armhf:pypy2
-	sudo docker push crossbario/autobahn-python-armhf:pypy2-0.17.2
+	sudo docker push crossbario/autobahn-python-armhf:pypy2-${AUTOBAHN_PYTHON_VERSION}
 	sudo docker push crossbario/autobahn-python-armhf:pypy3
-	sudo docker push crossbario/autobahn-python-armhf:pypy3-0.17.2
+	sudo docker push crossbario/autobahn-python-armhf:pypy3-${AUTOBAHN_PYTHON_VERSION}
 	sudo docker push crossbario/autobahn-python-armhf:cpy2-alpine
-	sudo docker push crossbario/autobahn-python-armhf:cpy2-alpine-0.17.2
+	sudo docker push crossbario/autobahn-python-armhf:cpy2-alpine-${AUTOBAHN_PYTHON_VERSION}
 	sudo docker push crossbario/autobahn-python-armhf:cpy3-alpine
-	sudo docker push crossbario/autobahn-python-armhf:cpy3-alpine-0.17.2
+	sudo docker push crossbario/autobahn-python-armhf:cpy3-alpine-${AUTOBAHN_PYTHON_VERSION}
 	sudo docker push crossbario/autobahn-python-armhf:cpy2-minimal-aio
-	sudo docker push crossbario/autobahn-python-armhf:cpy2-minimal-aio-0.17.2
+	sudo docker push crossbario/autobahn-python-armhf:cpy2-minimal-aio-${AUTOBAHN_PYTHON_VERSION}
 	sudo docker push crossbario/autobahn-python-armhf:cpy3-minimal-aio
-	sudo docker push crossbario/autobahn-python-armhf:cpy3-minimal-aio-0.17.2
+	sudo docker push crossbario/autobahn-python-armhf:cpy3-minimal-aio-${AUTOBAHN_PYTHON_VERSION}
 	sudo docker push crossbario/autobahn-python-armhf:cpy2-minimal-tx
-	sudo docker push crossbario/autobahn-python-armhf:cpy2-minimal-tx-0.17.2
+	sudo docker push crossbario/autobahn-python-armhf:cpy2-minimal-tx-${AUTOBAHN_PYTHON_VERSION}
 	sudo docker push crossbario/autobahn-python-armhf:cpy3-minimal-tx
-	sudo docker push crossbario/autobahn-python-armhf:cpy3-minimal-tx-0.17.2
+	sudo docker push crossbario/autobahn-python-armhf:cpy3-minimal-tx-${AUTOBAHN_PYTHON_VERSION}
 
 list:
 	sudo docker images

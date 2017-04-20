@@ -2,6 +2,7 @@ FROM armhf/python:3.5-alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
+ARG AUTOBAHN_PYTHON_VERSION
 ENV HOME /app
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -14,7 +15,7 @@ RUN apk add --update build-base libffi-dev openssl-dev python-dev py-pip \
     && rm -rf /var/cache/apk/*
 
 # install Autobahn|Python
-RUN pip install -U pip && pip install autobahn[twisted,asyncio,accelerate,serialization,encryption]
+RUN pip install -U pip && pip install autobahn[twisted,asyncio,accelerate,serialization,encryption]==${AUTOBAHN_PYTHON_VERSION}
 
 # add example service
 COPY ./app /app

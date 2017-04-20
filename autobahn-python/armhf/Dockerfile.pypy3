@@ -2,6 +2,7 @@ FROM armhf/pypy:3
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
+ARG AUTOBAHN_PYTHON_VERSION
 ENV HOME /app
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -13,7 +14,7 @@ ENV CBREALM realm1
 RUN ln -s /usr/local/bin/pypy3 /usr/local/bin/python
 
 # install Autobahn|Python
-RUN pip install -U pip && pip install autobahn[twisted,asyncio,serialization,encryption]
+RUN pip install -U pip && pip install autobahn[twisted,asyncio,serialization,encryption]==${AUTOBAHN_PYTHON_VERSION}
 
 # add example service
 COPY ./app /app
