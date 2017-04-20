@@ -20,13 +20,36 @@ default:
 
 
 #
-# BUILD / VERSION / TEST: Community, all flavors
+# BUILD / VERSION / TEST / PUBLISH: Community, all flavors
 #
 build_community: build_community_cpy3 build_community_pypy3
 
 version_community: version_community_cpy3 version_community_pypy3
 
 test_community: test_community_cpy3 test_community_pypy3
+
+publish_community: build_community
+	# amd64 / community / cpy3
+	sudo docker push crossbario/crossbar:latest
+	sudo docker push crossbario/crossbar:community
+	sudo docker push crossbario/crossbar:community-cpy3
+	sudo docker push crossbario/crossbar:community-cpy3-${CROSSBAR_VERSION}
+
+	# armhf / community / cpy3
+	sudo docker push crossbario/crossbar-armhf:latest
+	sudo docker push crossbario/crossbar-armhf:community
+	sudo docker push crossbario/crossbar-armhf:community-cpy3
+	sudo docker push crossbario/crossbar-armhf:community-cpy3-${CROSSBAR_VERSION}
+
+	# aarch64 / community / cpy3
+	sudo docker push crossbario/crossbar-aarch64:latest
+	sudo docker push crossbario/crossbar-aarch64:community
+	sudo docker push crossbario/crossbar-aarch64:community-cpy3
+	sudo docker push crossbario/crossbar-aarch64:community-cpy3-${CROSSBAR_VERSION}
+
+	# amd64 / community / pypy3
+	sudo docker push crossbario/crossbar:community-pypy3
+	sudo docker push crossbario/crossbar:community-pypy3-${CROSSBAR_VERSION}
 
 
 #
@@ -40,8 +63,9 @@ build_amd64_community_cpy3:
 	time sudo docker build \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar:latest \
+		-t crossbario/crossbar:community \
 		-t crossbario/crossbar:community-cpy3 \
-		-t crossbario/crossbar:community-cpy3-${CROSSBAR_VERSION}\
+		-t crossbario/crossbar:community-cpy3-${CROSSBAR_VERSION} \
 		-f Dockerfile.amd64-community-cpy3 .
 
 build_armhf_community_cpy3:
@@ -50,8 +74,9 @@ build_armhf_community_cpy3:
 	time sudo docker build \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar-armhf:latest \
+		-t crossbario/crossbar-armhf:community \
 		-t crossbario/crossbar-armhf:community-cpy3 \
-		-t crossbario/crossbar-armhf:community-cpy3-${CROSSBAR_VERSION}\
+		-t crossbario/crossbar-armhf:community-cpy3-${CROSSBAR_VERSION} \
 		-f Dockerfile.armhf-community-cpy3 .
 
 build_aarch64_community_cpy3:
@@ -60,8 +85,9 @@ build_aarch64_community_cpy3:
 	time sudo docker build \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar-aarch64:latest \
+		-t crossbario/crossbar-aarch64:community \
 		-t crossbario/crossbar-aarch64:community-cpy3 \
-		-t crossbario/crossbar-aarch64:community-cpy3-${CROSSBAR_VERSION}\
+		-t crossbario/crossbar-aarch64:community-cpy3-${CROSSBAR_VERSION} \
 		-f Dockerfile.aarch64-community-cpy3 .
 
 
@@ -75,9 +101,8 @@ build_amd64_community_pypy3:
 	sudo rm -f node/.crossbar/node.key
 	time sudo docker build \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
-		-t crossbario/crossbar:latest \
 		-t crossbario/crossbar:community-pypy3 \
-		-t crossbario/crossbar:community-pypy3-${CROSSBAR_VERSION}\
+		-t crossbario/crossbar:community-pypy3-${CROSSBAR_VERSION} \
 		-f Dockerfile.amd64-community-pypy3 .
 
 build_armhf_community_pypy3:
@@ -122,7 +147,7 @@ version_armhf_community_pypy3:
 	@echo "PyPy3 isn't available for armhf yet"
 
 version_aarch64_community_pypy3:
-	@echo "PyPy3 isn't available for aaarch64 yet"
+	@echo "PyPy3 isn't available for aarch64 yet"
 
 
 #
@@ -160,7 +185,7 @@ test_armhf_community_pypy3:
 	@echo "PyPy3 isn't available for armhf yet"
 
 test_aarch64_community_pypy3:
-	@echo "PyPy3 isn't available for aaarch64 yet"
+	@echo "PyPy3 isn't available for aarch64 yet"
 
 
 #
