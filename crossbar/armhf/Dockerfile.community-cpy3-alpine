@@ -1,4 +1,7 @@
-FROM armhf/python:3.5-alpine
+# FROM armhf/python:3.6-alpine
+FROM armhf/python:3.6
+
+COPY qemu-arm-static /usr/bin/qemu-arm-static
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
@@ -7,11 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
 ENV CROSSBAR_VERSION 17.3.1
 
-# add our user and group
-RUN    addgroup crossbar \
-    && adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar
-
-# install deps, Crossbar and test if everything installed properly
+# install dependencies and Crossbar.io
 RUN    apk --update upgrade \
     && apk add libffi \
     && apk add --virtual .build-deps \
@@ -19,19 +18,26 @@ RUN    apk --update upgrade \
                libffi-dev \
                openssl-dev \
                linux-headers \
-    && pip install --no-cache-dir -U pip
+    && pip install --no-cache-dir -U pip \
     && pip install --no-cache-dir crossbar==${CROSSBAR_VERSION} \
-    && apk del .build-deps \
-    && crossbar version
+    && apk del .build-deps
 
-# make /node a volume to allow writes if the container is otherwise marked read-only
+# test if everything installed properly
+RUN crossbar version
+
+# add our user and group
+RUN    addgroup crossbar \
+    && adduser -D -h /node -G crossbar -g "Crossbar.io Service" crossbar
+
+# initialize a Crossbar.io node
+COPY ./node/ /node/
+RUN chown -R crossbar:crossbar /node
+
+# make /node a volume to allow external configuration
 VOLUME /node
 
 # set the Crossbar.io node directory as working directory
 WORKDIR /node
-
-# initialize a Crossbar.io node
-COPY ./node/ /node/
 
 # run under this user, and expose default port
 USER crossbar

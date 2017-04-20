@@ -2,13 +2,13 @@ This contains the build stuff for Crossbar.io / Docker on x86-64.
 
 ## Build and Deploy
 
-To build and deploy the Crossbar.io Docker image to DockerHub, do:
+To build, test and deploy the Crossbar.io Docker image to DockerHub, do:
 
 ```console
-make build_community
-make version_community
-make test_community
-make publish_community
+make build
+make version
+make test
+make publish
 ```
 
 ## End-user Experience

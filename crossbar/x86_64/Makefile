@@ -57,7 +57,7 @@ version_community_pypy3:
 	sudo docker run --rm --entrypoint=/usr/local/bin/crossbar -it crossbario/crossbar:community-pypy3 version
 
 
-publish: publish_plus publish_community
+publish: publish_community_cpy3 publish_community_pypy3
 
 publish_community_cpy3: build_community_cpy3
 	sudo docker push crossbario/crossbar:latest
