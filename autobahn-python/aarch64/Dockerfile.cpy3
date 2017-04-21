@@ -1,0 +1,29 @@
+FROM aarch64/python:3.6
+
+COPY .qemu/qemu-aarch64-static /usr/bin/qemu-aarch64-static
+
+MAINTAINER The Crossbar.io Project <support@crossbario.com>
+
+ARG AUTOBAHN_PYTHON_VERSION
+ENV HOME /app
+ENV DEBIAN_FRONTEND noninteractive
+
+# Crossbar.io connection defaults
+ENV CBURL ws://crossbar:8080/ws
+ENV CBREALM realm1
+
+# install Autobahn|Python
+RUN pip install -U pip && pip install autobahn[twisted,asyncio,accelerate,serialization,encryption]==${AUTOBAHN_PYTHON_VERSION}
+
+# add example service
+COPY ./app /app
+RUN ln -s /app/client_tx.py /app/client.py
+
+# make /app a volume to allow external configuration
+VOLUME /app
+
+# set the app component directory as working directory
+WORKDIR /app
+
+# run service entry script by default
+CMD ["sh", "/app/run"]
