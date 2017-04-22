@@ -2,9 +2,18 @@
 
 ### AutobahnJS
 
-Architecture | Flavor | Image
+Architecture | Flavor | Image | Dockerfile
 ---|---|---
-aarch64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64:full.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:full "Get your own version badge on microbadger.com") | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:full "Get your own image badge on microbadger.com")
+
+[aarch64](https://hub.docker.com/r/crossbario/autobahn-js-aarch64/) |
+![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64:full.svg) |
+![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full.svg) |
+[Dockerfile.full](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.full)
+
+[aarch64](https://hub.docker.com/r/crossbario/autobahn-js-aarch64/) |
+![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64:alpine.svg) |
+![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine.svg) |
+[Dockerfile.alpine](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine)
 
 
 ## Developer Experience
