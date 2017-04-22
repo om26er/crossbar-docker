@@ -1,7 +1,7 @@
 
 # Images
 
-Package | Architecture | Flavor............................. | Image....................... | `docker pull ..`
+Package | Architecture | Flavor                  | Image                     | `docker pull   `
 ---|---|---|---|---
 [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js:full.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.full) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:full.svg)](https://hub.docker.com/r/crossbario/autobahn-js/) | `crossbario/autobahn-js:full`
 [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js:alpine.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.alpine) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:alpine.svg)](https://hub.docker.com/r/crossbario/autobahn-js/) | `crossbario/autobahn-js:alpine`
