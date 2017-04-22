@@ -1,7 +1,7 @@
 ## Images
 
 Package | Architecture | Flavor | Image | Command
----|---|---|---
+---|---|---|---|---
 AutobahnJS (Node) | aarch64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64:full.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.full) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full.svg)](https://hub.docker.com/r/crossbario/autobahn-js-aarch64/) | `docker pull crossbario/autobahn-js-aarch64:full`
 AutobahnJS (Node) | aarch64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64:alpine.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine.svg)](https://hub.docker.com/r/crossbario/autobahn-js-aarch64/) | `docker pull crossbario/autobahn-js-aarch64:alpine`
 
