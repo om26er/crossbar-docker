@@ -1,6 +1,6 @@
 HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 
-SUBDIRS = crossbar/x86_64 autobahn-js autobahn-python autobahn-cpp
+SUBDIRS = crossbar autobahn-js/x86_64 autobahn-js/armhf autobahn-js/aarch64 autobahn-python/x86-64 autobahn-python/armhf autobahn-python/aarch64
 
 subdirs: $(SUBDIRS)
 
@@ -18,64 +18,6 @@ $(PUBLISHDIRS):
 
 .PHONY: subdirs $(BUILDDIRS) $(PUBLISHDIRS)
 .PHONY: build publish crossbar
-
-# run this to start a test Crossbar.io container
-crossbar:
-	sudo docker run -it -p 8080:8080 --name crossbar --rm crossbario/crossbar
-
-# run this to test all Autobahn flavors against above Crossbar.io sequentially
-autobahn: autobahnjs autobahnjs_alpine \
-		  autobahncpp_gcc autobahncpp_clang \
-	      autobahnpython_cpy2 autobahnpython_cpy3 autobahnpython_pypy2 autobahnpython_cpy2_alpine autobahnpython_cpy3_alpine
-
-autobahncpp_gcc:
-	sudo docker run -it sh -c "cd /usr/local/app/ && make && crossbario/autobahn-cpp:gcc /usr/local/app/client ws://$(HOSTIP):8080/ws realm1"
-
-autobahncpp_clang:
-	sudo docker run -it sh -c "cd /usr/local/app/ && make && crossbario/autobahn-cpp:clang /usr/local/app/client ws://$(HOSTIP):8080/ws realm1"
-
-autobahnjs:
-	sudo docker run -it crossbario/autobahn-js node /root/client.js ws://$(HOSTIP):8080/ws realm1
-
-autobahnjs_alpine:
-	sudo docker run -it crossbario/autobahn-js:alpine node /root/client.js ws://$(HOSTIP):8080/ws realm1
-
-autobahnpython_cpy2:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2
-
-autobahnpython_cpy3:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3
-
-autobahnpython_pypy2:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:pypy2
-
-autobahnpython_cpy2_alpine:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2-alpine
-
-autobahnpython_cpy3_alpine:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy2-alpine
-
-autobahnpython_cpy3_minimal:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-python:cpy3-minimal
-
-# pull all our images
-pull:
-	sudo docker pull crossbario/crossbar:latest
-	sudo docker pull crossbario/crossbar:community
-	sudo docker pull crossbario/autobahn-js:latest
-	sudo docker pull crossbario/autobahn-js:full
-	sudo docker pull crossbario/autobahn-js:alpine
-	sudo docker pull crossbario/autobahn-python:latest
-	sudo docker pull crossbario/autobahn-python:cpy3-minimal-tx
-	sudo docker pull crossbario/autobahn-python:cpy2-minimal-tx
-	sudo docker pull crossbario/autobahn-python:cpy3-minimal-aio
-	sudo docker pull crossbario/autobahn-python:cpy2-minimal-aio
-	sudo docker pull crossbario/autobahn-python:cpy3-alpine
-	sudo docker pull crossbario/autobahn-python:cpy2-alpine
-	sudo docker pull crossbario/autobahn-python:pypy3
-	sudo docker pull crossbario/autobahn-python:pypy2
-	sudo docker pull crossbario/autobahn-python:cpy3
-	sudo docker pull crossbario/autobahn-python:cpy2
 
 requirements: docker docker_compose
 

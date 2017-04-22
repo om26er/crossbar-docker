@@ -7,14 +7,14 @@ MAINTAINER The Crossbar.io Project <support@crossbario.com>
 # Metadata
 ARG AUTOBAHN_PYTHON_VERSION
 ARG BUILD_DATE
-ARG VCS_REF
+ARG AUTOBAHN_PYTHON_VCS_REF
 
 # Metadata labeling
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="AutobahnPython Starter Template" \
       org.label-schema.description="Quickstart template for application development with AutobahnPython" \
       org.label-schema.url="http://crossbar.io" \
-      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-ref=$AUTOBAHN_PYTHON_VCS_REF \
       org.label-schema.vcs-url="https://github.com/crossbario/autobahn-python" \
       org.label-schema.vendor="The Crossbar.io Project" \
       org.label-schema.version=$AUTOBAHN_PYTHON_VERSION \

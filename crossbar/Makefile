@@ -4,8 +4,6 @@
 # Get the Git commit fingerprint of the tagged release, and
 # get the current day as build date for the image:
 #
-VCS_REF=$(shell git --git-dir="../../crossbar/.git" rev-list -n 1 v${CROSSBAR_VERSION} --abbrev-commit)
-BUILD_DATE=$(shell date -u +"%Y-%m-%d")
 
 
 default:
@@ -25,7 +23,7 @@ default:
 #
 params:
 	@echo "${CROSSBAR_VERSION}"
-	@echo "${VCS_REF}"
+	@echo "${CROSSBAR_VCS_REF}"
 	@echo "${BUILD_DATE}"
 
 
@@ -48,10 +46,12 @@ build_amd64_community_cpy3:
 	rm -f node/.crossbar/node.key
 	time docker build \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
-		--build-arg VCS_REF=${VCS_REF} \
+		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar:latest \
+		-t crossbario/crossbar:${CROSSBAR_VERSION} \
 		-t crossbario/crossbar:community \
+		-t crossbario/crossbar:community-${CROSSBAR_VERSION} \
 		-t crossbario/crossbar:community-cpy3 \
 		-t crossbario/crossbar:community-cpy3-${CROSSBAR_VERSION} \
 		-f ./x86_64/Dockerfile.community-cpy3 .
@@ -61,7 +61,7 @@ build_armhf_community_cpy3:
 	rm -f node/.crossbar/node.key
 	time docker build \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
-		--build-arg VCS_REF=${VCS_REF} \
+		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar-armhf:latest \
 		-t crossbario/crossbar-armhf:community \
@@ -74,7 +74,7 @@ build_aarch64_community_cpy3:
 	rm -f node/.crossbar/node.key
 	time docker build \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
-		--build-arg VCS_REF=${VCS_REF} \
+		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar-aarch64:latest \
 		-t crossbario/crossbar-aarch64:community \
@@ -93,7 +93,7 @@ build_amd64_community_pypy3:
 	rm -f node/.crossbar/node.key
 	time docker build \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
-		--build-arg VCS_REF=${VCS_REF} \
+		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar:community-pypy3 \
 		-t crossbario/crossbar:community-pypy3-${CROSSBAR_VERSION} \

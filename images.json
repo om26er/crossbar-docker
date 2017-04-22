@@ -53,7 +53,8 @@
                 "latest",
                 "community",
                 "community-cpy3",
-                "community-pypy3"
+                "community-pypy3",
+                "community-pypy3-17.3.1"
             ]
         }
     ]
