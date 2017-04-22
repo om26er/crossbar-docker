@@ -1,0 +1,46 @@
+{
+    "images": [
+        {
+            "package": "autobahn-js",
+            "architecture": "amd64",
+            "github": "https://github.com/crossbario/autobahn-js",
+            "name": "crossbario/autobahn-js",
+            "tags": ["full", "latest", ""]
+        },
+        {
+            "package": "autobahn-js",
+            "architecture": "amd64",
+            "github": "https://github.com/crossbario/autobahn-js",
+            "name": "crossbario/autobahn-js",
+            "tags": ["alpine"]
+        },
+        {
+            "package": "autobahn-js",
+            "architecture": "armhf",
+            "github": "https://github.com/crossbario/autobahn-js",
+            "name": "crossbario/autobahn-js-armhf",
+            "tags": ["full", "latest", ""]
+        },
+        {
+            "package": "autobahn-js",
+            "architecture": "armhf",
+            "github": "https://github.com/crossbario/autobahn-js",
+            "name": "crossbario/autobahn-js-armhf",
+            "tags": ["alpine"]
+        },
+        {
+            "package": "autobahn-js",
+            "architecture": "aarch64",
+            "github": "https://github.com/crossbario/autobahn-js",
+            "name": "crossbario/autobahn-js-aarch64",
+            "tags": ["full", "latest", ""]
+        },
+        {
+            "package": "autobahn-js",
+            "architecture": "aarch64",
+            "github": "https://github.com/crossbario/autobahn-js",
+            "name": "crossbario/autobahn-js-aarch64",
+            "tags": ["alpine"]
+        }
+    ]
+}
