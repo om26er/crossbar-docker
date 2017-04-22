@@ -10,6 +10,8 @@ build: build_full build_alpine
 
 build_full:
 	time docker build \
+		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 		--build-arg AUTOBAHN_JS_VERSION=${AUTOBAHN_JS_VERSION} \
 		-t crossbario/autobahn-js:full \
 		-t crossbario/autobahn-js:full-${AUTOBAHN_JS_VERSION} \
@@ -17,6 +19,8 @@ build_full:
 
 build_alpine:
 	time docker build \
+		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 		--build-arg AUTOBAHN_JS_VERSION=${AUTOBAHN_JS_VERSION} \
 		-t crossbario/autobahn-js \
 		-t crossbario/autobahn-js:alpine \
@@ -73,4 +77,4 @@ list:
 	-docker images crossbario/autobahn-js:*
 
 clean:
-	-docker rmi -f crossbario/autobahn-js:*
+	-docker rmi -f $(docker images -q crossbario/autobahn-js:* | uniq)
