@@ -2,14 +2,14 @@
     "images": [
         {
             "package": "autobahn-js",
-            "architecture": "amd64",
+            "architecture": "x86_64",
             "github": "https://github.com/crossbario/autobahn-js",
             "name": "crossbario/autobahn-js",
             "tags": ["full", "latest", ""]
         },
         {
             "package": "autobahn-js",
-            "architecture": "amd64",
+            "architecture": "x86_64",
             "github": "https://github.com/crossbario/autobahn-js",
             "name": "crossbario/autobahn-js",
             "tags": ["alpine"]
