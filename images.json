@@ -2,100 +2,57 @@
     "images": [
         {
             "package": "autobahn-python",
-            "architecture": "x86_64",
+            "architectures": [
+                "x86_64"
+            ],
             "github": "https://github.com/crossbario/autobahn-python",
             "name": "crossbario/autobahn-python",
             "tags": [
-                "cpy3", "cpy3-alpine", "cpy3-minimal-aio", "cpy3-minimal-tx",
-                "cpy2", "cpy2-alpine", "cpy2-minimal-aio", "cpy2-minimal-tx",
-                "pypy2", "pypy3"
+                "latest",
+                "cpy3",
+                "pypy3",
+                "cpy3-alpine",
+                "cpy3-minimal-aio",
+                "cpy3-minimal-tx",
+                "cpy2",
+                "cpy2-alpine",
+                "cpy2-minimal-aio",
+                "cpy2-minimal-tx",
+                "pypy2"
             ]
         },
 
         {
             "package": "autobahn-js",
-            "architecture": "x86_64",
+            "architectures": [
+                "x86_64",
+                "armhf",
+                "aarch64"
+            ],
             "github": "https://github.com/crossbario/autobahn-js",
             "name": "crossbario/autobahn-js",
-            "tags": ["full", "latest"]
-        },
-        {
-            "package": "autobahn-js",
-            "architecture": "x86_64",
-            "github": "https://github.com/crossbario/autobahn-js",
-            "name": "crossbario/autobahn-js",
-            "tags": ["alpine"]
-        },
-        {
-            "package": "autobahn-js",
-            "architecture": "armhf",
-            "github": "https://github.com/crossbario/autobahn-js",
-            "name": "crossbario/autobahn-js-armhf",
-            "tags": ["full", "latest"]
-        },
-        {
-            "package": "autobahn-js",
-            "architecture": "armhf",
-            "github": "https://github.com/crossbario/autobahn-js",
-            "name": "crossbario/autobahn-js-armhf",
-            "tags": ["alpine"]
-        },
-        {
-            "package": "autobahn-js",
-            "architecture": "aarch64",
-            "github": "https://github.com/crossbario/autobahn-js",
-            "name": "crossbario/autobahn-js-aarch64",
-            "tags": ["full", "latest"]
-        },
-        {
-            "package": "autobahn-js",
-            "architecture": "aarch64",
-            "github": "https://github.com/crossbario/autobahn-js",
-            "name": "crossbario/autobahn-js-aarch64",
-            "tags": ["alpine"]
+            "tags": [
+                "latest",
+                "full",
+                "alpine"
+            ]
         },
 
         {
             "package": "crossbar",
-            "architecture": "x86_64",
+            "architectures": [
+                "x86_64",
+                "armhf",
+                "aarch64"
+            ],
             "github": "https://github.com/crossbario/crossbar",
             "name": "crossbario/crossbar",
-            "tags": ["community-cpy3", "community", "latest"]
-        },
-        {
-            "package": "crossbar",
-            "architecture": "x86_64",
-            "github": "https://github.com/crossbario/crossbar",
-            "name": "crossbario/crossbar",
-            "tags": ["community-pypy3"]
-        },
-        {
-            "package": "crossbar",
-            "architecture": "armhf",
-            "github": "https://github.com/crossbario/crossbar",
-            "name": "crossbario/crossbar-armhf",
-            "tags": ["community-cpy3", "community", "latest"]
-        },
-        {
-            "package": "crossbar",
-            "architecture": "armhf",
-            "github": "https://github.com/crossbario/crossbar",
-            "name": "crossbario/crossbar-armhf",
-            "tags": ["community-pypy3"]
-        },
-        {
-            "package": "crossbar",
-            "architecture": "aarch64",
-            "github": "https://github.com/crossbario/crossbar",
-            "name": "crossbario/crossbar-aarch64",
-            "tags": ["community-cpy3", "community", "latest"]
-        },
-        {
-            "package": "crossbar",
-            "architecture": "x86_64",
-            "github": "https://github.com/crossbario/crossbar",
-            "name": "crossbario/crossbar-aarch64",
-            "tags": ["community-pypy3"]
+            "tags": [
+                "latest",
+                "community",
+                "community-cpy3",
+                "community-pypy3"
+            ]
         }
     ]
 }
