@@ -1,3 +1,10 @@
+## Images
+
+### AutobahnJS
+
+* **crossbario/autobahn-js-aarch64:** [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64:full.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:full "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:full "Get your own image badge on microbadger.com")
+
+
 ## Developer Experience
 
 ### Requirements

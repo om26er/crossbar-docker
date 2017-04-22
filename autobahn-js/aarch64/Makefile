@@ -15,6 +15,8 @@ build: build_full build_alpine
 
 build_full:
 	time docker build \
+		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 		--build-arg AUTOBAHN_JS_VERSION=${AUTOBAHN_JS_VERSION} \
 		-t crossbario/autobahn-js-aarch64 \
 		-t crossbario/autobahn-js-aarch64:latest \
@@ -24,11 +26,13 @@ build_full:
 
 build_alpine:
 	@echo "FIXME: crossbario/autobahn-js-aarch64:alpine is broken"
-#	time docker build \
-#		--build-arg AUTOBAHN_JS_VERSION=${AUTOBAHN_JS_VERSION} \
-#		-t crossbario/autobahn-js-aarch64:alpine \
-#		-t crossbario/autobahn-js-aarch64:alpine-${AUTOBAHN_JS_VERSION} \
-#		-f Dockerfile.alpine .
+	time docker build \
+		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+		--build-arg VCS_REF=`git rev-parse --short HEAD` \
+		--build-arg AUTOBAHN_JS_VERSION=${AUTOBAHN_JS_VERSION} \
+		-t crossbario/autobahn-js-aarch64:alpine \
+		-t crossbario/autobahn-js-aarch64:alpine-${AUTOBAHN_JS_VERSION} \
+		-f Dockerfile.alpine .
 
 
 version: os_version node_version autobahn_version
@@ -43,8 +47,7 @@ node_version:
 
 autobahn_version:
 	docker run -it --rm crossbario/autobahn-js-aarch64:full sh -c "echo \"console.log('autobahn-' + require('autobahn').version + ' is installed');\" | node"
-	@echo "FIXME: crossbario/autobahn-js-aarch64:alpine is broken"
-	#docker run -it --rm crossbario/autobahn-js-aarch64:alpine sh -c "echo \"console.log('autobahn-' + require('autobahn').version + ' is installed');\" | node"
+	docker run -it --rm crossbario/autobahn-js-aarch64:alpine sh -c "echo \"console.log('autobahn-' + require('autobahn').version + ' is installed');\" | node"
 
 
 ping: ping_full ping_alpine
@@ -62,16 +65,14 @@ test_full:
 	docker run -it --rm --link crossbar crossbario/autobahn-js-aarch64:full
 
 test_alpine:
-	@echo "FIXME: crossbario/autobahn-js-aarch64:alpine is broken"
-	#docker run -it --rm --link crossbar crossbario/autobahn-js-aarch64:alpine
+	docker run -it --rm --link crossbar crossbario/autobahn-js-aarch64:alpine
 
 
 publish: publish_full publish_alpine
 
 publish_alpine: build_alpine
-	@echo "FIXME: crossbario/autobahn-js-aarch64:alpine is broken"
-	#docker push crossbario/autobahn-js-aarch64:alpine
-	#docker push crossbario/autobahn-js-aarch64:alpine-${AUTOBAHN_JS_VERSION}
+	docker push crossbario/autobahn-js-aarch64:alpine
+	docker push crossbario/autobahn-js-aarch64:alpine-${AUTOBAHN_JS_VERSION}
 
 publish_full: build_full
 	docker push crossbario/autobahn-js-aarch64
@@ -84,4 +85,4 @@ list:
 	-docker images crossbario/autobahn-js-aarch64:*
 
 clean:
-	-docker rmi -f crossbario/autobahn-js-aarch64:*
+	-docker rmi -f $(docker images -q crossbario/autobahn-js-aarch64:* | uniq)
