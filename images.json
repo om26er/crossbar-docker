@@ -1,6 +1,18 @@
 {
     "images": [
         {
+            "package": "autobahn-python",
+            "architecture": "x86_64",
+            "github": "https://github.com/crossbario/autobahn-python",
+            "name": "crossbario/autobahn-python",
+            "tags": [
+                "cpy3", "cpy3-alpine", "cpy3-minimal-aio", "cpy3-minimal-tx",
+                "cpy2", "cpy2-alpine", "cpy2-minimal-aio", "cpy2-minimal-tx",
+                "pypy2", "pypy3"
+            ]
+        },
+
+        {
             "package": "autobahn-js",
             "architecture": "x86_64",
             "github": "https://github.com/crossbario/autobahn-js",
