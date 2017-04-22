@@ -13,7 +13,7 @@ from pprint import pprint
 HEADER = """
 # Images
 
-Package | Architecture | Flavor | Image | Image ID (`docker pull`)
+Package | Architecture | Flavor | Image | Tags | `docker pull ..`
 ---|---|---|---|---
 """
 
@@ -28,5 +28,6 @@ with open('IMAGES.md', 'w') as f_out:
             github = image.get('github', None)
             name = image.get('name', None)
             tags = image.get('tags', [])
-            for tag in tags:
-                f_out.write('[{package}]({github}) | {architecture} | [![](https://images.microbadger.com/badges/version/crossbario/{package}:{tag}.svg)](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.full) | [![](https://images.microbadger.com/badges/image/crossbario/{package}:{tag}.svg)](https://hub.docker.com/r/crossbario/{package}/) | `crossbario/{package}:{tag}`\n'.format(package=package, architecture=architecture, github=github, name=name, tag=tag))
+            _tags = ', '.join([tag if tag.strip() != '' else '-' for tag in tags])
+            _tag = tags[0]
+            f_out.write('[{package}]({github}) | {architecture} | [![](https://images.microbadger.com/badges/version/crossbario/{package}:{tag}.svg)](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.full) | [![](https://images.microbadger.com/badges/image/crossbario/{package}:{tag}.svg)](https://hub.docker.com/r/crossbario/{package}/) | {tags} | `crossbario/{package}:{tag}`\n'.format(package=package, architecture=architecture, github=github, name=name, tag=_tag, tags=_tags))
