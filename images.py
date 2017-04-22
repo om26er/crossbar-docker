@@ -14,7 +14,7 @@ HEADER = """
 # Images
 
 Package | Architecture | Flavor................... | Image....................... | `docker pull ..`
----|---|---|---|---|---
+---|---|---|---|---
 """
 
 with open('IMAGES.md', 'w') as f_out:
