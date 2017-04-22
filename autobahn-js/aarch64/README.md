@@ -1,5 +1,8 @@
 # AutobahnJS for Docker
 
+[![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64 "Get your own version badge on microbadger.com")
+
+
 Here you find the Dockerfiles for creating the [AutobahnJS for Docker images](https://hub.docker.com/r/crossbario/autobahn-js/) maintained by the Crossbar.io Project.
 
 These images come with NodeJS and AutobahnJS preinstalled and are intended to base application service containers on.
