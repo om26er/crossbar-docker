@@ -2,12 +2,12 @@
 
 Package | Architecture | Flavor | Image | Command
 ---|---|---|---|---
-AutobahnJS | amd64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js:full.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86-64/Dockerfile.full) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:full.svg)](https://hub.docker.com/r/crossbario/autobahn-js/) | `docker pull crossbario/autobahn-js:full`
-AutobahnJS | amd64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js:alpine.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86-64/Dockerfile.alpine) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:alpine.svg)](https://hub.docker.com/r/crossbario/autobahn-js/) | `docker pull crossbario/autobahn-js:alpine`
-AutobahnJS | armhf | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-armhf:full.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.full) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:full.svg)](https://hub.docker.com/r/crossbario/autobahn-js-armhf/) | `docker pull crossbario/autobahn-js-armhf:full`
-AutobahnJS | armhf | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-armhf:alpine.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.alpine) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:alpine.svg)](https://hub.docker.com/r/crossbario/autobahn-js-armhf/) | `docker pull crossbario/autobahn-js-armhf:alpine`
-AutobahnJS | aarch64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64:full.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.full) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full.svg)](https://hub.docker.com/r/crossbario/autobahn-js-aarch64/) | `docker pull crossbario/autobahn-js-aarch64:full`
-AutobahnJS | aarch64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64:alpine.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine.svg)](https://hub.docker.com/r/crossbario/autobahn-js-aarch64/) | `docker pull crossbario/autobahn-js-aarch64:alpine`
+[autobahn-js](https://github.com/crossbario/autobahn-js) | amd64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js:full.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.full) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:full.svg)](https://hub.docker.com/r/crossbario/autobahn-js/) | `docker pull crossbario/autobahn-js:full`
+[autobahn-js](https://github.com/crossbario/autobahn-js) | amd64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js:alpine.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.alpine) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:alpine.svg)](https://hub.docker.com/r/crossbario/autobahn-js/) | `docker pull crossbario/autobahn-js:alpine`
+[autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-armhf:full.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.full) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:full.svg)](https://hub.docker.com/r/crossbario/autobahn-js-armhf/) | `docker pull crossbario/autobahn-js-armhf:full`
+[autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-armhf:alpine.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.alpine) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:alpine.svg)](https://hub.docker.com/r/crossbario/autobahn-js-armhf/) | `docker pull crossbario/autobahn-js-armhf:alpine`
+[autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64:full.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.full) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full.svg)](https://hub.docker.com/r/crossbario/autobahn-js-aarch64/) | `docker pull crossbario/autobahn-js-aarch64:full`
+[autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js-aarch64:alpine.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine) | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine.svg)](https://hub.docker.com/r/crossbario/autobahn-js-aarch64/) | `docker pull crossbario/autobahn-js-aarch64:alpine`
 
 ---
 
@@ -170,7 +170,7 @@ sudo docker run -it crossbario/autobahn-js node /root/client.js ws://192.168.1.1
 
 Here, you will need to replace the IP address `192.168.1.100` with that of your box (and it needs to be one visible from within the container - NOT `127.0.0.1`).
 
-> This will run a single Docker command to download and start a AutobahnJS container with an example client connecting to the former Crossbar.io running container. You can also type `make autobahnjs` if you are lazy (there is a Makefile with the former command).
+> This will run a single Docker command to download and start a [autobahn-js](https://github.com/crossbario/autobahn-js) container with an example client connecting to the former Crossbar.io running container. You can also type `make [autobahn-js](https://github.com/crossbario/autobahn-js)` if you are lazy (there is a Makefile with the former command).
 
 In a third terminal, type
 
@@ -190,13 +190,13 @@ Standard Ubuntu Linux based x84-64 image download sizes:
 
 Images based on Alpine Linux download sizes:
 
-* **AutobahnJS (alpine): 11 MB**
+* **[autobahn-js](https://github.com/crossbario/autobahn-js) (alpine): 11 MB**
 * **AutobahnPython (cpy3-alpine): 91 MB**
 * **AutobahnPython (cpy2-alpine): 93 MB**
 
 Images based on  the respective language standard image download sizes:
 
-* AutobahnJS: 254 MB
+* [autobahn-js](https://github.com/crossbario/autobahn-js): 254 MB
 * AutobahnPython (pypy2): 290 MB
 * AutobahnPython (cpy3): 282 MB
 * AutobahnPython (cpy2): 286 MB
