@@ -6,7 +6,6 @@ These images come with NodeJS and AutobahnJS preinstalled and are intended to ba
 
 
 https://hub.docker.com/r/armhf/node/
-https://hub.docker.com/r/aarch64/node/
 
 
 ## Images

@@ -5,58 +5,83 @@ HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 default:
 	@echo "Targets: build, test, publish, .."
 
+
+qemu_deps:
+	mkdir -p ./.qemu
+	cp /usr/bin/qemu-arm-static ./.qemu/
+
+
 build: build_full build_alpine
 
 build_full:
-	sudo docker build \
+	time docker build \
+		--build-arg AUTOBAHN_JS_VERSION=${AUTOBAHN_JS_VERSION} \
+		-t crossbario/autobahn-js-armhf \
+		-t crossbario/autobahn-js-armhf:latest \
 		-t crossbario/autobahn-js-armhf:full \
-		-t crossbario/autobahn-js-armhf:full-0.16.1 \
+		-t crossbario/autobahn-js-armhf:full-${AUTOBAHN_JS_VERSION} \
 		-f Dockerfile.full .
 
 build_alpine:
-	sudo docker build \
-		-t crossbario/autobahn-js-armhf \
-		-t crossbario/autobahn-js-armhf:alpine \
-		-t crossbario/autobahn-js-armhf:alpine-0.16.1 \
-		-f Dockerfile.alpine .
+	@echo "FIXME: crossbario/autobahn-js-armhf:alpine is broken"
+#	time docker build \
+#		--build-arg AUTOBAHN_JS_VERSION=${AUTOBAHN_JS_VERSION} \
+#		-t crossbario/autobahn-js-armhf:alpine \
+#		-t crossbario/autobahn-js-armhf:alpine-${AUTOBAHN_JS_VERSION} \
+#		-f Dockerfile.alpine .
 
-version: node_version autobahn_version
+
+version: os_version node_version autobahn_version
+
+os_version:
+	docker run -it --rm crossbario/autobahn-js-armhf:full uname -a
+	docker run -it --rm crossbario/autobahn-js-armhf:alpine uname -a
 
 node_version:
-	sudo docker run -it --rm crossbario/autobahn-js-armhf:full node -v
-	sudo docker run -it --rm crossbario/autobahn-js-armhf:alpine node -v
+	docker run -it --rm crossbario/autobahn-js-armhf:full node -v
+	docker run -it --rm crossbario/autobahn-js-armhf:alpine node -v
 
 autobahn_version:
-	sudo docker run -it --rm crossbario/autobahn-js-armhf:full sh -c "echo \"console.log('autobahn-' + require('autobahn').version + ' is installed');\" | node"
-	sudo docker run -it --rm crossbario/autobahn-js-armhf:alpine sh -c "echo \"console.log('autobahn-' + require('autobahn').version + ' is installed');\" | node"
+	docker run -it --rm crossbario/autobahn-js-armhf:full sh -c "echo \"console.log('autobahn-' + require('autobahn').version + ' is installed');\" | node"
+	@echo "FIXME: crossbario/autobahn-js-armhf:alpine is broken"
+	#docker run -it --rm crossbario/autobahn-js-armhf:alpine sh -c "echo \"console.log('autobahn-' + require('autobahn').version + ' is installed');\" | node"
+
+
+ping: ping_full ping_alpine
 
 ping_full:
-	sudo docker run --add-host=crossbar:$(HOSTIP) -it --rm crossbario/autobahn-js-armhf:full ping crossbar
+	docker run --add-host=crossbar:$(HOSTIP) -it --rm crossbario/autobahn-js-armhf:full ping crossbar
 
 ping_alpine:
-	sudo docker run --add-host=crossbar:$(HOSTIP) -it --rm crossbario/autobahn-js-armhf:alpine ping crossbar
+	docker run --add-host=crossbar:$(HOSTIP) -it --rm crossbario/autobahn-js-armhf:alpine ping crossbar
+
 
 test: test_full test_alpine
 
 test_full:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-js-armhf:full
+	docker run -it --rm --link crossbar crossbario/autobahn-js-armhf:full
 
 test_alpine:
-	sudo docker run -it --rm --link crossbar crossbario/autobahn-js-armhf:alpine
+	@echo "FIXME: crossbario/autobahn-js-armhf:alpine is broken"
+	#docker run -it --rm --link crossbar crossbario/autobahn-js-armhf:alpine
 
-publish_alpine: build_alpine
-	sudo docker push crossbario/autobahn-js-armhf
-	sudo docker push crossbario/autobahn-js-armhf:alpine
-	sudo docker push crossbario/autobahn-js-armhf:alpine-0.16.1
-
-publish_full: build_full
-	sudo docker push crossbario/autobahn-js-armhf:full
-	sudo docker push crossbario/autobahn-js-armhf:full-0.16.1
 
 publish: publish_full publish_alpine
 
+publish_alpine: build_alpine
+	@echo "FIXME: crossbario/autobahn-js-armhf:alpine is broken"
+	#docker push crossbario/autobahn-js-armhf:alpine
+	#docker push crossbario/autobahn-js-armhf:alpine-${AUTOBAHN_JS_VERSION}
+
+publish_full: build_full
+	docker push crossbario/autobahn-js-armhf
+	docker push crossbario/autobahn-js-armhf:latest
+	docker push crossbario/autobahn-js-armhf:full
+	docker push crossbario/autobahn-js-armhf:full-${AUTOBAHN_JS_VERSION}
+
+
 list:
-	sudo docker images
+	-docker images crossbario/autobahn-js-armhf:*
 
 clean:
-	-sudo docker rmi -f crossbario/autobahn-js-armhf*
+	-docker rmi -f crossbario/autobahn-js-armhf:*
