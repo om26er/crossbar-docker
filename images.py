@@ -13,7 +13,7 @@ from pprint import pprint
 HEADER = """
 # Images
 
-Package | Architecture | Flavor | Image | Tags | `docker pull ..`
+Package | Architecture | Flavor........... | Image............... | Tags | `docker pull ..`
 ---|---|---|---|---|---
 """
 
