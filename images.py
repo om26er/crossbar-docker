@@ -13,8 +13,8 @@ from pprint import pprint
 HEADER = """
 # Images
 
-Package | Architecture | Flavor                             | Image                               | `docker pull   `
----|---|---|---|---
+Package | Architecture | Flavor                             / Image                               | `docker pull   `
+---|---|---|---
 """
 
 with open('IMAGES.md', 'w') as f_out:
@@ -35,4 +35,4 @@ with open('IMAGES.md', 'w') as f_out:
                     image_id = 'crossbario/{package}{arch}:{tag}'.format(package=package, tag=_tag, arch='-{}'.format(architecture) if architecture else '')
                     #print(_tag, architecture)
                     #_architecture = '-'.format(architecture) if architecture != 'x86_64' else ''
-                    f_out.write('[{package}]({github}) | {architecture} | [![](https://images.microbadger.com/badges/version/crossbario/{package}{tag}.svg)](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.{tag}) | [![](https://images.microbadger.com/badges/image/crossbario/{package}:{tag}.svg)](https://hub.docker.com/r/crossbario/{package}/) | `{image_id}`\n'.format(package=package, architecture=architecture, github=github, name=name, tag=_tag, tags=_tags, image_id=image_id))
+                    f_out.write('[{package}]({github}) | {architecture} | [![](https://images.microbadger.com/badges/version/crossbario/{package}{tag}.svg)](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.{tag}) [![](https://images.microbadger.com/badges/image/crossbario/{package}:{tag}.svg)](https://hub.docker.com/r/crossbario/{package}/) | `{image_id}`\n'.format(package=package, architecture=architecture, github=github, name=name, tag=_tag, tags=_tags, image_id=image_id))
