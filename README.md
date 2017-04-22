@@ -1,3 +1,99 @@
+## Developer Experience
+
+### Requirements
+
+This assumes you have Docker already installed.
+
+Further, the commands shown assume that you are able to run Docker without `sudo`. The latter can be done by
+
+```console
+sudo usermod -aG docker oberstet
+```
+
+and rebooting.
+
+
+### Running a Crossbar.io test node
+
+All the examples down below assume a running Crossbar.io test. To start one:
+
+```console
+docker run -it -p 8080:8080 --name crossbar --rm crossbario/crossbar
+```
+
+Open [http://localhost:8080/](http://localhost:8080/) in your browser. You should see a version page rendered by Crossbar.io.
+
+
+### Creating a Crossbar.io node from scratch
+
+First create a fresh base directory for your project. This can reside anywhere, eg
+
+
+```console
+mkdir ~/project1
+```
+
+Create a node directory for a Crossbar.io node:
+
+```console
+cd ~/project1
+mkdir -p crossbar/.crossbar
+```
+
+For the configuration of the Crossbar.io node, now create a file `crossbar/.crossbar/config.json` with [this]() contents.
+
+Then start the node by running a Crossbar.io Docker container with the node directory mounted from the host directory here:
+
+```console
+docker run --user $UID -v ${PWD}:/node -p 8080:8080 --name crossbar --rm -it crossbario/crossbar
+```
+
+As this is the first time the node is started, it will generate a node key pair:
+
+* `crossbar/.crossbar/key.pub`
+* `crossbar/.crossbar/key.priv`
+
+
+
+
+
+
+
+    sudo docker run -it --rm --link crossbar crossbario/autobahn-python
+
+
+
+On notebook:
+
+First terminal
+
+
+
+## Building Images
+
+To build new release images
+The release pr
+
+
+
+split out app scaffolding
+
+
+export CROSSBAR_VERSION='17.3.1'
+
+
+export AUTOBAHN_JS_VERSION='0.12.0'
+export AUTOBAHN_PYTHON_VERSION='0.18.2'
+export AUTOBAHN_CPP_VERSION='0.2.1'
+
+
+export AUTOBAHN_C_VERSION
+export AUTOBAHN_JAVA_VERSION
+
+
+
+
+
 # Crossbar.io/Autobahn Docker Images
 
 **The DockerHub repositories of the Crossbar.io Project can be found [here](https://hub.docker.com/r/crossbario/)**.

@@ -2,6 +2,7 @@ FROM alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
+ARG AUTOBAHN_JS_VERSION
 ENV HOME /app
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -18,7 +19,7 @@ RUN apk add --update nodejs build-base python \
     && rm -rf /var/cache/apk/*
 
 # install Autobahn|JS
-RUN npm install -g autobahn
+RUN npm install -g autobahn@${AUTOBAHN_JS_VERSION}
 
 # add example service
 COPY ./app/* /app/

@@ -2,6 +2,7 @@ FROM node
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
+ARG AUTOBAHN_JS_VERSION
 ENV HOME /app
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -15,7 +16,7 @@ ENV CBREALM realm1
 RUN mkdir /app
 
 # install Autobahn|JS
-RUN npm install -g autobahn
+RUN npm install -g autobahn@${AUTOBAHN_JS_VERSION}
 
 # add example service
 COPY ./app/* /app/
