@@ -17,7 +17,7 @@
             "architecture": "x86_64",
             "github": "https://github.com/crossbario/autobahn-js",
             "name": "crossbario/autobahn-js",
-            "tags": ["full", "latest", ""]
+            "tags": ["full", "latest"]
         },
         {
             "package": "autobahn-js",
@@ -31,7 +31,7 @@
             "architecture": "armhf",
             "github": "https://github.com/crossbario/autobahn-js",
             "name": "crossbario/autobahn-js-armhf",
-            "tags": ["full", "latest", ""]
+            "tags": ["full", "latest"]
         },
         {
             "package": "autobahn-js",
@@ -45,7 +45,7 @@
             "architecture": "aarch64",
             "github": "https://github.com/crossbario/autobahn-js",
             "name": "crossbario/autobahn-js-aarch64",
-            "tags": ["full", "latest", ""]
+            "tags": ["full", "latest"]
         },
         {
             "package": "autobahn-js",
@@ -60,7 +60,7 @@
             "architecture": "x86_64",
             "github": "https://github.com/crossbario/crossbar",
             "name": "crossbario/crossbar",
-            "tags": ["community-cpy3", "community", "latest", ""]
+            "tags": ["community-cpy3", "community", "latest"]
         },
         {
             "package": "crossbar",
@@ -74,7 +74,7 @@
             "architecture": "armhf",
             "github": "https://github.com/crossbario/crossbar",
             "name": "crossbario/crossbar-armhf",
-            "tags": ["community-cpy3", "community", "latest", ""]
+            "tags": ["community-cpy3", "community", "latest"]
         },
         {
             "package": "crossbar",
@@ -88,7 +88,7 @@
             "architecture": "aarch64",
             "github": "https://github.com/crossbario/crossbar",
             "name": "crossbario/crossbar-aarch64",
-            "tags": ["community-cpy3", "community", "latest", ""]
+            "tags": ["community-cpy3", "community", "latest"]
         },
         {
             "package": "crossbar",

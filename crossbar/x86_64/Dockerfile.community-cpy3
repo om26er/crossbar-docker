@@ -2,7 +2,23 @@ FROM python:3-alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
+# Metadata
 ARG CROSSBAR_VERSION
+ARG BUILD_DATE
+ARG VCS_REF
+
+# Metadata labeling
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.name="Crossbar.io Starter Template" \
+      org.label-schema.description="Quickstart template for application development with Crossbar.io" \
+      org.label-schema.url="http://crossbar.io" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/crossbario/crossbar" \
+      org.label-schema.vendor="The Crossbar.io Project" \
+      org.label-schema.version=$CROSSBAR_VERSION \
+      org.label-schema.schema-version="1.0"
+
+# Application home
 ENV HOME /node
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
