@@ -59,3 +59,6 @@ qemu:
 	sudo update-binfmts --enable qemu-aarch64
 	sudo update-binfmts --display qemu-arm
 	sudo update-binfmts --display qemu-aarch64
+
+images: IMAGES.md
+	python images.py
