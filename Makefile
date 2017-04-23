@@ -31,7 +31,7 @@ $(PUBLISHDIRS):
 .PHONY: build version test publish
 
 
-requirements: docker docker_compose
+requirements: docker docker_compose qemu
 
 # install docker
 docker:
@@ -48,3 +48,14 @@ docker:
 docker_compose:
 	sudo sh -c "curl -L https://github.com/docker/compose/releases/download/1.7.0-rc1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
 	sudo chmod +x /usr/local/bin/docker-compose
+
+#
+# Install Qemu (this is needed for cross-building armhf/aarch64 on amd64)
+#
+qemu:
+	sudo apt-get update
+	sudo apt-get install -y --no-install-recommends qemu-user-static binfmt-support
+	sudo update-binfmts --enable qemu-arm
+	sudo update-binfmts --enable qemu-aarch64
+	sudo update-binfmts --display qemu-arm
+	sudo update-binfmts --display qemu-aarch64

@@ -220,12 +220,6 @@ publish_community: build_community
 # Install Qemu (this is needed for cross-building armhf/aarch64 on amd64)
 #
 qemu_deps:
-	apt-get update
-	apt-get install -y --no-install-recommends qemu-user-static binfmt-support
-	update-binfmts --enable qemu-arm
-	update-binfmts --enable qemu-aarch64
-	update-binfmts --display qemu-arm
-	update-binfmts --display qemu-aarch64
 	mkdir -p ./.qemu
 	cp /usr/bin/qemu-aarch64-static ./.qemu
 	cp /usr/bin/qemu-arm-static ./.qemu
