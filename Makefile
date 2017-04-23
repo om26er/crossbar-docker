@@ -1,6 +1,6 @@
 HOSTIP=$(shell ip route get 1 | awk '{print $$NF;exit}')
 
-SUBDIRS = crossbar autobahn-js/x86_64 autobahn-js/armhf autobahn-js/aarch64 autobahn-python/x86-64 autobahn-python/armhf autobahn-python/aarch64
+SUBDIRS = crossbar autobahn-js/x86_64 autobahn-js/armhf autobahn-js/aarch64 autobahn-python/x86_64 autobahn-python/armhf autobahn-python/aarch64
 
 
 subdirs: $(SUBDIRS)
