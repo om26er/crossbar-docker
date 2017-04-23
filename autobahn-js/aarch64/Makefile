@@ -15,8 +15,8 @@ build: build_full build_alpine
 
 build_full:
 	time docker build \
-		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
-		--build-arg VCS_REF=`git rev-parse --short HEAD` \
+		--build-arg BUILD_DATE=${BUILD_DATE} \
+		--build-arg AUTOBAHN_JS_VCS_REF=${AUTOBAHN_JS_VCS_REF} \
 		--build-arg AUTOBAHN_JS_VERSION=${AUTOBAHN_JS_VERSION} \
 		-t crossbario/autobahn-js-aarch64 \
 		-t crossbario/autobahn-js-aarch64:latest \
@@ -27,8 +27,8 @@ build_full:
 build_alpine:
 	@echo "FIXME: crossbario/autobahn-js-aarch64:alpine is broken"
 	time docker build \
-		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
-		--build-arg VCS_REF=`git rev-parse --short HEAD` \
+		--build-arg BUILD_DATE=${BUILD_DATE} \
+		--build-arg AUTOBAHN_JS_VCS_REF=${AUTOBAHN_JS_VCS_REF} \
 		--build-arg AUTOBAHN_JS_VERSION=${AUTOBAHN_JS_VERSION} \
 		-t crossbario/autobahn-js-aarch64:alpine \
 		-t crossbario/autobahn-js-aarch64:alpine-${AUTOBAHN_JS_VERSION} \

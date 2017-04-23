@@ -40,6 +40,8 @@ No | Package | Architecture | Image | docker pull
            AUTOBAHN_PYTHON_VERSION=AUTOBAHN_PYTHON_VERSION,
            AUTOBAHN_CPP_VERSION=AUTOBAHN_CPP_VERSION)
 
+# [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-aarch64:cpy3-minimal-tx-0.18.2.svg)](https://microbadger.com/images/crossbario/autobahn-python-aarch64:cpy3-minimal-tx-0.18.2 "Get your own image badge on microbadger.com")
+
 i = 1
 with open('IMAGES.md', 'w') as f_out:
     with open('images.json') as f_in:
@@ -57,6 +59,9 @@ with open('IMAGES.md', 'w') as f_out:
                 for _tag in tags:
                     arch = '-{}'.format(architecture) if architecture != 'x86_64' else ''
                     image_id = 'crossbario/{package}{arch}:{tag}'.format(package=package, tag=_tag, arch=arch)
-                    f_out.write('{i} | [{package}]({github}) | {architecture} | [![](https://images.microbadger.com/badges/image/crossbario/{package}:{tag}.svg)](https://hub.docker.com/r/crossbario/{package}{arch}/tags) | [`{image_id}`](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.{tag})\n'.format(package=package, architecture=architecture, github=github, name=name, tag=_tag, tags=_tags, image_id=image_id, arch=arch, i=i))
+                    # autobahn-python-aarch64:cpy3-minimal-tx-0.18.2
+                    fqn = 'autobahn-python-aarch64:cpy3-minimal-tx-0.18.2'
+                    badge ='[![](https://images.microbadger.com/badges/image/crossbario/{fqn}.svg)](https://microbadger.com/images/crossbario/{fqn} "Metadata")'.format(fqn=fqn)
+                    f_out.write('{i} | [{package}]({github}) | {architecture} | {badge} | [`{image_id}`](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.{tag})\n'.format(badge=badge, package=package, architecture=architecture, github=github, name=name, tag=_tag, tags=_tags, image_id=image_id, arch=arch, i=i))
                     i += 1
 
