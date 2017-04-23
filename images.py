@@ -50,6 +50,7 @@ with open('IMAGES.md', 'w') as f_out:
         f_out.write(HEADER)
         for image in obj.get('images', []):
             package = image.get('package', None)
+            version = image.get('version', None)
             architectures = image.get('architectures', None)
             github = image.get('github', None)
             name = image.get('name', None)
@@ -61,6 +62,7 @@ with open('IMAGES.md', 'w') as f_out:
                     image_id = 'crossbario/{package}{arch}:{tag}'.format(package=package, tag=_tag, arch=arch)
                     # autobahn-python-aarch64:cpy3-minimal-tx-0.18.2
                     fqn = 'autobahn-python-aarch64:cpy3-minimal-tx-0.18.2'
+                    fqn = '{package}{arch}{tag}:{version}'.format(package=package, arch=arch, tag=_tag, version=version)
                     badge ='[![](https://images.microbadger.com/badges/image/crossbario/{fqn}.svg)](https://microbadger.com/images/crossbario/{fqn} "Metadata")'.format(fqn=fqn)
                     f_out.write('{i} | [{package}]({github}) | {architecture} | {badge} | [`{image_id}`](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.{tag})\n'.format(badge=badge, package=package, architecture=architecture, github=github, name=name, tag=_tag, tags=_tags, image_id=image_id, arch=arch, i=i))
                     i += 1
