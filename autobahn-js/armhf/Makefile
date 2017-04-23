@@ -85,4 +85,4 @@ list:
 	-docker images crossbario/autobahn-js-armhf:*
 
 clean:
-	-docker rmi -f $(docker images -q crossbario/autobahn-js-armhf:* | uniq)
+	./removeall.sh

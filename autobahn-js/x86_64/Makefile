@@ -77,4 +77,4 @@ list:
 	-docker images crossbario/autobahn-js:*
 
 clean:
-	-docker rmi -f $(docker images -q crossbario/autobahn-js:* | uniq)
+	./removeall.sh

@@ -160,6 +160,9 @@ publish: build
 	sudo docker push crossbario/autobahn-python-armhf:cpy3-minimal-tx
 	sudo docker push crossbario/autobahn-python-armhf:cpy3-minimal-tx-${AUTOBAHN_PYTHON_VERSION}
 
+clean:
+	./removeall.sh
+
 list:
 	sudo docker images
 
