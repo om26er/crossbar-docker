@@ -1,26 +1,19 @@
 {
     "images": [
         {
-            "package": "autobahn-python",
+            "package": "crossbar",
             "architectures": [
                 "x86_64",
                 "armhf",
                 "aarch64"
             ],
-            "github": "https://github.com/crossbario/autobahn-python",
-            "name": "crossbario/autobahn-python",
+            "github": "https://github.com/crossbario/crossbar",
+            "name": "crossbario/crossbar",
             "tags": [
                 "latest",
-                "cpy3",
-                "pypy3",
-                "cpy3-alpine",
-                "cpy3-minimal-aio",
-                "cpy3-minimal-tx",
-                "cpy2",
-                "cpy2-alpine",
-                "cpy2-minimal-aio",
-                "cpy2-minimal-tx",
-                "pypy2"
+                "community",
+                "community-cpy3",
+                "community-pypy3"
             ]
         },
 
@@ -41,20 +34,26 @@
         },
 
         {
-            "package": "crossbar",
+            "package": "autobahn-python",
             "architectures": [
                 "x86_64",
                 "armhf",
                 "aarch64"
             ],
-            "github": "https://github.com/crossbario/crossbar",
-            "name": "crossbario/crossbar",
+            "github": "https://github.com/crossbario/autobahn-python",
+            "name": "crossbario/autobahn-python",
             "tags": [
                 "latest",
-                "community",
-                "community-cpy3",
-                "community-pypy3",
-                "community-pypy3-17.3.1"
+                "cpy3",
+                "pypy3",
+                "cpy3-alpine",
+                "cpy3-minimal-aio",
+                "cpy3-minimal-tx",
+                "cpy2",
+                "cpy2-alpine",
+                "cpy2-minimal-aio",
+                "cpy2-minimal-tx",
+                "pypy2"
             ]
         }
     ]
