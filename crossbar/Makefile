@@ -1,11 +1,3 @@
-#
-# CROSSBAR_VERSION must be set, eg to '17.3.1'.
-#
-# Get the Git commit fingerprint of the tagged release, and
-# get the current day as build date for the image:
-#
-
-
 default:
 	@echo ""
 	@echo "Targets:"
@@ -45,7 +37,7 @@ build_amd64_community_cpy3:
 	# enforce auto-generating a new key when using the images
 	rm -f node/.crossbar/node.key
 	time docker build \
-		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+		--build-arg BUILD_DATE=${BUILD_DATE} \
 		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar:latest \
@@ -60,7 +52,7 @@ build_armhf_community_cpy3:
 	# enforce auto-generating a new key when using the images
 	rm -f node/.crossbar/node.key
 	time docker build \
-		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+		--build-arg BUILD_DATE=${BUILD_DATE} \
 		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar-armhf:latest \
@@ -73,7 +65,7 @@ build_aarch64_community_cpy3:
 	# enforce auto-generating a new key when using the images
 	rm -f node/.crossbar/node.key
 	time docker build \
-		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+		--build-arg BUILD_DATE=${BUILD_DATE} \
 		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar-aarch64:latest \
@@ -92,7 +84,7 @@ build_amd64_community_pypy3:
 	# enforce auto-generating a new key when using the images
 	rm -f node/.crossbar/node.key
 	time docker build \
-		--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+		--build-arg BUILD_DATE=${BUILD_DATE} \
 		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
 		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
 		-t crossbario/crossbar:community-pypy3 \
