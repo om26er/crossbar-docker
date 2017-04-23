@@ -32,7 +32,7 @@ Docker images last built on **{BUILD_DATE}** from package versions:
 
 ## Docker Images
 
-Package | Architecture | Flavor                             / Image                               | `docker pull   `
+Package | Architecture | Image | Command
 ---|---|---|---
 """.format(BUILD_DATE=BUILD_DATE,
            CROSSBAR_VERSION=CROSSBAR_VERSION,
@@ -55,5 +55,5 @@ with open('IMAGES.md', 'w') as f_out:
                 _tags = ', '.join([tag if tag.strip() != '' else '-' for tag in tags])
                 for _tag in tags:
                     arch = '-{}'.format(architecture) if architecture != 'x86_64' else ''
-                    image_id = 'crossbario/{package}{arch}:{tag}'.format(package=package, tag=_tag, arch=arch)
+                    image_id = 'docker pull crossbario/{package}{arch}:{tag}'.format(package=package, tag=_tag, arch=arch)
                     f_out.write('[{package}]({github}) | {architecture} | [![](https://images.microbadger.com/badges/image/crossbario/{package}:{tag}.svg)](https://hub.docker.com/r/crossbario/{package}{arch}/tags) | [`{image_id}`](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.{tag})\n'.format(package=package, architecture=architecture, github=github, name=name, tag=_tag, tags=_tags, image_id=image_id, arch=arch))
