@@ -55,6 +55,22 @@
                 "cpy2-minimal-tx",
                 "pypy2"
             ]
+        },
+
+        {
+            "package": "autobahn-cpp",
+            "architectures": [
+                "x86_64",
+                "armhf",
+                "aarch64"
+            ],
+            "github": "https://github.com/crossbario/autobahn-cpp",
+            "name": "crossbario/autobahn-cpp",
+            "tags": [
+                "latest",
+                "gcc",
+                "clang"
+            ]
         }
     ]
 }
