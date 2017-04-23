@@ -1,4 +1,11 @@
 
+# Version
+
+* Crossbar.io 17.3.1
+* AutobahnJS 0.12.0
+* AutobahnPython 0.18.2
+* AutobahnC++ 0.2.1
+
 # Images
 
 Package | Architecture | Flavor                             / Image                               | `docker pull   `

@@ -4,18 +4,34 @@
 
 # [![](https://images.microbadger.com/badges/version/crossbario/autobahn-js:full.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.full)
 
+import os
+
 def badger_url(package, flavor):
     return '[![](https://images.microbadger.com/badges/version/crossbario/autobahn-js:full.svg)](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.full)'
+
+CROSSBAR_VERSION = os.environ.get('CROSSBAR_VERSION', None)
+AUTOBAHN_JS_VERSION = os.environ.get('AUTOBAHN_JS_VERSION', None)
+AUTOBAHN_PYTHON_VERSION = os.environ.get('AUTOBAHN_PYTHON_VERSION', None)
+AUTOBAHN_CPP_VERSION = os.environ.get('AUTOBAHN_CPP_VERSION', None)
+
 
 import json
 from pprint import pprint
 
 HEADER = """
+# Version
+
+* Crossbar.io {CROSSBAR_VERSION}
+* AutobahnJS {AUTOBAHN_JS_VERSION}
+* AutobahnPython {AUTOBAHN_PYTHON_VERSION}
+* AutobahnC++ {AUTOBAHN_CPP_VERSION}
+
 # Images
 
 Package | Architecture | Flavor                             / Image                               | `docker pull   `
 ---|---|---|---
-"""
+""".format(CROSSBAR_VERSION=CROSSBAR_VERSION, AUTOBAHN_JS_VERSION=AUTOBAHN_JS_VERSION,
+           AUTOBAHN_PYTHON_VERSION=AUTOBAHN_PYTHON_VERSION, AUTOBAHN_CPP_VERSION=AUTOBAHN_CPP_VERSION)
 
 with open('IMAGES.md', 'w') as f_out:
     with open('images.json') as f_in:
