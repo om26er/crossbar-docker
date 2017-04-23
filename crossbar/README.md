@@ -226,3 +226,102 @@ should give you
 ```console
 Python 3.6.1
 ```
+
+## Example Output
+
+Here is a successfully built set of Crossbar.io Docker images:
+
+```console
+(cpy361_1) oberstet@thinkpad-t430s:~/scm/crossbario/crossbar-docker/crossbar$ make list
+docker images crossbario/crossbar*
+REPOSITORY                    TAG                      IMAGE ID            CREATED             SIZE
+crossbario/crossbar-armhf     community                042434991431        About an hour ago   627 MB
+crossbario/crossbar-armhf     community-cpy3           042434991431        About an hour ago   627 MB
+crossbario/crossbar-armhf     community-cpy3-17.3.1    042434991431        About an hour ago   627 MB
+crossbario/crossbar-armhf     latest                   042434991431        About an hour ago   627 MB
+crossbario/crossbar           17.3.1                   31e9c4f05f42        2 hours ago         162 MB
+crossbario/crossbar           community                31e9c4f05f42        2 hours ago         162 MB
+crossbario/crossbar           community-17.3.1         31e9c4f05f42        2 hours ago         162 MB
+crossbario/crossbar           community-cpy3           31e9c4f05f42        2 hours ago         162 MB
+crossbario/crossbar           community-cpy3-17.3.1    31e9c4f05f42        2 hours ago         162 MB
+crossbario/crossbar           latest                   31e9c4f05f42        2 hours ago         162 MB
+crossbario/crossbar           community-pypy3          c09e2c550185        9 hours ago         496 MB
+crossbario/crossbar           community-pypy3-17.3.1   c09e2c550185        9 hours ago         496 MB
+crossbario/crossbar-aarch64   community                858bf9d0109d        9 hours ago         714 MB
+crossbario/crossbar-aarch64   community-cpy3           858bf9d0109d        9 hours ago         714 MB
+crossbario/crossbar-aarch64   community-cpy3-17.3.1    858bf9d0109d        9 hours ago         714 MB
+crossbario/crossbar-aarch64   latest                   858bf9d0109d        9 hours ago         714 MB
+```
+
+and here are the resulting Crossbar.io versions from the images:
+
+```console
+(cpy361_1) oberstet@thinkpad-t430s:~/scm/crossbario/crossbar-docker/crossbar$ make version
+docker run \
+    --rm --entrypoint=/usr/local/bin/crossbar -it \
+    crossbario/crossbar:community-cpy3 version
+     __  __  __  __  __  __      __     __
+    /  `|__)/  \/__`/__`|__) /\ |__)  |/  \
+    \__,|  \\__/.__/.__/|__)/~~\|  \. |\__/
+
+ Crossbar.io        : 17.3.1 (Crossbar.io COMMUNITY)
+   Autobahn         : 0.18.1 (with JSON, MessagePack, CBOR, UBJSON)
+   Twisted          : 17.1.0-EPollReactor
+   LMDB             : 0.92/lmdb-0.9.18
+   Python           : 3.6.1/CPython
+ OS                 : Linux-4.4.0-72-generic-x86_64-with
+ Machine            : x86_64
+ Release key        : RWRGxs0uB6vQemWGPeBt7nLG53ADoOtZy/Vve3BjlaXDqkCiVhCs7Zrv
+
+docker run \
+    --rm --entrypoint=/usr/local/bin/crossbar -it \
+    crossbario/crossbar-armhf:community-cpy3 version
+     __  __  __  __  __  __      __     __
+    /  `|__)/  \/__`/__`|__) /\ |__)  |/  \
+    \__,|  \\__/.__/.__/|__)/~~\|  \. |\__/
+
+ Crossbar.io        : 17.3.1 (Crossbar.io COMMUNITY)
+   Autobahn         : 0.18.1 (with JSON, MessagePack, CBOR, UBJSON)
+   Twisted          : 17.1.0-EPollReactor
+   LMDB             : 0.92/lmdb-0.9.18
+   Python           : 3.6.1/CPython
+ OS                 : Linux-4.4.0-72-generic-armv7l-with-debian-8.7
+ Machine            : armv7l
+ Release key        : RWRGxs0uB6vQemWGPeBt7nLG53ADoOtZy/Vve3BjlaXDqkCiVhCs7Zrv
+
+docker run \
+    --rm --entrypoint=/usr/local/bin/crossbar -it \
+    crossbario/crossbar-aarch64:community-cpy3 version
+     __  __  __  __  __  __      __     __
+    /  `|__)/  \/__`/__`|__) /\ |__)  |/  \
+    \__,|  \\__/.__/.__/|__)/~~\|  \. |\__/
+
+ Crossbar.io        : 17.3.1 (Crossbar.io COMMUNITY)
+   Autobahn         : 0.18.1 (with JSON, MessagePack, CBOR, UBJSON)
+   Twisted          : 17.1.0-EPollReactor
+   LMDB             : 0.92/lmdb-0.9.18
+   Python           : 3.6.1/CPython
+ OS                 : Linux-4.4.0-72-generic-aarch64-with-debian-8.7
+ Machine            : aarch64
+ Release key        : RWRGxs0uB6vQemWGPeBt7nLG53ADoOtZy/Vve3BjlaXDqkCiVhCs7Zrv
+
+docker run \
+    --rm --entrypoint=/usr/local/bin/crossbar -it \
+    crossbario/crossbar:community-pypy3 version
+     __  __  __  __  __  __      __     __
+    /  `|__)/  \/__`/__`|__) /\ |__)  |/  \
+    \__,|  \\__/.__/.__/|__)/~~\|  \. |\__/
+
+ Crossbar.io        : 17.3.1 (Crossbar.io COMMUNITY)
+   Autobahn         : 0.18.1 (with JSON, MessagePack, CBOR, UBJSON)
+   Twisted          : 17.1.0-EPollReactor
+   LMDB             : 0.92/lmdb-0.9.18
+   Python           : 3.5.3/PyPy-5.7.1
+ OS                 : Linux-4.4.0-72-generic-x86_64-with-debian-8.7
+ Machine            : x86_64
+ Release key        : RWRGxs0uB6vQemWGPeBt7nLG53ADoOtZy/Vve3BjlaXDqkCiVhCs7Zrv
+
+PyPy3 isn't available for armhf yet
+PyPy3 isn't available for aarch64 yet
+(cpy361_1) oberstet@thinkpad-t430s:~/scm/crossbario/crossbar-docker/crossbar$
+```

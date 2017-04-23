@@ -1,16 +1,9 @@
-## Building
+# Crossbar.io Project Docker Images
 
-```console
-source versions.sh
-make build
-```
+For the full list of images please see **[IMAGES](IMAGES.md)**.
 
 
----
-
-## Developer Experience
-
-### Requirements
+## Requirements
 
 This assumes you have Docker already installed.
 
@@ -22,6 +15,22 @@ sudo usermod -aG docker oberstet
 
 and rebooting.
 
+
+## Building the Images
+
+**Usually, you use the pre-built images and download the images from Dockerhub.**
+
+So this is only useful if you want to build the images locally for some reaons, or if you are a project memer and prepare for publishing a new set of images.
+
+For building a new set of images, edit [versions.sh](versions.sh), and then
+
+```console
+source versions.sh
+make build
+```
+
+
+## Using the Images
 
 ### Running a Crossbar.io test node
 
