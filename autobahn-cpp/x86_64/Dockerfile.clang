@@ -23,6 +23,7 @@ ENV CBURL ws://crossbar:8080/ws
 ENV CBREALM realm1
 
 # user env
+ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /usr/local/app
 ENV PATH /usr/local/app:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib
@@ -36,7 +37,7 @@ RUN apt-get update \
     && apt-get install -y wget curl unzip git-core \
                           clang libc++1 libc++-dev libc++abi-dev \
                           build-essential autotools-dev autoconf libtool cmake scons \
-                          libbz2-dev libssl-dev \
+                          zlib1g-dev libbz2-dev libssl-dev \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 

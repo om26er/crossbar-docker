@@ -1,6 +1,6 @@
-FROM armhf/debian:stretch
+FROM aarch64/debian:stretch
 
-COPY .qemu/qemu-arm-static /usr/bin/qemu-arm-static
+COPY .qemu/qemu-aarch64-static /usr/bin/qemu-aarch64-static
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
@@ -53,8 +53,8 @@ RUN    update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100 \
 
 # get, build and install Boost from upstream
 RUN cd /tmp \
-    && wget http://downloads.sourceforge.net/project/boost/boost/1.64.0/boost_1_64_0.tar.bz2 \
-    && tar xvjf boost_1_64_0.tar.bz2 && cd boost_1_64_0 \
+    && wget http://downloads.sourceforge.net/project/boost/boost/1.62.0/boost_1_62_0.tar.bz2 \
+    && tar xvjf boost_1_62_0.tar.bz2 && cd boost_1_62_0 \
     && ./bootstrap.sh --with-toolset=clang \
     && ./b2 toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
     && cd / && rm -rf /tmp/boost*

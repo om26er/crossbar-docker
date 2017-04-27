@@ -1,6 +1,6 @@
-FROM armhf/debian:stretch
+FROM aarch64/debian:stretch
 
-COPY .qemu/qemu-arm-static /usr/bin/qemu-arm-static
+COPY .qemu/qemu-aarch64-static /usr/bin/qemu-aarch64-static
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
@@ -37,26 +37,17 @@ ENV WSPP_ENABLE_CPP11 1
 # update system, get dev tools and libs
 RUN apt-get update \
     && apt-get install -y wget curl unzip git-core \
-                          clang libc++1 libc++-dev libc++abi-dev \
                           build-essential autotools-dev autoconf libtool cmake scons \
                           zlib1g-dev libbz2-dev libssl-dev \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
-# use clang, not gcc
-ENV CC /usr/bin/clang
-ENV CXX /usr/bin/clang++
-RUN    update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100 \
-    && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 100 \
-    && update-alternatives --query c++ \
-    && update-alternatives --query cc
-
 # get, build and install Boost from upstream
 RUN cd /tmp \
     && wget http://downloads.sourceforge.net/project/boost/boost/1.64.0/boost_1_64_0.tar.bz2 \
     && tar xvjf boost_1_64_0.tar.bz2 && cd boost_1_64_0 \
-    && ./bootstrap.sh --with-toolset=clang \
-    && ./b2 toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
+    && ./bootstrap.sh --with-toolset=gcc \
+    && ./b2 toolset=gcc link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
     && cd / && rm -rf /tmp/boost*
 
 # get, build and install msgpack-c from upstream
@@ -74,15 +65,24 @@ RUN cd /tmp \
     && cp -r /tmp/websocketpp-0.7.0/websocketpp/ /usr/local/include/ \
     && cd / && rm -rf /tmp/websocketpp*
 
+# https://askubuntu.com/a/486184
+RUN cd /usr/local/lib && \
+    ln -s libboost_thread-mt.a libboost_thread.a
+
 # get and install autobahn-cpp from upstream
 RUN cd /tmp \
-    && wget https://github.com/crossbario/autobahn-cpp/archive/0.2.1.zip -O autobahn-cpp.zip \
+    && wget https://github.com/crossbario/autobahn-cpp/archive/${AUTOBAHN_CPP_VERSION}.zip -O autobahn-cpp.zip \
     && unzip autobahn-cpp.zip \
-    && cp -r /tmp/autobahn-cpp-0.2.1/autobahn/ /usr/local/include/ \
-    && cp -r /tmp/autobahn-cpp-0.2.1/examples/ /usr/local/app/ \
-    && cd / && rm -rf /tmp/autobahn* \
-    && cd /usr/local/app/examples/ && scons
+    && cp -r /tmp/autobahn-cpp-${AUTOBAHN_CPP_VERSION}/autobahn/ /usr/local/include/ \
+    && cp -r /tmp/autobahn-cpp-${AUTOBAHN_CPP_VERSION}/examples/ /usr/local/app/ \
+    && cd / && rm -rf /tmp/autobahn*
 
+WORKDIR /usr/local/app/examples/
 
-# drop into shell by default
-CMD ["bash"]
+COPY example1.patch /usr/local/app/examples/example1.patch
+
+RUN patch SConstruct example1.patch
+
+COPY build_scons /usr/local/bin
+
+CMD ["build_scons"]
