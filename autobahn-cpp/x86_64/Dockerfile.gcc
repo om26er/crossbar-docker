@@ -2,9 +2,28 @@ FROM debian:stretch
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
-ENV DEBIAN_FRONTEND noninteractive
+# Metadata
+ARG BUILD_DATE
+ARG AUTOBAHN_CPP_VERSION
+ARG AUTOBAHN_CPP_VCS_REF
+
+# Metadata labeling
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.name="AutobahnCpp Starter Template" \
+      org.label-schema.description="Quickstart template for application development with AutobahnCpp" \
+      org.label-schema.url="http://crossbar.io" \
+      org.label-schema.vcs-ref=$AUTOBAHN_CPP_VCS_REF \
+      org.label-schema.vcs-url="https://github.com/crossbario/autobahn-cpp" \
+      org.label-schema.vendor="The Crossbar.io Project" \
+      org.label-schema.version=$AUTOBAHN_CPP_VERSION \
+      org.label-schema.schema-version="1.0"
+
+# Crossbar.io connection defaults
+ENV CBURL ws://crossbar:8080/ws
+ENV CBREALM realm1
 
 # user env
+ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /usr/local/app
 ENV PATH /usr/local/app:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib
@@ -23,8 +42,8 @@ RUN apt-get update \
 
 # get, build and install Boost from upstream
 RUN cd /tmp \
-    && wget http://downloads.sourceforge.net/project/boost/boost/1.62.0/boost_1_62_0.tar.bz2 \
-    && tar xvjf boost_1_62_0.tar.bz2 && cd boost_1_62_0 \
+    && wget http://downloads.sourceforge.net/project/boost/boost/1.64.0/boost_1_64_0.tar.bz2 \
+    && tar xvjf boost_1_64_0.tar.bz2 && cd boost_1_64_0 \
     && ./bootstrap.sh --with-toolset=gcc \
     && ./b2 toolset=gcc link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
     && cd / && rm -rf /tmp/boost*
@@ -44,15 +63,24 @@ RUN cd /tmp \
     && cp -r /tmp/websocketpp-0.7.0/websocketpp/ /usr/local/include/ \
     && cd / && rm -rf /tmp/websocketpp*
 
+# https://askubuntu.com/a/486184
+RUN cd /usr/local/lib && \
+    ln -s libboost_thread-mt.a libboost_thread.a
+
 # get and install autobahn-cpp from upstream
 RUN cd /tmp \
-    && wget https://github.com/crossbario/autobahn-cpp/archive/0.2.1.zip -O autobahn-cpp.zip \
+    && wget https://github.com/crossbario/autobahn-cpp/archive/${AUTOBAHN_CPP_VERSION}.zip -O autobahn-cpp.zip \
     && unzip autobahn-cpp.zip \
-    && cp -r /tmp/autobahn-cpp-0.2.1/autobahn/ /usr/local/include/ \
-    && cp -r /tmp/autobahn-cpp-0.2.1/examples/ /usr/local/app/ \
-    && cd / && rm -rf /tmp/autobahn* \
-    && cd /usr/local/app/examples/ && scons
+    && cp -r /tmp/autobahn-cpp-${AUTOBAHN_CPP_VERSION}/autobahn/ /usr/local/include/ \
+    && cp -r /tmp/autobahn-cpp-${AUTOBAHN_CPP_VERSION}/examples/ /usr/local/app/ \
+    && cd / && rm -rf /tmp/autobahn*
 
+WORKDIR /usr/local/app/examples/
 
-# drop into shell by default
-CMD ["bash"]
+COPY example1.patch /usr/local/app/examples/example1.patch
+
+RUN patch SConstruct example1.patch
+
+COPY build_scons /usr/local/bin
+
+CMD ["build_scons"]

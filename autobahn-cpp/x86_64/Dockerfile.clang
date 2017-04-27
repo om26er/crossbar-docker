@@ -2,7 +2,25 @@ FROM debian:stretch
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
-ENV DEBIAN_FRONTEND noninteractive
+# Metadata
+ARG BUILD_DATE
+ARG AUTOBAHN_CPP_VERSION
+ARG AUTOBAHN_CPP_VCS_REF
+
+# Metadata labeling
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.name="AutobahnCpp Starter Template" \
+      org.label-schema.description="Quickstart template for application development with AutobahnCpp" \
+      org.label-schema.url="http://crossbar.io" \
+      org.label-schema.vcs-ref=$AUTOBAHN_CPP_VCS_REF \
+      org.label-schema.vcs-url="https://github.com/crossbario/autobahn-cpp" \
+      org.label-schema.vendor="The Crossbar.io Project" \
+      org.label-schema.version=$AUTOBAHN_CPP_VERSION \
+      org.label-schema.schema-version="1.0"
+
+# Crossbar.io connection defaults
+ENV CBURL ws://crossbar:8080/ws
+ENV CBREALM realm1
 
 # user env
 ENV HOME /usr/local/app
@@ -32,8 +50,8 @@ RUN    update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100 \
 
 # get, build and install Boost from upstream
 RUN cd /tmp \
-    && wget http://downloads.sourceforge.net/project/boost/boost/1.62.0/boost_1_62_0.tar.bz2 \
-    && tar xvjf boost_1_62_0.tar.bz2 && cd boost_1_62_0 \
+    && wget http://downloads.sourceforge.net/project/boost/boost/1.64.0/boost_1_64_0.tar.bz2 \
+    && tar xvjf boost_1_64_0.tar.bz2 && cd boost_1_64_0 \
     && ./bootstrap.sh --with-toolset=clang \
     && ./b2 toolset=clang cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" link=shared link=static threading=single threading=multi --layout=tagged --without-python -j 8 install \
     && cd / && rm -rf /tmp/boost*
@@ -55,10 +73,10 @@ RUN cd /tmp \
 
 # get and install autobahn-cpp from upstream
 RUN cd /tmp \
-    && wget https://github.com/crossbario/autobahn-cpp/archive/0.2.1.zip -O autobahn-cpp.zip \
+    && wget https://github.com/crossbario/autobahn-cpp/archive/${AUTOBAHN_CPP_VERSION}.zip -O autobahn-cpp.zip \
     && unzip autobahn-cpp.zip \
-    && cp -r /tmp/autobahn-cpp-0.2.1/autobahn/ /usr/local/include/ \
-    && cp -r /tmp/autobahn-cpp-0.2.1/examples/ /usr/local/app/ \
+    && cp -r /tmp/autobahn-cpp-${AUTOBAHN_CPP_VERSION}/autobahn/ /usr/local/include/ \
+    && cp -r /tmp/autobahn-cpp-${AUTOBAHN_CPP_VERSION}/examples/ /usr/local/app/ \
     && cd / && rm -rf /tmp/autobahn* \
     && cd /usr/local/app/examples/ && scons
 
