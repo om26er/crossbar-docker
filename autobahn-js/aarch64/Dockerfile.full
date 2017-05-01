@@ -23,7 +23,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 # Application home
 ENV HOME /app
 ENV DEBIAN_FRONTEND noninteractive
-ENV NODE_PATH /usr/local/lib/node_modules/
+ENV NODE_PATH /usr/local/lib/node_modules
 
 # Crossbar.io connection defaults
 ENV CBURL ws://crossbar:8080/ws
@@ -31,6 +31,9 @@ ENV CBREALM realm1
 
 # make sure HOME exists!
 RUN mkdir /app
+
+# set the app component directory as working directory
+WORKDIR /app
 
 # see:
 # - https://github.com/npm/uid-number/issues/3#issuecomment-287413039
@@ -45,9 +48,6 @@ COPY ./app/* /app/
 
 # make /app a volume to allow external configuration
 VOLUME /app
-
-# set the app component directory as working directory
-WORKDIR /app
 
 # run service entry script by default
 CMD ["sh", "/app/run"]
