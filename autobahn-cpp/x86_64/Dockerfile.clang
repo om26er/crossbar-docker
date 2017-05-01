@@ -74,7 +74,7 @@ RUN cd /tmp \
 
 # get and install autobahn-cpp from upstream
 RUN cd /tmp \
-    && wget https://github.com/crossbario/autobahn-cpp/archive/${AUTOBAHN_CPP_VERSION}.zip -O autobahn-cpp.zip \
+    && wget https://github.com/crossbario/autobahn-cpp/archive/v${AUTOBAHN_CPP_VERSION}.zip -O autobahn-cpp.zip \
     && unzip autobahn-cpp.zip \
     && cp -r /tmp/autobahn-cpp-${AUTOBAHN_CPP_VERSION}/autobahn/ /usr/local/include/ \
     && cp -r /tmp/autobahn-cpp-${AUTOBAHN_CPP_VERSION}/examples/ /usr/local/app/ \

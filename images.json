@@ -20,7 +20,6 @@
 
         {
             "package": "autobahn-js",
-            "version": "0.12.0",
             "architectures": [
                 "x86_64",
                 "armhf",
@@ -31,7 +30,9 @@
             "tags": [
                 "latest",
                 "full",
-                "alpine"
+                "full-{version}",
+                "alpine",
+                "alpine-{version}"
             ]
         },
 
