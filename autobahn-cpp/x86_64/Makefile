@@ -23,7 +23,7 @@ build_clang:
 		-t crossbario/autobahn-cpp:clang-${AUTOBAHN_CPP_VERSION} \
 		-f Dockerfile.clang .
 
-use_gcc: build_gcc
+run_gcc:
 	docker run -it --rm \
 		--net=host \
 		-v ${PWD}/.build:/build \
@@ -31,8 +31,13 @@ use_gcc: build_gcc
 		crossbario/autobahn-cpp:gcc \
 		/usr/local/bin/build_scons
 
-shell_clang:
-	docker run -it --rm --net=host -e AUTOBAHN_CPP_VERSION=${AUTOBAHN_CPP_VERSION} crossbario/autobahn-cpp:clang bash
+run_clang:
+	docker run -it --rm \
+		--net=host \
+		-v ${PWD}/.build:/build \
+		-e AUTOBAHN_CPP_VERSION=${AUTOBAHN_CPP_VERSION} \
+		crossbario/autobahn-cpp:clang \
+		/usr/local/bin/build_scons
 
 test_gcc:
 	docker run -it --rm crossbario/autobahn-cpp:gcc bash -c "cd /usr/local/app && make && ./client ws://$(HOSTIP):8080/ws realm1"

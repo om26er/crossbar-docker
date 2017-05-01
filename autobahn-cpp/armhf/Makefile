@@ -13,9 +13,9 @@ build_gcc:
 		--build-arg BUILD_DATE=${BUILD_DATE} \
 		--build-arg AUTOBAHN_CPP_VCS_REF=${AUTOBAHN_CPP_VCS_REF} \
 		--build-arg AUTOBAHN_CPP_VERSION=${AUTOBAHN_CPP_VERSION} \
-		-t crossbario/autobahn-cpp-armf \
-		-t crossbario/autobahn-cpp-armf:gcc \
-		-t crossbario/autobahn-cpp-armf:gcc-${AUTOBAHN_CPP_VERSION} \
+		-t crossbario/autobahn-cpp-armhf \
+		-t crossbario/autobahn-cpp-armhf:gcc \
+		-t crossbario/autobahn-cpp-armhf:gcc-${AUTOBAHN_CPP_VERSION} \
 		-f Dockerfile.gcc .
 
 build_clang:
@@ -23,8 +23,8 @@ build_clang:
 		--build-arg BUILD_DATE=${BUILD_DATE} \
 		--build-arg AUTOBAHN_CPP_VCS_REF=${AUTOBAHN_CPP_VCS_REF} \
 		--build-arg AUTOBAHN_CPP_VERSION=${AUTOBAHN_CPP_VERSION} \
-		-t crossbario/autobahn-cpp-armf:clang \
-		-t crossbario/autobahn-cpp-armf:clang-${AUTOBAHN_CPP_VERSION} \
+		-t crossbario/autobahn-cpp-armhf:clang \
+		-t crossbario/autobahn-cpp-armhf:clang-${AUTOBAHN_CPP_VERSION} \
 		-f Dockerfile.clang .
 
 use_gcc: build_gcc
@@ -32,27 +32,27 @@ use_gcc: build_gcc
 		--net=host \
 		-v ${PWD}/.build:/build \
 		-e AUTOBAHN_CPP_VERSION=${AUTOBAHN_CPP_VERSION} \
-		crossbario/autobahn-cpp-armf:gcc \
+		crossbario/autobahn-cpp-armhf:gcc \
 		/usr/local/bin/build_scons
 
 shell_clang:
-	docker run -it --rm --net=host -e AUTOBAHN_CPP_VERSION=${AUTOBAHN_CPP_VERSION} crossbario/autobahn-cpp-armf:clang bash
+	docker run -it --rm --net=host -e AUTOBAHN_CPP_VERSION=${AUTOBAHN_CPP_VERSION} crossbario/autobahn-cpp-armhf:clang bash
 
 test_gcc:
-	docker run -it --rm crossbario/autobahn-cpp-armf:gcc bash -c "cd /usr/local/app && make && ./client ws://$(HOSTIP):8080/ws realm1"
+	docker run -it --rm crossbario/autobahn-cpp-armhf:gcc bash -c "cd /usr/local/app && make && ./client ws://$(HOSTIP):8080/ws realm1"
 
 test_clang:
-	docker run -it --rm crossbario/autobahn-cpp-armf:clang bash -c "cd /usr/local/app && make && ./client ws://$(HOSTIP):8080/ws realm1"
+	docker run -it --rm crossbario/autobahn-cpp-armhf:clang bash -c "cd /usr/local/app && make && ./client ws://$(HOSTIP):8080/ws realm1"
 
 publish:
-	docker push crossbario/autobahn-cpp-armf
-	docker push crossbario/autobahn-cpp-armf:gcc
-	docker push crossbario/autobahn-cpp-armf:gcc-${AUTOBAHN_CPP_VERSION}
-	docker push crossbario/autobahn-cpp-armf:clang
-	docker push crossbario/autobahn-cpp-armf:clang-${AUTOBAHN_CPP_VERSION}
+	docker push crossbario/autobahn-cpp-armhf
+	docker push crossbario/autobahn-cpp-armhf:gcc
+	docker push crossbario/autobahn-cpp-armhf:gcc-${AUTOBAHN_CPP_VERSION}
+	docker push crossbario/autobahn-cpp-armhf:clang
+	docker push crossbario/autobahn-cpp-armhf:clang-${AUTOBAHN_CPP_VERSION}
 
 list:
-	-docker images crossbario/autobahn-cpp-armf:*
+	-docker images crossbario/autobahn-cpp-armhf:*
 
 clean:
 	./removeall.sh
