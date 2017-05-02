@@ -45,6 +45,14 @@ Latest Docker images built on **{BUILD_DATE}** from package versions:
 * AutobahnPython {AUTOBAHN_PYTHON_VERSION}
 * AutobahnC++ {AUTOBAHN_CPP_VERSION}
 
+
+## Open Issues
+
+AutobahnC++:
+
+* [segfault on armhf](https://github.com/crossbario/autobahn-cpp/issues/166)
+
+
 ## Docker Images
 
 """.format(BUILD_DATE=BUILD_DATE,

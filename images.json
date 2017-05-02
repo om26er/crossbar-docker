@@ -12,7 +12,6 @@
             "tags": [
                 "latest",
                 "community",
-                "community-{version}",
                 "community-cpy3",
                 "community-cpy3-{version}",
                 "community-pypy3",
