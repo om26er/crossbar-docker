@@ -47,7 +47,7 @@ Docker images last built on **{BUILD_DATE}** from package versions:
            AUTOBAHN_CPP_VERSION=AUTOBAHN_CPP_VERSION)
 
 PACKAGE_HEADER = """
-### {name}
+### {package} on {architecture}
 
 No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
@@ -68,8 +68,8 @@ with open('IMAGES.md', 'w') as f_out:
             github = image.get('github', None)
             name = image.get('name', None)
             tags = image.get('tags', [])
-            f_out.write(PACKAGE_HEADER.format(name=name))
             for architecture in architectures:
+                f_out.write(PACKAGE_HEADER.format(package=package, architecture=architecture))
                 _tags = ', '.join([tag if tag.strip() != '' else '-' for tag in tags])
                 for _tag in tags:
                     if package in PACKAGE_TO_VERSION:

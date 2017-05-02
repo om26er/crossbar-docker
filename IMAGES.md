@@ -11,7 +11,7 @@ Docker images last built on **2017-05-02** from package versions:
 ## Docker Images
 
 
-### crossbario/crossbar
+### crossbar on x86_64
 
 No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
@@ -22,6 +22,11 @@ No | Package | Architecture | Image | docker pull
 5 | [crossbar](https://github.com/crossbario/crossbar) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar:community-cpy3-17.3.1.svg)](https://microbadger.com/images/crossbario/crossbar:community-cpy3-17.3.1 "Metadata") | [`crossbario/crossbar:community-cpy3-17.3.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/x86_64/Dockerfile.community-cpy3-17.3.1)
 6 | [crossbar](https://github.com/crossbario/crossbar) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar:community-pypy3.svg)](https://microbadger.com/images/crossbario/crossbar:community-pypy3 "Metadata") | [`crossbario/crossbar:community-pypy3`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/x86_64/Dockerfile.community-pypy3)
 7 | [crossbar](https://github.com/crossbario/crossbar) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar:community-pypy3-17.3.1.svg)](https://microbadger.com/images/crossbario/crossbar:community-pypy3-17.3.1 "Metadata") | [`crossbario/crossbar:community-pypy3-17.3.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/x86_64/Dockerfile.community-pypy3-17.3.1)
+
+### crossbar on armhf
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
 8 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:latest.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:latest "Metadata") | [`crossbario/crossbar-armhf:latest`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.latest)
 9 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:community.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:community "Metadata") | [`crossbario/crossbar-armhf:community`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.community)
 10 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:community-17.3.1.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:community-17.3.1 "Metadata") | [`crossbario/crossbar-armhf:community-17.3.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.community-17.3.1)
@@ -29,6 +34,11 @@ No | Package | Architecture | Image | docker pull
 12 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:community-cpy3-17.3.1.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:community-cpy3-17.3.1 "Metadata") | [`crossbario/crossbar-armhf:community-cpy3-17.3.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.community-cpy3-17.3.1)
 13 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:community-pypy3.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:community-pypy3 "Metadata") | [`crossbario/crossbar-armhf:community-pypy3`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.community-pypy3)
 14 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:community-pypy3-17.3.1.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:community-pypy3-17.3.1 "Metadata") | [`crossbario/crossbar-armhf:community-pypy3-17.3.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.community-pypy3-17.3.1)
+
+### crossbar on aarch64
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
 15 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:latest.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:latest "Metadata") | [`crossbario/crossbar-aarch64:latest`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.latest)
 16 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:community.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:community "Metadata") | [`crossbario/crossbar-aarch64:community`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.community)
 17 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:community-17.3.1.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:community-17.3.1 "Metadata") | [`crossbario/crossbar-aarch64:community-17.3.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.community-17.3.1)
@@ -37,7 +47,7 @@ No | Package | Architecture | Image | docker pull
 20 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:community-pypy3.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:community-pypy3 "Metadata") | [`crossbario/crossbar-aarch64:community-pypy3`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.community-pypy3)
 21 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:community-pypy3-17.3.1.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:community-pypy3-17.3.1 "Metadata") | [`crossbario/crossbar-aarch64:community-pypy3-17.3.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.community-pypy3-17.3.1)
 
-### crossbario/autobahn-js
+### autobahn-js on x86_64
 
 No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
@@ -46,18 +56,28 @@ No | Package | Architecture | Image | docker pull
 3 | [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:full-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js:full-17.5.1 "Metadata") | [`crossbario/autobahn-js:full-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.full-17.5.1)
 4 | [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:alpine.svg)](https://microbadger.com/images/crossbario/autobahn-js:alpine "Metadata") | [`crossbario/autobahn-js:alpine`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.alpine)
 5 | [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:alpine-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js:alpine-17.5.1 "Metadata") | [`crossbario/autobahn-js:alpine-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.alpine-17.5.1)
+
+### autobahn-js on armhf
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
 6 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:latest.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:latest "Metadata") | [`crossbario/autobahn-js-armhf:latest`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.latest)
 7 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:full.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:full "Metadata") | [`crossbario/autobahn-js-armhf:full`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.full)
 8 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:full-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:full-17.5.1 "Metadata") | [`crossbario/autobahn-js-armhf:full-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.full-17.5.1)
 9 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:alpine.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:alpine "Metadata") | [`crossbario/autobahn-js-armhf:alpine`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.alpine)
 10 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:alpine-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:alpine-17.5.1 "Metadata") | [`crossbario/autobahn-js-armhf:alpine-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.alpine-17.5.1)
+
+### autobahn-js on aarch64
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
 11 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:latest.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:latest "Metadata") | [`crossbario/autobahn-js-aarch64:latest`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.latest)
 12 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:full "Metadata") | [`crossbario/autobahn-js-aarch64:full`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.full)
 13 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:full-17.5.1 "Metadata") | [`crossbario/autobahn-js-aarch64:full-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.full-17.5.1)
 14 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:alpine "Metadata") | [`crossbario/autobahn-js-aarch64:alpine`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine)
 15 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:alpine-17.5.1 "Metadata") | [`crossbario/autobahn-js-aarch64:alpine-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine-17.5.1)
 
-### crossbario/autobahn-python
+### autobahn-python on x86_64
 
 No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
@@ -82,6 +102,11 @@ No | Package | Architecture | Image | docker pull
 19 | [autobahn-python](https://github.com/crossbario/autobahn-python) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python:cpy2-minimal-tx-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-python:cpy2-minimal-tx-17.5.1 "Metadata") | [`crossbario/autobahn-python:cpy2-minimal-tx-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/x86_64/Dockerfile.cpy2-minimal-tx-17.5.1)
 20 | [autobahn-python](https://github.com/crossbario/autobahn-python) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python:pypy2.svg)](https://microbadger.com/images/crossbario/autobahn-python:pypy2 "Metadata") | [`crossbario/autobahn-python:pypy2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/x86_64/Dockerfile.pypy2)
 21 | [autobahn-python](https://github.com/crossbario/autobahn-python) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python:pypy2-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-python:pypy2-17.5.1 "Metadata") | [`crossbario/autobahn-python:pypy2-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/x86_64/Dockerfile.pypy2-17.5.1)
+
+### autobahn-python on armhf
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
 22 | [autobahn-python](https://github.com/crossbario/autobahn-python) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-armhf:latest.svg)](https://microbadger.com/images/crossbario/autobahn-python-armhf:latest "Metadata") | [`crossbario/autobahn-python-armhf:latest`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/armhf/Dockerfile.latest)
 23 | [autobahn-python](https://github.com/crossbario/autobahn-python) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-armhf:cpy3.svg)](https://microbadger.com/images/crossbario/autobahn-python-armhf:cpy3 "Metadata") | [`crossbario/autobahn-python-armhf:cpy3`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/armhf/Dockerfile.cpy3)
 24 | [autobahn-python](https://github.com/crossbario/autobahn-python) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-armhf:cpy3-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-python-armhf:cpy3-17.5.1 "Metadata") | [`crossbario/autobahn-python-armhf:cpy3-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/armhf/Dockerfile.cpy3-17.5.1)
@@ -103,6 +128,11 @@ No | Package | Architecture | Image | docker pull
 40 | [autobahn-python](https://github.com/crossbario/autobahn-python) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-armhf:cpy2-minimal-tx-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-python-armhf:cpy2-minimal-tx-17.5.1 "Metadata") | [`crossbario/autobahn-python-armhf:cpy2-minimal-tx-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/armhf/Dockerfile.cpy2-minimal-tx-17.5.1)
 41 | [autobahn-python](https://github.com/crossbario/autobahn-python) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-armhf:pypy2.svg)](https://microbadger.com/images/crossbario/autobahn-python-armhf:pypy2 "Metadata") | [`crossbario/autobahn-python-armhf:pypy2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/armhf/Dockerfile.pypy2)
 42 | [autobahn-python](https://github.com/crossbario/autobahn-python) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-armhf:pypy2-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-python-armhf:pypy2-17.5.1 "Metadata") | [`crossbario/autobahn-python-armhf:pypy2-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/armhf/Dockerfile.pypy2-17.5.1)
+
+### autobahn-python on aarch64
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
 43 | [autobahn-python](https://github.com/crossbario/autobahn-python) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-aarch64:latest.svg)](https://microbadger.com/images/crossbario/autobahn-python-aarch64:latest "Metadata") | [`crossbario/autobahn-python-aarch64:latest`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/aarch64/Dockerfile.latest)
 44 | [autobahn-python](https://github.com/crossbario/autobahn-python) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-aarch64:cpy3.svg)](https://microbadger.com/images/crossbario/autobahn-python-aarch64:cpy3 "Metadata") | [`crossbario/autobahn-python-aarch64:cpy3`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/aarch64/Dockerfile.cpy3)
 45 | [autobahn-python](https://github.com/crossbario/autobahn-python) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-aarch64:cpy3-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-python-aarch64:cpy3-17.5.1 "Metadata") | [`crossbario/autobahn-python-aarch64:cpy3-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/aarch64/Dockerfile.cpy3-17.5.1)
@@ -125,7 +155,7 @@ No | Package | Architecture | Image | docker pull
 62 | [autobahn-python](https://github.com/crossbario/autobahn-python) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-aarch64:pypy2.svg)](https://microbadger.com/images/crossbario/autobahn-python-aarch64:pypy2 "Metadata") | [`crossbario/autobahn-python-aarch64:pypy2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/aarch64/Dockerfile.pypy2)
 63 | [autobahn-python](https://github.com/crossbario/autobahn-python) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-aarch64:pypy2-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-python-aarch64:pypy2-17.5.1 "Metadata") | [`crossbario/autobahn-python-aarch64:pypy2-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-python/aarch64/Dockerfile.pypy2-17.5.1)
 
-### crossbario/autobahn-cpp
+### autobahn-cpp on x86_64
 
 No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
@@ -134,11 +164,21 @@ No | Package | Architecture | Image | docker pull
 3 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp:gcc-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-cpp:gcc-17.5.1 "Metadata") | [`crossbario/autobahn-cpp:gcc-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/x86_64/Dockerfile.gcc-17.5.1)
 4 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp:clang.svg)](https://microbadger.com/images/crossbario/autobahn-cpp:clang "Metadata") | [`crossbario/autobahn-cpp:clang`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/x86_64/Dockerfile.clang)
 5 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp:clang-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-cpp:clang-17.5.1 "Metadata") | [`crossbario/autobahn-cpp:clang-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/x86_64/Dockerfile.clang-17.5.1)
+
+### autobahn-cpp on armhf
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
 6 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp-armhf:latest.svg)](https://microbadger.com/images/crossbario/autobahn-cpp-armhf:latest "Metadata") | [`crossbario/autobahn-cpp-armhf:latest`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/armhf/Dockerfile.latest)
 7 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp-armhf:gcc.svg)](https://microbadger.com/images/crossbario/autobahn-cpp-armhf:gcc "Metadata") | [`crossbario/autobahn-cpp-armhf:gcc`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/armhf/Dockerfile.gcc)
 8 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp-armhf:gcc-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-cpp-armhf:gcc-17.5.1 "Metadata") | [`crossbario/autobahn-cpp-armhf:gcc-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/armhf/Dockerfile.gcc-17.5.1)
 9 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp-armhf:clang.svg)](https://microbadger.com/images/crossbario/autobahn-cpp-armhf:clang "Metadata") | [`crossbario/autobahn-cpp-armhf:clang`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/armhf/Dockerfile.clang)
 10 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp-armhf:clang-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-cpp-armhf:clang-17.5.1 "Metadata") | [`crossbario/autobahn-cpp-armhf:clang-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/armhf/Dockerfile.clang-17.5.1)
+
+### autobahn-cpp on aarch64
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
 11 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp-aarch64:latest.svg)](https://microbadger.com/images/crossbario/autobahn-cpp-aarch64:latest "Metadata") | [`crossbario/autobahn-cpp-aarch64:latest`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/aarch64/Dockerfile.latest)
 12 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp-aarch64:gcc.svg)](https://microbadger.com/images/crossbario/autobahn-cpp-aarch64:gcc "Metadata") | [`crossbario/autobahn-cpp-aarch64:gcc`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/aarch64/Dockerfile.gcc)
 13 | [autobahn-cpp](https://github.com/crossbario/autobahn-cpp) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-cpp-aarch64:gcc-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-cpp-aarch64:gcc-17.5.1 "Metadata") | [`crossbario/autobahn-cpp-aarch64:gcc-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-cpp/aarch64/Dockerfile.gcc-17.5.1)
