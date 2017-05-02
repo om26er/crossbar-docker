@@ -40,29 +40,35 @@ Docker images last built on **{BUILD_DATE}** from package versions:
 
 ## Docker Images
 
-No | Package | Architecture | Image | docker pull
----|---|---|---|---
 """.format(BUILD_DATE=BUILD_DATE,
            CROSSBAR_VERSION=CROSSBAR_VERSION,
            AUTOBAHN_JS_VERSION=AUTOBAHN_JS_VERSION,
            AUTOBAHN_PYTHON_VERSION=AUTOBAHN_PYTHON_VERSION,
            AUTOBAHN_CPP_VERSION=AUTOBAHN_CPP_VERSION)
 
+PACKAGE_HEADER = """
+### {name}
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
+"""
+
 # [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-aarch64:cpy3-minimal-tx-0.18.2.svg)](https://microbadger.com/images/crossbario/autobahn-python-aarch64:cpy3-minimal-tx-0.18.2 "Get your own image badge on microbadger.com")
 
-i = 1
 with open('IMAGES.md', 'w') as f_out:
     with open('images.json') as f_in:
         data = f_in.read()
         obj = json.loads(data)
         f_out.write(HEADER)
         for image in obj.get('images', []):
+            i = 1
             package = image.get('package', None)
             version = image.get('version', None)
             architectures = image.get('architectures', None)
             github = image.get('github', None)
             name = image.get('name', None)
             tags = image.get('tags', [])
+            f_out.write(PACKAGE_HEADER.format(name=name))
             for architecture in architectures:
                 _tags = ', '.join([tag if tag.strip() != '' else '-' for tag in tags])
                 for _tag in tags:
