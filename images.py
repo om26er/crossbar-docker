@@ -54,7 +54,12 @@ Latest Docker images built on **{BUILD_DATE}** from package versions:
            AUTOBAHN_CPP_VERSION=AUTOBAHN_CPP_VERSION)
 
 PACKAGE_HEADER = """
-### {package} on {architecture}
+### {package}
+
+"""
+
+ARCH_HEADER = """
+#### {package} on {architecture}
 
 No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
@@ -75,8 +80,9 @@ with open('README.md', 'w') as f_out:
             github = image.get('github', None)
             name = image.get('name', None)
             tags = image.get('tags', [])
+            f_out.write(PACKAGE_HEADER.format(package=package))
             for architecture in architectures:
-                f_out.write(PACKAGE_HEADER.format(package=package, architecture=architecture))
+                f_out.write(ARCH_HEADER.format(package=package, architecture=architecture))
                 _tags = ', '.join([tag if tag.strip() != '' else '-' for tag in tags])
                 for _tag in tags:
                     if package in PACKAGE_TO_VERSION:
