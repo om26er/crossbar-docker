@@ -51,6 +51,12 @@ Latest Docker images built on **{BUILD_DATE}** from package versions:
 AutobahnC++:
 
 * [segfault on armhf](https://github.com/crossbario/autobahn-cpp/issues/166)
+* [missing clang flavor](https://github.com/crossbario/crossbar-docker/issues/39)
+
+AutobahnPython/Crossbar.io
+
+* [missing PyPy 3 flavors for armhf](https://bitbucket.org/pypy/pypy/issues/2540/missing-pypy3-armhf-builder)
+* [missing PyPy 3 flavors for aarch64](https://bitbucket.org/pypy/pypy/issues/2331/armv8-aarch64-or-aarch32-support)
 
 
 ## Docker Images
