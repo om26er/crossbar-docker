@@ -44,10 +44,14 @@ test_gcc:
 test_clang:
 	docker run -it --rm crossbario/autobahn-cpp-armhf:clang bash -c "cd /usr/local/app && make && ./client ws://$(HOSTIP):8080/ws realm1"
 
-publish:
+publish: publish_gcc publish_clang
+
+publish_gcc:
 	docker push crossbario/autobahn-cpp-armhf
 	docker push crossbario/autobahn-cpp-armhf:gcc
 	docker push crossbario/autobahn-cpp-armhf:gcc-${AUTOBAHN_CPP_VERSION}
+
+publish_clang:
 	docker push crossbario/autobahn-cpp-armhf:clang
 	docker push crossbario/autobahn-cpp-armhf:clang-${AUTOBAHN_CPP_VERSION}
 
