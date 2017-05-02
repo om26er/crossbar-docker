@@ -29,9 +29,16 @@ import json
 from pprint import pprint
 
 HEADER = """# Crossbar.io Project Docker Images
+
+This repository contains the Docker tooling to build the official
+Docker images published by the Crossbar.io Project on Dockerhub
+[here](https://hub.docker.com/r/crossbario/).
+
+For building the images yourself, please see [here](BUILDING.md).
+
 ## Package Versions
 
-Docker images last built on **{BUILD_DATE}** from package versions:
+Latest Docker images built on **{BUILD_DATE}** from package versions:
 
 * Crossbar.io {CROSSBAR_VERSION}
 * AutobahnJS {AUTOBAHN_JS_VERSION}
@@ -55,7 +62,7 @@ No | Package | Architecture | Image | docker pull
 
 # [![](https://images.microbadger.com/badges/image/crossbario/autobahn-python-aarch64:cpy3-minimal-tx-0.18.2.svg)](https://microbadger.com/images/crossbario/autobahn-python-aarch64:cpy3-minimal-tx-0.18.2 "Get your own image badge on microbadger.com")
 
-with open('IMAGES.md', 'w') as f_out:
+with open('README.md', 'w') as f_out:
     with open('images.json') as f_in:
         data = f_in.read()
         obj = json.loads(data)
