@@ -2,7 +2,6 @@
     "images": [
         {
             "package": "crossbar",
-            "version": "17.3.1",
             "architectures": [
                 "x86_64",
                 "armhf",
@@ -13,11 +12,13 @@
             "tags": [
                 "latest",
                 "community",
+                "community-{version}",
                 "community-cpy3",
-                "community-pypy3"
+                "community-cpy3-{version}",
+                "community-pypy3",
+                "community-pypy3-{version}"
             ]
         },
-
         {
             "package": "autobahn-js",
             "architectures": [
@@ -35,7 +36,6 @@
                 "alpine-{version}"
             ]
         },
-
         {
             "package": "autobahn-python",
             "version": "0.18.2",
@@ -49,21 +49,29 @@
             "tags": [
                 "latest",
                 "cpy3",
+                "cpy3-{version}",
                 "pypy3",
+                "pypy3-{version}",
                 "cpy3-alpine",
+                "cpy3-alpine-{version}",
                 "cpy3-minimal-aio",
+                "cpy3-minimal-aio-{version}",
                 "cpy3-minimal-tx",
+                "cpy3-minimal-tx-{version}",
                 "cpy2",
+                "cpy2-{version}",
                 "cpy2-alpine",
+                "cpy2-alpine-{version}",
                 "cpy2-minimal-aio",
+                "cpy2-minimal-aio-{version}",
                 "cpy2-minimal-tx",
-                "pypy2"
+                "cpy2-minimal-tx-{version}",
+                "pypy2",
+                "pypy2-{version}"
             ]
         },
-
         {
             "package": "autobahn-cpp",
-            "version": "0.2.1",
             "architectures": [
                 "x86_64",
                 "armhf",
@@ -74,7 +82,9 @@
             "tags": [
                 "latest",
                 "gcc",
-                "clang"
+                "gcc-{version}",
+                "clang",
+                "clang-{version}"
             ]
         }
     ]

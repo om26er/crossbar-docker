@@ -11,11 +11,19 @@ def badger_url(package, flavor):
 
 
 BUILD_DATE = os.environ.get('BUILD_DATE', None)
+
 CROSSBAR_VERSION = os.environ.get('CROSSBAR_VERSION', None)
 AUTOBAHN_JS_VERSION = os.environ.get('AUTOBAHN_JS_VERSION', None)
 AUTOBAHN_PYTHON_VERSION = os.environ.get('AUTOBAHN_PYTHON_VERSION', None)
 AUTOBAHN_CPP_VERSION = os.environ.get('AUTOBAHN_CPP_VERSION', None)
 
+
+PACKAGE_TO_VERSION = {
+    'crossbar': CROSSBAR_VERSION,
+    'autobahn-js': AUTOBAHN_JS_VERSION,
+    'autobahn-python': AUTOBAHN_PYTHON_VERSION,
+    'autobahn-cpp': AUTOBAHN_CPP_VERSION,
+}
 
 import json
 from pprint import pprint
@@ -58,6 +66,8 @@ with open('IMAGES.md', 'w') as f_out:
             for architecture in architectures:
                 _tags = ', '.join([tag if tag.strip() != '' else '-' for tag in tags])
                 for _tag in tags:
+                    if package in PACKAGE_TO_VERSION:
+                        _tag = _tag.format(version=PACKAGE_TO_VERSION[package])
                     arch = '-{}'.format(architecture) if architecture != 'x86_64' else ''
                     image_id = 'crossbario/{package}{arch}:{tag}'.format(package=package, tag=_tag, arch=arch)
                     # 'autobahn-python-aarch64:cpy3-minimal-tx-0.18.2'
