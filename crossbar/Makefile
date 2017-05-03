@@ -10,202 +10,37 @@ default:
 	@echo ""
 
 
-#
-# Print build parameters
-#
 params:
 	@echo "${CROSSBAR_VERSION}"
 	@echo "${CROSSBAR_VCS_REF}"
 	@echo "${BUILD_DATE}"
 
+build: build_cpy3 build_pypy3
+
+version: version_cpy3 version_pypy3
+
+test: test_cpy3 test_pypy3
 
 
-#
-# BUILD
-#
-build: build_community
-
-build_community: build_community_cpy3 build_community_pypy3
-
-
-#
-# BUILD: Community / CPython 3
-#
-build_community_cpy3: build_amd64_community_cpy3 build_armhf_community_cpy3 build_aarch64_community_cpy3
-
-build_amd64_community_cpy3:
-	# enforce auto-generating a new key when using the images
-	rm -f node/.crossbar/key.*
-	time docker build \
-		--build-arg BUILD_DATE=${BUILD_DATE} \
-		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
-		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
-		-t crossbario/crossbar:latest \
-		-t crossbario/crossbar:${CROSSBAR_VERSION} \
-		-t crossbario/crossbar:community \
-		-t crossbario/crossbar:community-${CROSSBAR_VERSION} \
-		-t crossbario/crossbar:community-cpy3 \
-		-t crossbario/crossbar:community-cpy3-${CROSSBAR_VERSION} \
-		-f ./x86_64/Dockerfile.community-cpy3 .
-
-build_armhf_community_cpy3:
-	# enforce auto-generating a new key when using the images
-	rm -f node/.crossbar/key.*
-	time docker build \
-		--build-arg BUILD_DATE=${BUILD_DATE} \
-		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
-		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
-		-t crossbario/crossbar-armhf:latest \
-		-t crossbario/crossbar-armhf:community \
-		-t crossbario/crossbar-armhf:community-cpy3 \
-		-t crossbario/crossbar-armhf:community-cpy3-${CROSSBAR_VERSION} \
-		-f ./armhf/Dockerfile.community-cpy3 .
-
-build_aarch64_community_cpy3:
-	# enforce auto-generating a new key when using the images
-	rm -f node/.crossbar/key.*
-	time docker build \
-		--build-arg BUILD_DATE=${BUILD_DATE} \
-		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
-		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
-		-t crossbario/crossbar-aarch64:latest \
-		-t crossbario/crossbar-aarch64:community \
-		-t crossbario/crossbar-aarch64:community-cpy3 \
-		-t crossbario/crossbar-aarch64:community-cpy3-${CROSSBAR_VERSION} \
-		-f ./aarch64/Dockerfile.community-cpy3 .
-
-
-#
-# BUILD: Community / PyPy 3
-#
-build_community_pypy3: build_amd64_community_pypy3 build_armhf_community_pypy3 build_aarch64_community_pypy3
-
-build_amd64_community_pypy3:
-	# enforce auto-generating a new key when using the images
-	rm -f node/.crossbar/key.*
-	time docker build \
-		--build-arg BUILD_DATE=${BUILD_DATE} \
-		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
-		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
-		-t crossbario/crossbar:community-pypy3 \
-		-t crossbario/crossbar:community-pypy3-${CROSSBAR_VERSION} \
-		-f ./x86_64/Dockerfile.community-pypy3 .
-
-build_armhf_community_pypy3:
-	@echo "PyPy3 isn't available for armhf yet"
-
-build_aarch64_community_pypy3:
-	@echo "PyPy3 isn't available for aarch64 yet"
-
-
-#
-# VERSION: Community / CPython 3
-#
-version: version_community
-
-version_community: version_community_cpy3 version_community_pypy3
-
-version_community_cpy3: version_amd64_community_cpy3 version_armhf_community_cpy3 version_aarch64_community_cpy3
-
-version_amd64_community_cpy3:
-	docker run \
-		--rm --entrypoint=/usr/local/bin/crossbar -it \
-		crossbario/crossbar:community-cpy3 version
-
-version_armhf_community_cpy3:
-	docker run \
-		--rm --entrypoint=/usr/local/bin/crossbar -it \
-		crossbario/crossbar-armhf:community-cpy3 version
-
-version_aarch64_community_cpy3:
-	docker run \
-		--rm --entrypoint=/usr/local/bin/crossbar -it \
-		crossbario/crossbar-aarch64:community-cpy3 version
-
-
-#
-# VERSION: Community / PyPy 3
-#
-version_community_pypy3: version_amd64_community_pypy3 version_armhf_community_pypy3 version_aarch64_community_pypy3
-
-version_amd64_community_pypy3:
-	docker run \
-		--rm --entrypoint=/usr/local/bin/crossbar -it \
-		crossbario/crossbar:community-pypy3 version
-
-version_armhf_community_pypy3:
-	@echo "PyPy3 isn't available for armhf yet"
-
-version_aarch64_community_pypy3:
-	@echo "PyPy3 isn't available for aarch64 yet"
-
-
-test: test_community
-
-test_community: test_community_cpy3 test_community_pypy3
-
-#
-# TEST: Community / CPython 3
-#
-test_community_cpy3: test_amd64_community_cpy3 test_armhf_community_cpy3 test_aarch64_community_cpy3
-
-test_amd64_community_cpy3:
-	docker run \
-		--rm -it -p 8080:8080 --name crossbar \
-		crossbario/crossbar:community-cpy3
-
-test_armhf_community_cpy3:
-	docker run \
-		--rm -it -p 8080:8080 --name crossbar \
-		crossbario/crossbar-armhf:community-cpy3
-
-test_aarch64_community_cpy3:
-	docker run \
-		--rm -it -p 8080:8080 --name crossbar \
-		crossbario/crossbar-aarch64:community-cpy3
-
-
-#
-# TEST: Community / PyPy 3
-#
-test_community_pypy3: test_amd64_community_pypy3 test_armhf_community_pypy3 test_aarch64_community_pypy3
-
-test_amd64_community_pypy3:
-	docker run \
-		--rm -it -p 8080:8080 --name crossbar \
-		crossbario/crossbar:community-pypy3
-
-test_armhf_community_pypy3:
-	@echo "PyPy3 isn't available for armhf yet"
-
-test_aarch64_community_pypy3:
-	@echo "PyPy3 isn't available for aarch64 yet"
-
-
-publish: publish_community
-
-publish_community: build_community
+publish: build
 	# amd64 / community / cpy3
 	docker push crossbario/crossbar:latest
-	docker push crossbario/crossbar:community
-	docker push crossbario/crossbar:community-cpy3
-	docker push crossbario/crossbar:community-cpy3-${CROSSBAR_VERSION}
+	docker push crossbario/crossbar:cpy3
+	docker push crossbario/crossbar:cpy3-${CROSSBAR_VERSION}
 
 	# armhf / community / cpy3
 	docker push crossbario/crossbar-armhf:latest
-	docker push crossbario/crossbar-armhf:community
-	docker push crossbario/crossbar-armhf:community-cpy3
-	docker push crossbario/crossbar-armhf:community-cpy3-${CROSSBAR_VERSION}
+	docker push crossbario/crossbar-armhf:cpy3
+	docker push crossbario/crossbar-armhf:cpy3-${CROSSBAR_VERSION}
 
 	# aarch64 / community / cpy3
 	docker push crossbario/crossbar-aarch64:latest
-	docker push crossbario/crossbar-aarch64:community
-	docker push crossbario/crossbar-aarch64:community-cpy3
-	docker push crossbario/crossbar-aarch64:community-cpy3-${CROSSBAR_VERSION}
+	docker push crossbario/crossbar-aarch64:cpy3
+	docker push crossbario/crossbar-aarch64:cpy3-${CROSSBAR_VERSION}
 
 	# amd64 / community / pypy3
-	docker push crossbario/crossbar:community-pypy3
-	docker push crossbario/crossbar:community-pypy3-${CROSSBAR_VERSION}
+	docker push crossbario/crossbar:pypy3
+	docker push crossbario/crossbar:pypy3-${CROSSBAR_VERSION}
 
 
 #
@@ -237,3 +72,146 @@ list:
 #
 clean:
 	./removeall.sh
+
+
+
+#
+# BUILD: Community / CPython 3
+#
+build_cpy3: build_amd64_cpy3 build_armhf_cpy3 build_aarch64_cpy3
+
+build_amd64_cpy3:
+	# enforce auto-generating a new key when using the images
+	rm -f node/.crossbar/key.*
+	time docker build \
+		--build-arg BUILD_DATE=${BUILD_DATE} \
+		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
+		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
+		-t crossbario/crossbar:latest \
+		-t crossbario/crossbar:cpy3 \
+		-t crossbario/crossbar:cpy3-${CROSSBAR_VERSION} \
+		-f ./x86_64/Dockerfile.cpy3 .
+
+build_armhf_cpy3:
+	# enforce auto-generating a new key when using the images
+	rm -f node/.crossbar/key.*
+	time docker build \
+		--build-arg BUILD_DATE=${BUILD_DATE} \
+		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
+		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
+		-t crossbario/crossbar-armhf:latest \
+		-t crossbario/crossbar-armhf:cpy3 \
+		-t crossbario/crossbar-armhf:cpy3-${CROSSBAR_VERSION} \
+		-f ./armhf/Dockerfile.cpy3 .
+
+build_aarch64_cpy3:
+	# enforce auto-generating a new key when using the images
+	rm -f node/.crossbar/key.*
+	time docker build \
+		--build-arg BUILD_DATE=${BUILD_DATE} \
+		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
+		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
+		-t crossbario/crossbar-aarch64:latest \
+		-t crossbario/crossbar-aarch64:cpy3 \
+		-t crossbario/crossbar-aarch64:cpy3-${CROSSBAR_VERSION} \
+		-f ./aarch64/Dockerfile.cpy3 .
+
+
+#
+# BUILD: Community / PyPy 3
+#
+build_pypy3: build_amd64_pypy3 build_armhf_pypy3 build_aarch64_pypy3
+
+build_amd64_pypy3:
+	# enforce auto-generating a new key when using the images
+	rm -f node/.crossbar/key.*
+	time docker build \
+		--build-arg BUILD_DATE=${BUILD_DATE} \
+		--build-arg CROSSBAR_VCS_REF=${CROSSBAR_VCS_REF} \
+		--build-arg CROSSBAR_VERSION=${CROSSBAR_VERSION} \
+		-t crossbario/crossbar:pypy3 \
+		-t crossbario/crossbar:pypy3-${CROSSBAR_VERSION} \
+		-f ./x86_64/Dockerfile.pypy3 .
+
+build_armhf_pypy3:
+	@echo "PyPy3 isn't available for armhf yet"
+
+build_aarch64_pypy3:
+	@echo "PyPy3 isn't available for aarch64 yet"
+
+
+#
+# VERSION: Community / CPython 3
+#
+version_cpy3: version_amd64_cpy3 version_armhf_cpy3 version_aarch64_cpy3
+
+version_amd64_cpy3:
+	docker run \
+		--rm --entrypoint=/usr/local/bin/crossbar -it \
+		crossbario/crossbar:cpy3 version
+
+version_armhf_cpy3:
+	docker run \
+		--rm --entrypoint=/usr/local/bin/crossbar -it \
+		crossbario/crossbar-armhf:cpy3 version
+
+version_aarch64_cpy3:
+	docker run \
+		--rm --entrypoint=/usr/local/bin/crossbar -it \
+		crossbario/crossbar-aarch64:cpy3 version
+
+
+#
+# VERSION: Community / PyPy 3
+#
+version_pypy3: version_amd64_pypy3 version_armhf_pypy3 version_aarch64_pypy3
+
+version_amd64_pypy3:
+	docker run \
+		--rm --entrypoint=/usr/local/bin/crossbar -it \
+		crossbario/crossbar:pypy3 version
+
+version_armhf_pypy3:
+	@echo "PyPy3 isn't available for armhf yet"
+
+version_aarch64_pypy3:
+	@echo "PyPy3 isn't available for aarch64 yet"
+
+
+#
+# TEST: Community / CPython 3
+#
+test_cpy3: test_amd64_cpy3 test_armhf_cpy3 test_aarch64_cpy3
+
+test_amd64_cpy3:
+	docker run \
+		--rm -it -p 8080:8080 --name crossbar \
+		crossbario/crossbar:cpy3
+
+test_armhf_cpy3:
+	docker run \
+		--rm -it -p 8080:8080 --name crossbar \
+		crossbario/crossbar-armhf:cpy3
+
+test_aarch64_cpy3:
+	docker run \
+		--rm -it -p 8080:8080 --name crossbar \
+		crossbario/crossbar-aarch64:cpy3
+
+
+#
+# TEST: Community / PyPy 3
+#
+test_pypy3: test_amd64_pypy3 test_armhf_pypy3 test_aarch64_pypy3
+
+test_amd64_pypy3:
+	docker run \
+		--rm -it -p 8080:8080 --name crossbar \
+		crossbario/crossbar:pypy3
+
+test_armhf_pypy3:
+	@echo "PyPy3 isn't available for armhf yet"
+
+test_aarch64_pypy3:
+	@echo "PyPy3 isn't available for aarch64 yet"
+
