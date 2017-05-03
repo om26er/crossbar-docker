@@ -11,11 +11,10 @@
             "name": "crossbario/crossbar",
             "tags": [
                 "latest",
-                "community",
-                "community-cpy3",
-                "community-cpy3-{version}",
-                "community-pypy3",
-                "community-pypy3-{version}"
+                "cpy3",
+                "cpy3-{version}",
+                "pypy3",
+                "pypy3-{version}"
             ]
         },
         {
