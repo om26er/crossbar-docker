@@ -42,6 +42,11 @@ publish: build
 	docker push crossbario/crossbar:pypy3
 	docker push crossbario/crossbar:pypy3-${CROSSBAR_VERSION}
 
+	# trigger updates of metainfo on https://microbadger.com/
+	curl -X POST https://hooks.microbadger.com/images/crossbario/crossbar/jA-pM9fXwd6v4Q7M3PWGG10XPAE=
+	curl -X POST https://hooks.microbadger.com/images/crossbario/crossbar-armhf/3hB5Fn-4Bf2VV9ihB8e7v687Y60=
+	curl -X POST https://hooks.microbadger.com/images/crossbario/crossbar-aarch64/ekMu3620yWLtfpxIqJQgPSmDNYE=
+
 
 #
 # Install Qemu (this is needed for cross-building armhf/aarch64 on amd64)

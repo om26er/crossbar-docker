@@ -36,7 +36,6 @@
         },
         {
             "package": "autobahn-python",
-            "version": "0.18.2",
             "architectures": [
                 "x86_64",
                 "armhf",
