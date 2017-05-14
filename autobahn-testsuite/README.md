@@ -1,6 +1,6 @@
 # Autobahn Testsuite
 
-This folder contains the build infra for creating Docker toolchain images containing [utobahnTestsuite](https://github.com/crossbario/autobahn-testsuite).
+This folder contains the build infra for creating Docker toolchain images containing [AutobahnTestsuite](https://github.com/crossbario/autobahn-testsuite).
 
 You can use it to test WebSocket server (and client) implementations.
 
@@ -41,3 +41,16 @@ Above will mount an (included) test configuration from the [config](config) fold
 Above command will also mount a host directory/volume [reports](reports) where the generated reports will be placed by the testsuite.
 
 Finally, the config will make the fuzzing server run on port 9001 - and expose that on the host.
+
+> To test multiple clients and generate one big report containing all clients, do NOT stop the testsuite container, but run all your clients, and then stop the container. The generated reports will include all clients.
+
+
+## Example
+
+Here is how to test the Python 3 / asyncio flavor of [AutobahnPython](https://github.com/crossbario/autobahn-python):
+
+```console
+pip install autobahn
+wget https://raw.githubusercontent.com/crossbario/autobahn-python/master/wstest/testee_client_aio.py
+python testee_client_aio.py
+```
