@@ -8,10 +8,10 @@ For building the images yourself, please see [here](BUILDING.md).
 
 ## Package Versions
 
-Latest Docker images built on **2017-05-03** from package versions:
+Latest Docker images built on **2017-05-23** from package versions:
 
 * Crossbar.io 17.5.1
-* AutobahnJS 17.5.1
+* AutobahnJS 17.5.2
 * AutobahnPython 17.5.1
 * AutobahnC++ 17.5.1
 
@@ -74,9 +74,9 @@ No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
 1 | [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:latest.svg)](https://microbadger.com/images/crossbario/autobahn-js:latest "Metadata") | [`crossbario/autobahn-js:latest`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.latest)
 2 | [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:full.svg)](https://microbadger.com/images/crossbario/autobahn-js:full "Metadata") | [`crossbario/autobahn-js:full`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.full)
-3 | [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:full-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js:full-17.5.1 "Metadata") | [`crossbario/autobahn-js:full-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.full-17.5.1)
+3 | [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:full-17.5.2.svg)](https://microbadger.com/images/crossbario/autobahn-js:full-17.5.2 "Metadata") | [`crossbario/autobahn-js:full-17.5.2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.full-17.5.2)
 4 | [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:alpine.svg)](https://microbadger.com/images/crossbario/autobahn-js:alpine "Metadata") | [`crossbario/autobahn-js:alpine`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.alpine)
-5 | [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:alpine-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js:alpine-17.5.1 "Metadata") | [`crossbario/autobahn-js:alpine-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.alpine-17.5.1)
+5 | [autobahn-js](https://github.com/crossbario/autobahn-js) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js:alpine-17.5.2.svg)](https://microbadger.com/images/crossbario/autobahn-js:alpine-17.5.2 "Metadata") | [`crossbario/autobahn-js:alpine-17.5.2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/x86_64/Dockerfile.alpine-17.5.2)
 
 #### autobahn-js on armhf
 
@@ -84,9 +84,9 @@ No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
 6 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:latest.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:latest "Metadata") | [`crossbario/autobahn-js-armhf:latest`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.latest)
 7 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:full.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:full "Metadata") | [`crossbario/autobahn-js-armhf:full`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.full)
-8 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:full-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:full-17.5.1 "Metadata") | [`crossbario/autobahn-js-armhf:full-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.full-17.5.1)
+8 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:full-17.5.2.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:full-17.5.2 "Metadata") | [`crossbario/autobahn-js-armhf:full-17.5.2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.full-17.5.2)
 9 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:alpine.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:alpine "Metadata") | [`crossbario/autobahn-js-armhf:alpine`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.alpine)
-10 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:alpine-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:alpine-17.5.1 "Metadata") | [`crossbario/autobahn-js-armhf:alpine-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.alpine-17.5.1)
+10 | [autobahn-js](https://github.com/crossbario/autobahn-js) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-armhf:alpine-17.5.2.svg)](https://microbadger.com/images/crossbario/autobahn-js-armhf:alpine-17.5.2 "Metadata") | [`crossbario/autobahn-js-armhf:alpine-17.5.2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/armhf/Dockerfile.alpine-17.5.2)
 
 #### autobahn-js on aarch64
 
@@ -94,9 +94,9 @@ No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
 11 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:latest.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:latest "Metadata") | [`crossbario/autobahn-js-aarch64:latest`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.latest)
 12 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:full "Metadata") | [`crossbario/autobahn-js-aarch64:full`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.full)
-13 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:full-17.5.1 "Metadata") | [`crossbario/autobahn-js-aarch64:full-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.full-17.5.1)
+13 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full-17.5.2.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:full-17.5.2 "Metadata") | [`crossbario/autobahn-js-aarch64:full-17.5.2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.full-17.5.2)
 14 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:alpine "Metadata") | [`crossbario/autobahn-js-aarch64:alpine`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine)
-15 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine-17.5.1.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:alpine-17.5.1 "Metadata") | [`crossbario/autobahn-js-aarch64:alpine-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine-17.5.1)
+15 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine-17.5.2.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:alpine-17.5.2 "Metadata") | [`crossbario/autobahn-js-aarch64:alpine-17.5.2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine-17.5.2)
 
 ### autobahn-python
 
