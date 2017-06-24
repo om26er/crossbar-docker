@@ -32,7 +32,7 @@ RUN    apk --update upgrade \
                openssl-dev \
                linux-headers \
     && pip install --no-cache-dir -U pip \
-    && pip install --no-cache-dir crossbar==${CROSSBAR_VERSION} \
+    && pip install --no-cache-dir crossbar>=${CROSSBAR_VERSION} \
     && apk del .build-deps
 
 # test if everything installed properly
