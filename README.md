@@ -8,9 +8,9 @@ For building the images yourself, please see [here](BUILDING.md).
 
 ## Package Versions
 
-Latest Docker images built on **2017-06-08** from package versions:
+Latest Docker images built on **2017-06-24** from package versions:
 
-* Crossbar.io 17.5.1
+* Crossbar.io 17.6.1
 * AutobahnJS 17.5.2
 * AutobahnPython 17.6.1
 * AutobahnC++ 17.5.1
@@ -41,9 +41,9 @@ No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
 1 | [crossbar](https://github.com/crossbario/crossbar) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar:latest.svg)](https://microbadger.com/images/crossbario/crossbar:latest "Metadata") | [`crossbario/crossbar:latest`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/x86_64/Dockerfile.latest)
 2 | [crossbar](https://github.com/crossbario/crossbar) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar:cpy3.svg)](https://microbadger.com/images/crossbario/crossbar:cpy3 "Metadata") | [`crossbario/crossbar:cpy3`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/x86_64/Dockerfile.cpy3)
-3 | [crossbar](https://github.com/crossbario/crossbar) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar:cpy3-17.5.1.svg)](https://microbadger.com/images/crossbario/crossbar:cpy3-17.5.1 "Metadata") | [`crossbario/crossbar:cpy3-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/x86_64/Dockerfile.cpy3-17.5.1)
+3 | [crossbar](https://github.com/crossbario/crossbar) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar:cpy3-17.6.1.svg)](https://microbadger.com/images/crossbario/crossbar:cpy3-17.6.1 "Metadata") | [`crossbario/crossbar:cpy3-17.6.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/x86_64/Dockerfile.cpy3-17.6.1)
 4 | [crossbar](https://github.com/crossbario/crossbar) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar:pypy3.svg)](https://microbadger.com/images/crossbario/crossbar:pypy3 "Metadata") | [`crossbario/crossbar:pypy3`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/x86_64/Dockerfile.pypy3)
-5 | [crossbar](https://github.com/crossbario/crossbar) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar:pypy3-17.5.1.svg)](https://microbadger.com/images/crossbario/crossbar:pypy3-17.5.1 "Metadata") | [`crossbario/crossbar:pypy3-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/x86_64/Dockerfile.pypy3-17.5.1)
+5 | [crossbar](https://github.com/crossbario/crossbar) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar:pypy3-17.6.1.svg)](https://microbadger.com/images/crossbario/crossbar:pypy3-17.6.1 "Metadata") | [`crossbario/crossbar:pypy3-17.6.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/x86_64/Dockerfile.pypy3-17.6.1)
 
 #### crossbar on armhf
 
@@ -51,9 +51,9 @@ No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
 6 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:latest.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:latest "Metadata") | [`crossbario/crossbar-armhf:latest`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.latest)
 7 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:cpy3.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:cpy3 "Metadata") | [`crossbario/crossbar-armhf:cpy3`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.cpy3)
-8 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:cpy3-17.5.1.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:cpy3-17.5.1 "Metadata") | [`crossbario/crossbar-armhf:cpy3-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.cpy3-17.5.1)
+8 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:cpy3-17.6.1.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:cpy3-17.6.1 "Metadata") | [`crossbario/crossbar-armhf:cpy3-17.6.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.cpy3-17.6.1)
 9 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:pypy3.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:pypy3 "Metadata") | [`crossbario/crossbar-armhf:pypy3`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.pypy3)
-10 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:pypy3-17.5.1.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:pypy3-17.5.1 "Metadata") | [`crossbario/crossbar-armhf:pypy3-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.pypy3-17.5.1)
+10 | [crossbar](https://github.com/crossbario/crossbar) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-armhf:pypy3-17.6.1.svg)](https://microbadger.com/images/crossbario/crossbar-armhf:pypy3-17.6.1 "Metadata") | [`crossbario/crossbar-armhf:pypy3-17.6.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/armhf/Dockerfile.pypy3-17.6.1)
 
 #### crossbar on aarch64
 
@@ -61,9 +61,9 @@ No | Package | Architecture | Image | docker pull
 ---|---|---|---|---
 11 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:latest.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:latest "Metadata") | [`crossbario/crossbar-aarch64:latest`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.latest)
 12 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:cpy3.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:cpy3 "Metadata") | [`crossbario/crossbar-aarch64:cpy3`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.cpy3)
-13 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:cpy3-17.5.1.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:cpy3-17.5.1 "Metadata") | [`crossbario/crossbar-aarch64:cpy3-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.cpy3-17.5.1)
+13 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:cpy3-17.6.1.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:cpy3-17.6.1 "Metadata") | [`crossbario/crossbar-aarch64:cpy3-17.6.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.cpy3-17.6.1)
 14 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:pypy3.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:pypy3 "Metadata") | [`crossbario/crossbar-aarch64:pypy3`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.pypy3)
-15 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:pypy3-17.5.1.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:pypy3-17.5.1 "Metadata") | [`crossbario/crossbar-aarch64:pypy3-17.5.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.pypy3-17.5.1)
+15 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:pypy3-17.6.1.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:pypy3-17.6.1 "Metadata") | [`crossbario/crossbar-aarch64:pypy3-17.6.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.pypy3-17.6.1)
 
 ### autobahn-js
 
