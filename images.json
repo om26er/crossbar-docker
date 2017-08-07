@@ -49,6 +49,19 @@
             ]
         },
         {
+            "package": "autobahn-java",
+            "architectures": [
+                "x86_64"
+            ],
+            "github": "https://github.com/crossbario/autobahn-java",
+            "name": "crossbario/autobahn-java",
+            "tags": [
+                "latest",
+                "netty",
+                "netty-{version}"
+            ]
+        },
+        {
             "package": "autobahn-python",
             "architectures": [
                 "x86_64",

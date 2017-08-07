@@ -13,7 +13,7 @@ Latest Docker images built on **2017-08-07** from package versions:
 * Crossbar.io 17.8.1
 * Crossbar.io Fabric 17.6.1
 * AutobahnJS 17.5.2
-* AutobahnJava 0.0.0
+* AutobahnJava 17.8.1
 * AutobahnPython 17.7.1
 * AutobahnC++ 17.5.1
 
@@ -123,6 +123,17 @@ No | Package | Architecture | Image | docker pull
 13 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:full-17.5.2.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:full-17.5.2 "Metadata") | [`crossbario/autobahn-js-aarch64:full-17.5.2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.full-17.5.2)
 14 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:alpine "Metadata") | [`crossbario/autobahn-js-aarch64:alpine`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine)
 15 | [autobahn-js](https://github.com/crossbario/autobahn-js) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-js-aarch64:alpine-17.5.2.svg)](https://microbadger.com/images/crossbario/autobahn-js-aarch64:alpine-17.5.2 "Metadata") | [`crossbario/autobahn-js-aarch64:alpine-17.5.2`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-js/aarch64/Dockerfile.alpine-17.5.2)
+
+### autobahn-java
+
+
+#### autobahn-java on x86_64
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
+1 | [autobahn-java](https://github.com/crossbario/autobahn-java) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-java:latest.svg)](https://microbadger.com/images/crossbario/autobahn-java:latest "Metadata") | [`crossbario/autobahn-java:latest`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-java/x86_64/Dockerfile.latest)
+2 | [autobahn-java](https://github.com/crossbario/autobahn-java) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-java:netty.svg)](https://microbadger.com/images/crossbario/autobahn-java:netty "Metadata") | [`crossbario/autobahn-java:netty`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-java/x86_64/Dockerfile.netty)
+3 | [autobahn-java](https://github.com/crossbario/autobahn-java) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/autobahn-java:netty-17.8.1.svg)](https://microbadger.com/images/crossbario/autobahn-java:netty-17.8.1 "Metadata") | [`crossbario/autobahn-java:netty-17.8.1`](https://github.com/crossbario/crossbar-docker/blob/master/autobahn-java/x86_64/Dockerfile.netty-17.8.1)
 
 ### autobahn-python
 
