@@ -42,7 +42,7 @@ For building the images yourself, please see [here](BUILDING.md).
 
 ## Package Versions
 
-Latest Docker images built on **{BUILD_DATE}** from package versions:
+**{IMAGE_COUNT}** Docker images built on **{BUILD_DATE}** from these package versions:
 
 * Crossbar.io {CROSSBAR_VERSION}
 * Crossbar.io Fabric {CROSSBAR_FABRIC_VERSION}
@@ -67,13 +67,7 @@ AutobahnPython/Crossbar.io
 
 ## Docker Images
 
-""".format(BUILD_DATE=BUILD_DATE,
-           CROSSBAR_VERSION=CROSSBAR_VERSION,
-           CROSSBAR_FABRIC_VERSION=CROSSBAR_FABRIC_VERSION,
-           AUTOBAHN_JS_VERSION=AUTOBAHN_JS_VERSION,
-           AUTOBAHN_JAVA_VERSION=AUTOBAHN_JAVA_VERSION,
-           AUTOBAHN_PYTHON_VERSION=AUTOBAHN_PYTHON_VERSION,
-           AUTOBAHN_CPP_VERSION=AUTOBAHN_CPP_VERSION)
+"""
 
 PACKAGE_HEADER = """
 ### {package}
@@ -93,7 +87,8 @@ with open('README.md', 'w') as f_out:
     with open('images.json') as f_in:
         data = f_in.read()
         obj = json.loads(data)
-        f_out.write(HEADER)
+        _out = ''
+        cnt = 0
         for image in obj.get('images', []):
             i = 1
             package = image.get('package', None)
@@ -102,9 +97,9 @@ with open('README.md', 'w') as f_out:
             github = image.get('github', None)
             name = image.get('name', None)
             tags = image.get('tags', [])
-            f_out.write(PACKAGE_HEADER.format(package=package))
+            _out += PACKAGE_HEADER.format(package=package)
             for architecture in architectures:
-                f_out.write(ARCH_HEADER.format(package=package, architecture=architecture))
+                _out += ARCH_HEADER.format(package=package, architecture=architecture)
                 _tags = ', '.join([tag if tag.strip() != '' else '-' for tag in tags])
                 for _tag in tags:
                     if package in PACKAGE_TO_VERSION:
@@ -114,5 +109,16 @@ with open('README.md', 'w') as f_out:
                     # 'autobahn-python-aarch64:cpy3-minimal-tx-0.18.2'
                     fqn = '{package}{arch}:{tag}'.format(package=package, arch=arch, tag=_tag, version=version)
                     badge ='[![](https://images.microbadger.com/badges/image/crossbario/{fqn}.svg)](https://microbadger.com/images/crossbario/{fqn} "Metadata")'.format(fqn=fqn)
-                    f_out.write('{i} | [{package}]({github}) | {architecture} | {badge} | [`{image_id}`](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.{tag})\n'.format(badge=badge, package=package, architecture=architecture, github=github, name=name, tag=_tag, tags=_tags, image_id=image_id, arch=arch, i=i))
+                    _out += '{i} | [{package}]({github}) | {architecture} | {badge} | [`{image_id}`](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.{tag})\n'.format(badge=badge, package=package, architecture=architecture, github=github, name=name, tag=_tag, tags=_tags, image_id=image_id, arch=arch, i=i)
                     i += 1
+                    cnt += 1
+
+        f_out.write(HEADER.format(BUILD_DATE=BUILD_DATE,
+                                  CROSSBAR_VERSION=CROSSBAR_VERSION,
+                                  CROSSBAR_FABRIC_VERSION=CROSSBAR_FABRIC_VERSION,
+                                  AUTOBAHN_JS_VERSION=AUTOBAHN_JS_VERSION,
+                                  AUTOBAHN_JAVA_VERSION=AUTOBAHN_JAVA_VERSION,
+                                  AUTOBAHN_PYTHON_VERSION=AUTOBAHN_PYTHON_VERSION,
+                                  AUTOBAHN_CPP_VERSION=AUTOBAHN_CPP_VERSION,
+                                  IMAGE_COUNT=cnt))
+        f_out.write(_out)

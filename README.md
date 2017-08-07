@@ -8,7 +8,7 @@ For building the images yourself, please see [here](BUILDING.md).
 
 ## Package Versions
 
-Latest Docker images built on **2017-08-07** from package versions:
+**117** Docker images built on **2017-08-07** from these package versions:
 
 * Crossbar.io 17.8.1
 * Crossbar.io Fabric 17.6.1
