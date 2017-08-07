@@ -13,6 +13,8 @@ def badger_url(package, flavor):
 BUILD_DATE = os.environ.get('BUILD_DATE', None)
 
 CROSSBAR_VERSION = os.environ.get('CROSSBAR_VERSION', None)
+CROSSBAR_FABRIC_VERSION = os.environ.get('CROSSBAR_FABRIC_VERSION', None)
+AUTOBAHN_JAVA_VERSION = os.environ.get('AUTOBAHN_JAVA_VERSION', None)
 AUTOBAHN_JS_VERSION = os.environ.get('AUTOBAHN_JS_VERSION', None)
 AUTOBAHN_PYTHON_VERSION = os.environ.get('AUTOBAHN_PYTHON_VERSION', None)
 AUTOBAHN_CPP_VERSION = os.environ.get('AUTOBAHN_CPP_VERSION', None)
@@ -20,7 +22,9 @@ AUTOBAHN_CPP_VERSION = os.environ.get('AUTOBAHN_CPP_VERSION', None)
 
 PACKAGE_TO_VERSION = {
     'crossbar': CROSSBAR_VERSION,
+    'crossbar-fabric': CROSSBAR_FABRIC_VERSION,
     'autobahn-js': AUTOBAHN_JS_VERSION,
+    'autobahn-java': AUTOBAHN_JAVA_VERSION,
     'autobahn-python': AUTOBAHN_PYTHON_VERSION,
     'autobahn-cpp': AUTOBAHN_CPP_VERSION,
 }
@@ -41,7 +45,9 @@ For building the images yourself, please see [here](BUILDING.md).
 Latest Docker images built on **{BUILD_DATE}** from package versions:
 
 * Crossbar.io {CROSSBAR_VERSION}
+* Crossbar.io Fabric {CROSSBAR_FABRIC_VERSION}
 * AutobahnJS {AUTOBAHN_JS_VERSION}
+* AutobahnJava {AUTOBAHN_JAVA_VERSION}
 * AutobahnPython {AUTOBAHN_PYTHON_VERSION}
 * AutobahnC++ {AUTOBAHN_CPP_VERSION}
 
@@ -63,7 +69,9 @@ AutobahnPython/Crossbar.io
 
 """.format(BUILD_DATE=BUILD_DATE,
            CROSSBAR_VERSION=CROSSBAR_VERSION,
+           CROSSBAR_FABRIC_VERSION=CROSSBAR_FABRIC_VERSION,
            AUTOBAHN_JS_VERSION=AUTOBAHN_JS_VERSION,
+           AUTOBAHN_JAVA_VERSION=AUTOBAHN_JAVA_VERSION,
            AUTOBAHN_PYTHON_VERSION=AUTOBAHN_PYTHON_VERSION,
            AUTOBAHN_CPP_VERSION=AUTOBAHN_CPP_VERSION)
 
@@ -108,4 +116,3 @@ with open('README.md', 'w') as f_out:
                     badge ='[![](https://images.microbadger.com/badges/image/crossbario/{fqn}.svg)](https://microbadger.com/images/crossbario/{fqn} "Metadata")'.format(fqn=fqn)
                     f_out.write('{i} | [{package}]({github}) | {architecture} | {badge} | [`{image_id}`](https://github.com/crossbario/crossbar-docker/blob/master/{package}/{architecture}/Dockerfile.{tag})\n'.format(badge=badge, package=package, architecture=architecture, github=github, name=name, tag=_tag, tags=_tags, image_id=image_id, arch=arch, i=i))
                     i += 1
-

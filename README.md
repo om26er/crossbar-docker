@@ -11,7 +11,9 @@ For building the images yourself, please see [here](BUILDING.md).
 Latest Docker images built on **2017-08-07** from package versions:
 
 * Crossbar.io 17.8.1
+* Crossbar.io Fabric 17.8.1
 * AutobahnJS 17.5.2
+* AutobahnJava 0.0.0
 * AutobahnPython 17.7.1
 * AutobahnC++ 17.5.1
 
