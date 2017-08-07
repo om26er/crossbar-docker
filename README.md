@@ -11,7 +11,7 @@ For building the images yourself, please see [here](BUILDING.md).
 Latest Docker images built on **2017-08-07** from package versions:
 
 * Crossbar.io 17.8.1
-* Crossbar.io Fabric 17.8.1
+* Crossbar.io Fabric 17.6.1
 * AutobahnJS 17.5.2
 * AutobahnJava 0.0.0
 * AutobahnPython 17.7.1
@@ -66,6 +66,30 @@ No | Package | Architecture | Image | docker pull
 13 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:cpy3-17.8.1.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:cpy3-17.8.1 "Metadata") | [`crossbario/crossbar-aarch64:cpy3-17.8.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.cpy3-17.8.1)
 14 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:pypy3.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:pypy3 "Metadata") | [`crossbario/crossbar-aarch64:pypy3`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.pypy3)
 15 | [crossbar](https://github.com/crossbario/crossbar) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-aarch64:pypy3-17.8.1.svg)](https://microbadger.com/images/crossbario/crossbar-aarch64:pypy3-17.8.1 "Metadata") | [`crossbario/crossbar-aarch64:pypy3-17.8.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar/aarch64/Dockerfile.pypy3-17.8.1)
+
+### crossbar-fabric
+
+
+#### crossbar-fabric on x86_64
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
+1 | [crossbar-fabric](https://github.com/crossbario/crossbar-fabric) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-fabric:latest.svg)](https://microbadger.com/images/crossbario/crossbar-fabric:latest "Metadata") | [`crossbario/crossbar-fabric:latest`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar-fabric/x86_64/Dockerfile.latest)
+2 | [crossbar-fabric](https://github.com/crossbario/crossbar-fabric) | x86_64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-fabric:17.6.1.svg)](https://microbadger.com/images/crossbario/crossbar-fabric:17.6.1 "Metadata") | [`crossbario/crossbar-fabric:17.6.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar-fabric/x86_64/Dockerfile.17.6.1)
+
+#### crossbar-fabric on armhf
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
+3 | [crossbar-fabric](https://github.com/crossbario/crossbar-fabric) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-fabric-armhf:latest.svg)](https://microbadger.com/images/crossbario/crossbar-fabric-armhf:latest "Metadata") | [`crossbario/crossbar-fabric-armhf:latest`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar-fabric/armhf/Dockerfile.latest)
+4 | [crossbar-fabric](https://github.com/crossbario/crossbar-fabric) | armhf | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-fabric-armhf:17.6.1.svg)](https://microbadger.com/images/crossbario/crossbar-fabric-armhf:17.6.1 "Metadata") | [`crossbario/crossbar-fabric-armhf:17.6.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar-fabric/armhf/Dockerfile.17.6.1)
+
+#### crossbar-fabric on aarch64
+
+No | Package | Architecture | Image | docker pull
+---|---|---|---|---
+5 | [crossbar-fabric](https://github.com/crossbario/crossbar-fabric) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-fabric-aarch64:latest.svg)](https://microbadger.com/images/crossbario/crossbar-fabric-aarch64:latest "Metadata") | [`crossbario/crossbar-fabric-aarch64:latest`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar-fabric/aarch64/Dockerfile.latest)
+6 | [crossbar-fabric](https://github.com/crossbario/crossbar-fabric) | aarch64 | [![](https://images.microbadger.com/badges/image/crossbario/crossbar-fabric-aarch64:17.6.1.svg)](https://microbadger.com/images/crossbario/crossbar-fabric-aarch64:17.6.1 "Metadata") | [`crossbario/crossbar-fabric-aarch64:17.6.1`](https://github.com/crossbario/crossbar-docker/blob/master/crossbar-fabric/aarch64/Dockerfile.17.6.1)
 
 ### autobahn-js
 

@@ -18,6 +18,20 @@
             ]
         },
         {
+            "package": "crossbar-fabric",
+            "architectures": [
+                "x86_64",
+                "armhf",
+                "aarch64"
+            ],
+            "github": "https://github.com/crossbario/crossbar-fabric",
+            "name": "crossbario/crossbar-fabric",
+            "tags": [
+                "latest",
+                "{version}"
+            ]
+        },
+        {
             "package": "autobahn-js",
             "architectures": [
                 "x86_64",
