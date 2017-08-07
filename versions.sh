@@ -3,7 +3,7 @@
 #
 # CHANGE FOR NEW RELEASES (these need to be proper Git tags in the respective repo):
 #
-export CROSSBAR_VERSION='17.6.1'
+export CROSSBAR_VERSION='17.8.1'
 export AUTOBAHN_JS_VERSION='17.5.2'
 export AUTOBAHN_PYTHON_VERSION='17.7.1'
 export AUTOBAHN_CPP_VERSION='17.5.1'
