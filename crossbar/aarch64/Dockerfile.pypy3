@@ -1,3 +1,3 @@
-# NOT YET SUPPORTED
+# NOT YET SUPPORTED: https://hub.docker.com/r/arm64v8/pypy/
 
-FROM aarch64/debian
+FROM arm64v8/pypy:3
