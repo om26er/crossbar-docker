@@ -156,7 +156,7 @@ test_cpy2_minimal_tx:
 test_cpy3_minimal_tx:
 	docker run -it --rm --link crossbar crossbario/autobahn-python-armhf:cpy3-minimal-tx
 
-publish: build
+publish:
 	docker push crossbario/autobahn-python-armhf:latest
 	docker push crossbario/autobahn-python-armhf:cpy2
 	docker push crossbario/autobahn-python-armhf:cpy2-${AUTOBAHN_PYTHON_VERSION}
